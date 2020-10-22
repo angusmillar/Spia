@@ -2,7 +2,7 @@
 
 ## Standards for Pathology Informatics in Australia (SPIA) Exemplar Reports ##
 
-[The Royal College of Pathologists of Australasia (RCPA)](https://www.rcpa.edu.au/Home) as part of their [Standards for Pathology Informatics in Australia (SPIA)](https://www.rcpa.edu.au/Library/Practising-Pathology/PTIS) working group have produced a number of pathology exemplar reports in a .pdf format. These reports are intended to show case the desired elements and display format for pathology reports within Australia to help guide and inform the Australia Pathology sector. 
+[The Royal College of Pathologists of Australasia (RCPA)](https://www.rcpa.edu.au/Home) as part of their [Standards for Pathology Informatics in Australia (SPIA)](https://www.rcpa.edu.au/Library/Practising-Pathology/PTIS) working group has produced several pathology exemplar reports in a .pdf format. These reports are intended to showcase the desired elements and display format for pathology reports within Australia to help guide and inform the Australia Pathology sector. 
 
 The .NET Framework solution found in this GitHub repository seeks to produce a set accompanying electronic formats for the SPIA exemplar reports. The solution outputs the reports listed below is the following HL7 formats :
 
@@ -31,14 +31,14 @@ The .NET Framework solution found in this GitHub repository seeks to produce a s
 > Please note that the SPIA Exemplar Pathology Reports use completely fictitious patient details and results
 
 ## Solution Information ##
-The solution's projects are .NET Framework 4.7.2. While I would have liked to use .NET Core unfortunately the ADHA CDA library dependencies are currently not compatible with .NET Core or .NET Standard. 
+The solution's projects are .NET Framework 4.7.2. While I would have liked to use .NET Core, unfortunately, the ADHA CDA library dependencies are currently not compatible with .NET Core or .NET Standard. 
 The solution contains five projects as follows:
 
-* Spia.AdhaCdaGeneration: The generation of the CDA Pathology Document as per the ADHA specifications for the My Health Record
-* Spia.AdhaCdaPackageGeneration: The generation of the CDA Package as per the ADHA specifications for the My Health Record
-* Spia.AdhaFhirGeneration: The generation of a pathology FHIR bundle as per the ADHA profiles which are still in development
-* Spia.AusHl7v2Generation: The generation of HL7 v2 ORU messages as per the HL7 Australia profile: HL7AUSD-STD-OO-ADRM-2018.1
-* Spia.Runner: A console application that outputs all files to a given folder location
+* **Spia.AdhaCdaGeneration:** The generation of the CDA Pathology Document as per the ADHA specifications for the My Health Record
+* **Spia.AdhaCdaPackageGeneration:** The generation of the CDA Package as per the ADHA specifications for the My Health Record
+* **Spia.AdhaFhirGeneration:** The generation of a pathology FHIR bundle as per the ADHA profiles which are still in development
+* **Spia.AusHl7v2Generation:** The generation of HL7 v2 ORU messages as per the HL7 Australia profile: HL7AUSD-STD-OO-ADRM-2018.1
+* **Spia.Runner:** A console application that outputs all files to a given folder location
 
 **Solution Nuget parent dependencies**
 * Hl7.Fhir.R4
