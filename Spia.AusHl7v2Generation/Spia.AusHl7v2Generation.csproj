@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9EF85CB2-1779-4327-A795-1AB851C58760}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Spia.AusHl7v2Generation</RootNamespace>
+    <AssemblyName>Spia.AusHl7v2Generation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PeterPiper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PeterPiper.1.0.1\lib\net46\PeterPiper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Factory\HL7\v2\Hl7v2FileGenerator.cs" />
+    <Compile Include="Factory\HL7\v2\HL7v2MessageFactory.cs" />
+    <Compile Include="Factory\HL7\v2\MSHFactory.cs" />
+    <Compile Include="Factory\HL7\v2\OBRFactory.cs" />
+    <Compile Include="Factory\HL7\v2\OBXFactory.cs" />
+    <Compile Include="Factory\HL7\v2\ORCFactory.cs" />
+    <Compile Include="Factory\HL7\v2\PIDFactory.cs" />
+    <Compile Include="Factory\HL7\v2\PV1Factory.cs" />
+    <Compile Include="Factory\LogicalModel\AusStandardHL7v2.cs" />
+    <Compile Include="Factory\LogicalModel\LabInfo.cs" />
+    <Compile Include="Factory\LogicalModel\MessageMetaFactory.cs" />
+    <Compile Include="Factory\LogicalModel\PathologyDocumentFactory.cs" />
+    <Compile Include="Factory\LogicalModel\PatientFactory.cs" />
+    <Compile Include="Factory\LogicalModel\ReportFactory.cs" />
+    <Compile Include="Factory\LogicalModel\RequestFactory.cs" />
+    <Compile Include="Factory\LogicalModel\ResultFactory.cs" />
+    <Compile Include="Model\Logical\Address.cs" />
+    <Compile Include="Model\Logical\Coded.cs" />
+    <Compile Include="Model\Logical\CodedElement.cs" />
+    <Compile Include="Model\Logical\EntityIdentifier.cs" />
+    <Compile Include="Model\Logical\HierarchicDesignator.cs" />
+    <Compile Include="Model\Logical\Identifier.cs" />
+    <Compile Include="Model\Logical\MessageMetadata.cs" />
+    <Compile Include="Model\Logical\Name.cs" />
+    <Compile Include="Model\Logical\PathologyDocument.cs" />
+    <Compile Include="Model\Logical\Patient.cs" />
+    <Compile Include="Model\Logical\Provider.cs" />
+    <Compile Include="Model\Logical\Report.cs" />
+    <Compile Include="Model\Logical\Request.cs" />
+    <Compile Include="Model\Logical\Result.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
