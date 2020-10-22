@@ -2,13 +2,13 @@
 
 ## Standards for Pathology Informatics in Australia (SPIA) Exemplar Reports ##
 
-The Royal College of Pathologists of Australasia (RCPA) as part of their Standards for Pathology Informatics in Australia (SPIA) working group have produced a number of pathology exemplar reports in a .PDF format. These reports are intended to show case the desired elements and format for pathology reports within Australia to help guide and inform the Australia Pathology sector. 
+[The Royal College of Pathologists of Australasia (RCPA)](https://www.rcpa.edu.au/Home) as part of their [Standards for Pathology Informatics in Australia (SPIA)](https://www.rcpa.edu.au/Library/Practising-Pathology/PTIS) working group have produced a number of pathology exemplar reports in a .PDF format. These reports are intended to show case the desired elements and display format for pathology reports within Australia to help guide and inform the Australia Pathology sector. 
 
-The .NET Framework solution found in this GitHub repository seeks to produce a set accompanying electronic formats for the SPIA exemplar reports. The solution output the reports listed below is the following HL7 formats :
+The .NET Framework solution found in this GitHub repository seeks to produce a set accompanying electronic formats for the SPIA exemplar reports. The solution outputs the reports listed below is the following HL7 formats :
 
 **HL7 Output Formats:**
-* HL7 Version 2 ORU Messages as per the [HL7AUSD-STD-OO-ADRM-2018.1](https://confluence.hl7australia.com/display/OOADRM20181/Australian+Diagnostics+and+Referral+Messaging+-+Localisation+of+HL7+Version+2.4).
-* HL7 FHIR as per the Australian Digital Health Agency (ADHA) Diagnostic Report profile: [Diagnostic Report 1.0.0 (R4) June 2020](https://github.com/AuDigitalHealth/ci-fhir-r4/releases)
+* HL7 Version 2 ORU Messages as per the HL7 Australia profile: [HL7AUSD-STD-OO-ADRM-2018.1](https://confluence.hl7australia.com/display/OOADRM20181/Australian+Diagnostics+and+Referral+Messaging+-+Localisation+of+HL7+Version+2.4).
+* HL7 FHIR Bundle as per the Australian Digital Health Agency (ADHA) Diagnostic Report profile (Still in development): [Diagnostic Report 1.0.0 (R4) June 2020](https://github.com/AuDigitalHealth/ci-fhir-r4/releases)
 * HL7 CDA as per the Australian Digital Health Agency (ADHA) Pathology Report specifications: [eHealth Pathology Report v1.2.2](https://developer.digitalhealth.gov.au/specifications/clinical-documents/ep-2558-2017)
 
 **Below is the list of SPIA Exemplar Pathology Report types:**
