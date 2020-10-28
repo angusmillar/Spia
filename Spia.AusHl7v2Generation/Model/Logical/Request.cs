@@ -21,7 +21,7 @@ namespace Spia.AusHl7v2Generation.Model.Logical
     public Provider RequestingProvider { get; set; }
     public List<Provider> CopyProviderList { get; }
     public EntityIdentifier OrderNumber { get; set; }
-    public EntityIdentifier GroupOrderNumber { get; set; }
+    
     public DateTimeOffset RequestedDateTime { get; set; }
     public string ClinicalNotes { get; set; }
     public string CallBackPhoneNumber { get; set; }

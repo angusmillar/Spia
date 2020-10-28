@@ -49,7 +49,6 @@
     <Compile Include="Factory\HL7\v2\MSHFactory.cs" />
     <Compile Include="Factory\HL7\v2\OBRFactory.cs" />
     <Compile Include="Factory\HL7\v2\OBXFactory.cs" />
-    <Compile Include="Factory\HL7\v2\ORCFactory.cs" />
     <Compile Include="Factory\HL7\v2\PIDFactory.cs" />
     <Compile Include="Factory\HL7\v2\PV1Factory.cs" />
     <Compile Include="Factory\LogicalModel\AusStandardHL7v2.cs" />

@@ -263,7 +263,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
         setId: (ResultList.Count + 1).ToString(CultureInfo.CurrentCulture),
         dataType: "NM",
         resultType: new CodedElement(
-          local: new Coded("WCC", "Platelet count", $"NATA{LabInfo.NATAAccNumber}"),
+          local: new Coded("PLT", "Platelet count", $"NATA{LabInfo.NATAAccNumber}"),
           international: new Coded("777-3", "Platelet count", "LN")),
         value: Creator.Element("278"),
         status: "F")
@@ -499,13 +499,15 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       });
 
       //Interpretation    
+      var INTERElement = Creator.Element();
+      INTERElement.AsStringRaw = "\\H\\Interpretation\\N\\\\.br\\Positive HBsAb result indicates sufficient Hepatitis B immunity.";
       ResultList.Add(new Result(
         setId: (ResultList.Count + 1).ToString(CultureInfo.CurrentCulture),
         dataType: "ST",
         resultType: new CodedElement(
           local: new Coded("INTER", "Interpretation", $"NATA{LabInfo.NATAAccNumber}"),
           international: null),
-        value: Creator.Element("Two copies of the p.His63Asp variant were detected in the patient. The p.Cys282Tyr variant was not detected. The diagnosis of the most common form of HFE-related hereditary haemochromatosis is excluded."),
+        value: INTERElement,
         status: "F")
       {
         Units = null,
@@ -848,7 +850,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
         setId: (ResultList.Count + 1).ToString(CultureInfo.CurrentCulture),
         dataType: "NM",
         resultType: new CodedElement(
-          local: new Coded("KETO", "Specific Gravity", $"NATA{LabInfo.NATAAccNumber}"),
+          local: new Coded("SPECGRA", "Specific Gravity", $"NATA{LabInfo.NATAAccNumber}"),
           international: new Coded("5811-5", "Specific Gravity", "LN")),
         value: Creator.Element("1.034"),
         status: "F")

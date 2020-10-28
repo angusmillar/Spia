@@ -126,7 +126,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
 
     public static PathologyDocument GetLipids(string PdfFileName)
     {
-      var Patient = PatientFactory.GetPatient(PatientFactory.PateintType.GregoryWHITEWATER);
+      var Patient = PatientFactory.GetPatient(PatientFactory.PateintType.GregoryBLACKCOMB);
       var Request = RequestFactory.GetLipids();
       var PathologyDocument = new PathologyDocument(Patient, Request);
       Report Report = ReportFactory.GetLipids();
@@ -170,7 +170,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
 
     public static PathologyDocument GetSARSCoV2Serology(string PdfFileName)
     {
-      var Patient = PatientFactory.GetPatient(PatientFactory.PateintType.GregoryWHITEWATER);
+      var Patient = PatientFactory.GetPatient(PatientFactory.PateintType.GregoryBLACKCOMB);
       var Request = RequestFactory.GetSARSCoV2Serology();
       var PathologyDocument = new PathologyDocument(Patient, Request);
       Report Report = ReportFactory.GetSARSCoV2Serology();

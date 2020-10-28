@@ -21,8 +21,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "143569C9-8AFC-4BBD-A663-95079AE10B57", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000001", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "First trimester antenatal screen, ~ 10 weeks pregnant (G1P0)";
 
@@ -51,8 +50,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "D101F20B-1453-47A1-AD3F-A2845964A84E", UniversalIdType = "GUID" };
 
       var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime)
-      {
-        GroupOrderNumber = new EntityIdentifier("20000002", "PathologyGroupOrder"),
+      {       
         ClinicalNotes = "Recent fungal infection R toes"
       };
 
@@ -83,8 +81,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "264C8EF6-868F-49B0-A532-B47D03F1A8D7", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000004", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "Warfarin 6mg per day, Family Hx Diabetes";
 
@@ -117,8 +114,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "D101F20B-1453-47A1-AD3F-A2845964A84E", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000005", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "? Hereditary haemochromatosis. Arthritis, increased iron stores.";
 
@@ -150,8 +146,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "143569C9-8AFC-4BBD-A663-95079AE10B57", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000006", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "First trimester antenatal screen, ~ 10 weeks pregnant (G1P0).";
 
@@ -180,8 +175,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "0FECFC6C-C98F-4625-B58B-ECB27063DAF1", UniversalIdType = "GUID" };
 
       var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000007", "PathologyGroupOrder");
-
+      
       Request.ClinicalNotes = "Mild reaction to bee sting. Asthma.";
 
       //Copy Doctors
@@ -214,8 +208,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "264C8EF6-868F-49B0-A532-B47D03F1A8D7", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000008", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "Warfarin 6mg per day, Family Hx Diabetes.";
 
@@ -248,8 +241,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "ACA30A38-811E-4E0D-B55C-774D38B8E171", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000009", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "Warfarin 6mg per day, Family Hx Diabetes.";
 
@@ -282,8 +274,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "501970A0-1E1F-40D8-9656-61899527203F", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000010", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);     
 
       Request.ClinicalNotes = "Primary infertility";
 
@@ -317,8 +308,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "55023B97-61F8-4445-8590-4F18AD68E9AD", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000011", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "Knee surgery 12-Sept-19. Weight gain becoming problematic.";
 
@@ -353,8 +343,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "191394B8-6AB0-4EF5-BC7D-19A5B37FA60F", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000012", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "Diabetic with recurring UTI. Last course Trimethoprim (100 mg bd) completed 27 Nov 2019.";
 
@@ -388,8 +377,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "D220F4D1-D62C-4EE3-8356-F5DA1484370E", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000013", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "? Multiple myeloma";
 
@@ -424,8 +412,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743");
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "171E5425-175A-4AEB-8D55-7161148DE6F0", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000014", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "Recent history uncontrolled diabetes; Shortness of breath";
 
@@ -458,8 +445,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingApplication = new HierarchicDesignator("Best Practice 1.8.5.743"); 
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "3659F40F-8BDF-4CD6-BF46-38257CA6BB97", UniversalIdType = "GUID" };
 
-      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000015", "PathologyGroupOrder");
+      var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);      
 
       Request.ClinicalNotes = "Sore throat & cough, works in hospitality industry";
 
@@ -488,8 +474,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
       var ReceivingFacility = new HierarchicDesignator(ReceivingFacilityNamespaceId) { UniversalId = "13A8DC14-A1E9-475C-9B4C-DA19866E020A", UniversalIdType = "GUID" };
 
       var Request = new Request(ReceivingApplication, ReceivingFacility, RequestingProvider, OrderNumber, RequestedDateTime);
-      Request.GroupOrderNumber = new EntityIdentifier("20000016", "PathologyGroupOrder");
-
+     
       Request.ClinicalNotes = "Shortness of breath, sore throat";
 
       //Copy Doctors

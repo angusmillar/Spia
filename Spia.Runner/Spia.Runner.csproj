@@ -74,6 +74,10 @@
       <Project>{9ef85cb2-1779-4327-a795-1ab851c58760}</Project>
       <Name>Spia.AusHl7v2Generation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Spia.PathologyReportModel\Spia.PathologyReportModel.csproj">
+      <Project>{bc26ce23-ff88-47a8-be28-9bfe2ce107e4}</Project>
+      <Name>Spia.PathologyReportModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.resx">

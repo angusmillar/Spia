@@ -8,7 +8,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
   public static class PatientFactory
   {
     public enum PateintType { TessaCITIZEN, 
-      GeorginaROSSLAND, GrantWHISTLER, GlennFERNIE, GloriaNELSON, LarissaFERNIE, GregoryWHITEWATER, GeorgeWHITEWATER, HaydenNORQUAY
+      GeorginaROSSLAND, GlennFERNIE, GloriaNELSON, LarissaFERNIE, GregoryBLACKCOMB, GeorgeWHITEWATER, HaydenNORQUAY
     };
     public static Patient GetPatient(PatientFactory.PateintType patientType)
     {
@@ -25,7 +25,7 @@ namespace Spia.AusHl7v2Generation.Factory.LogicalModel
           return GloriaNELSON();
         case PateintType.LarissaFERNIE:
           return LarissaFERNIE();
-        case PateintType.GregoryWHITEWATER:
+        case PateintType.GregoryBLACKCOMB:
           return GregoryBLACKCOMB();
         case PateintType.GeorgeWHITEWATER:
           return GeorgeWHITEWATER();

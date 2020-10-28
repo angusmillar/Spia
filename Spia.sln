@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spia.PathologyReportModel", "Spia.PathologyReportModel\Spia.PathologyReportModel.csproj", "{BC26CE23-FF88-47A8-BE28-9BFE2CE107E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{4FE377B3-4C01-4EC0-8518-D5D6A90277EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE377B3-4C01-4EC0-8518-D5D6A90277EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE377B3-4C01-4EC0-8518-D5D6A90277EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC26CE23-FF88-47A8-BE28-9BFE2CE107E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC26CE23-FF88-47A8-BE28-9BFE2CE107E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC26CE23-FF88-47A8-BE28-9BFE2CE107E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC26CE23-FF88-47A8-BE28-9BFE2CE107E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
