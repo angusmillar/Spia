@@ -23,10 +23,8 @@ namespace Spia.Runner.SupportExtensions
         {
           file.Delete();
         }
-      }
-      
+      }      
     }
-
     
 
     public static void DeleteAllDirectories(this DirectoryInfo DirInfo)
@@ -37,12 +35,13 @@ namespace Spia.Runner.SupportExtensions
       }
     }
 
-    public static void DeleteAllContents(this DirectoryInfo DirInfo)
+    public static void DeleteAllFileAndDirectories(this DirectoryInfo DirInfo)
     {
       DirInfo.DeleteAllFiles();
       DirInfo.DeleteAllDirectories();
     }
 
+    
     public static void CreateDirectoryIfNoExist(this DirectoryInfo DirInfo)
     {
       if (!DirInfo.Exists)

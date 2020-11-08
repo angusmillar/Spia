@@ -57,13 +57,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1989, 07, 01),
-        Gender = "F",
+        Gender =  GenderType.Female,
         AddressList = new List<Address>()
         {
           new Address()
           {
             LineOne = "123 Heston Court",
-            LineTwo = "lineTwo",
+            LineTwo = null,
             City = "Brisbane",
             Country = "AUS",
             PostCode = "4571",
@@ -102,13 +102,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1987, 06, 30),
-        Gender = "F",
+        Gender = GenderType.Female,
         AddressList = new List<Address>()
         {
           new Address()
           {
             LineOne = "123 Somewhere Place",
-            LineTwo = "",
+            LineTwo = null,
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
@@ -147,13 +147,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1949, 04, 17),
-        Gender = "F",
+        Gender = GenderType.Female,
         AddressList = new List<Address>()
         {
           new Address()
           {
             LineOne = "678 Oliver Close",
-            LineTwo = "",
+            LineTwo = null,
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
@@ -192,13 +192,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1988, 05, 28),
-        Gender = "F",
+        Gender = GenderType.Female,
         AddressList = new List<Address>()
         {
           new Address()
           {
            LineOne = "456 James Terrace",
-           LineTwo = "",
+           LineTwo = null,
            Suburb = "Sunrise Beach",
            PostCode = "4571",
            City = "Brisbane",
@@ -218,7 +218,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.MRN,
-            Value = "??",
+            Value = "719909917",
             AssigningAuthority = "InfertilityClinic"
           }
         }
@@ -237,13 +237,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1956, 01, 05),
-        Gender = "M",
+        Gender = GenderType.Male,
         AddressList = new List<Address>()
         {
           new Address()
           {
             LineOne = "86 Ryan Square",
-            LineTwo = "",
+            LineTwo = null,
             Suburb = "Doonan",
             PostCode = "4571",
             City = "Brisbane",
@@ -282,13 +282,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1993, 11, 02),
-        Gender = "M",
+        Gender = GenderType.Male,
         AddressList = new List<Address>()
         {
           new Address()
           {
             LineOne = "197 Manu Court",
-            LineTwo = "",
+            LineTwo = null,
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
@@ -327,13 +327,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1950, 08, 01),
-        Gender = "M",
+        Gender = GenderType.Male,
         AddressList = new List<Address>()
         {
           new Address()
           {
             LineOne = "197 Ramsay Court",
-            LineTwo = "",
+            LineTwo = null,
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
@@ -372,13 +372,13 @@ namespace Spia.PathologyReportModel.Factory
           Title = null
         },
         DateOfBirth = new DateTime(1968, 05, 28),
-        Gender = "M",
+        Gender = GenderType.Male,
         AddressList = new List<Address>()
         {
           new Address()
           {
              LineOne = "456 James Terrace",
-             LineTwo = "",
+             LineTwo = null,
              Suburb = "Sunrise Beach",
              PostCode = "4571",
              City = "Brisbane",

@@ -13,7 +13,14 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
     public delegate void LogEventMessage(string Message);
 
     public LogEventMessage LogEventMessageDelegate;
-    public void Process(string RootHl7v2DirectoryPath, string RootPDFDirectoryPath, string OutputPath, byte[] CdaDocuemntLogoImageBytes = null)
+    private string NashCertificateSerial;
+
+    public AdhaCdaPackageFileGenerator(string nashCertificateSerial)
+    {
+      this.NashCertificateSerial = nashCertificateSerial;
+    }
+
+    public void Process(string RootHl7v2DirectoryPath, string RootPDFDirectoryPath, string CdaDocumentInputDirectoryPath, string CdaPackageOutputDirectory, byte[] CdaDocuemntLogoImageBytes = null)
     {
       this.Log("----------------------------------------------------------------------");
       this.Log("SPIA CDA Package");
@@ -37,14 +44,17 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
         FileInfo fi = new FileInfo(FilePath);
         //CdaGeneratorInput.Message = Creator.Message(File.ReadAllText(FilePath));
         string FileNameForCdaAndPdf = fi.Name.Substring(fi.Name.IndexOf("SPIA Exemplar Report"), fi.Name.Length - fi.Name.IndexOf("SPIA Exemplar Report"));
-        string CdaDocumentFilePath = $@"{OutputPath}\{FileNameForCdaAndPdf.Replace(fi.Extension, ".xml")}";
+        string CdaPackageoutputFilePath = $@"{CdaPackageOutputDirectory}\{FileNameForCdaAndPdf.Replace(fi.Extension, ".zip")}";
+        string CdaDocumentInputFilePath = $@"{CdaDocumentInputDirectoryPath}\{FileNameForCdaAndPdf.Replace(fi.Extension, ".xml")}";
         string PdfFilePath = $@"{RootPDFDirectoryPath}\{FileNameForCdaAndPdf.Replace(fi.Extension, ".pdf")}";
 
         //CDA Package
         PackagerInput PackagerInput = new PackagerInput()
         {
+          NashCertificateSerial = this.NashCertificateSerial,
           Approver = Approver,
-          CdaDocumentFilePath = CdaDocumentFilePath,
+          CdaDocumentInputFilePath = CdaDocumentInputFilePath,
+          CdaPackageOutputFilePath = CdaPackageoutputFilePath,
           CdaDocumentLogoBytes = CdaDocuemntLogoImageBytes,          
           PdfReportAttachment = PdfFilePath,
         };

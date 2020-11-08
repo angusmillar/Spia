@@ -25,7 +25,7 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
 
       // Load certificate used to sign the CDA document
       X509Certificate2 signingCert = X509CertificateUtil.GetCertificate(
-          "06fba6",
+          Input.NashCertificateSerial,
           X509FindType.FindBySerialNumber,
           StoreName.My,
           StoreLocation.CurrentUser,
@@ -48,12 +48,12 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
       // Create a CDAPackage instance
       var package = new Nehta.VendorLibrary.CDAPackage.CDAPackage(approver);
 
-      if (!File.Exists(Input.CdaDocumentFilePath))
+      if (!File.Exists(Input.CdaDocumentInputFilePath))
       {
-        throw new ApplicationException($"Unable to locate the CDA file at file path: {Input.CdaDocumentFilePath}");
+        throw new ApplicationException($"Unable to locate the CDA file at file path: {Input.CdaDocumentInputFilePath}");
       }
       // Create the CDA root document for the CDA package      
-      package.CreateRootDocument(File.ReadAllBytes(Input.CdaDocumentFilePath));
+      package.CreateRootDocument(File.ReadAllBytes(Input.CdaDocumentInputFilePath));
 
       //Add the PDF report attachment
       var PdfAtachmentFileInfo = new FileInfo(Input.PdfReportAttachment);
@@ -64,15 +64,15 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
       //Add the logo image attachment
       package.AddDocumentAttachment("logo.png", Input.CdaDocumentLogoBytes);
 
-      FileInfo CdaDocumentFileinfo = new FileInfo(Input.CdaDocumentFilePath);
+      FileInfo CdaDocumentFileinfo = new FileInfo(Input.CdaDocumentInputFilePath);
 
-      string CdaPackageFileName = CdaDocumentFileinfo.Name.Replace(CdaDocumentFileinfo.Extension, ".zip");
-      CdaPackageFileName = Path.Combine(CdaDocumentFileinfo.DirectoryName, CdaPackageFileName);
+      //string CdaPackageFileName = CdaDocumentFileinfo.Name.Replace(CdaDocumentFileinfo.Extension, ".zip");
+      //CdaPackageFileName = Path.Combine(CdaDocumentFileinfo.DirectoryName, CdaPackageFileName);
       // Create the CDA package zip      
-      CDAPackageUtility.CreateZip(package, CdaPackageFileName, signingCert);
+      CDAPackageUtility.CreateZip(package, Input.CdaPackageOutputFilePath, signingCert);
       
       //Delete the raw CDA xml file
-      CdaDocumentFileinfo.Delete();
+      //CdaDocumentFileinfo.Delete();
 
     }
 

@@ -18,19 +18,12 @@ namespace Spia.PathologyReportModel
 
       using (StreamReader file = File.OpenText(FilePath))
       {
-
-        JsonSerializer serializer = new JsonSerializer();
-        try
-        {
-          PathologyReportContainer PathologyReports = (PathologyReportContainer)serializer.Deserialize(file, typeof(PathologyReportContainer));
-          return PathologyReports;
-        } 
-        catch(Exception exec)
-        {
-          string msg = exec.Message;
-          return null;
-        }
-        
+        JsonSerializer serializer = new JsonSerializer() 
+        { 
+          NullValueHandling = NullValueHandling.Include,
+          MissingMemberHandling = MissingMemberHandling.Error
+        };
+        return (PathologyReportContainer)serializer.Deserialize(file, typeof(PathologyReportContainer));        
       }
     }
   }

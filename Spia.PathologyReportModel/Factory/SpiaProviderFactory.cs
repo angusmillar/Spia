@@ -166,6 +166,32 @@ namespace Spia.PathologyReportModel.Factory
         }
       };
     }
+    public Provider GetEvannaPathologist()
+    {
+      return new Provider()
+      {
+        Name = new Name()
+        {
+          Family = "Pathologist",
+          Given = "Evanna",
+          Middle = "",
+          Title = "Dr"
+        },
+        IdentifierList = new List<Identifier>()
+        {
+         new Identifier()
+         {
+            Value = "8003 6169 0858 7986",
+            Type =  IdentifierType.HPII
+         },
+         new Identifier()
+         {
+           Value = "EP",
+           Type = IdentifierType.LocalToLab
+         }
+        }
+      };
+    }
 
     //Requesting Providers
     public Provider GetTrishFamilyDr(string MedicareProviderNumber)

@@ -69,10 +69,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomAttribute\RequiredScopeAttribute.cs" />
+    <Compile Include="Converters\ResultStatusTypeConverter.cs" />
+    <Compile Include="Converters\GenderTypeConverter.cs" />
+    <Compile Include="Converters\EnumJsonConverterBase.cs" />
+    <Compile Include="Converters\DiagnosticServiceSectionIdConverter.cs" />
+    <Compile Include="CustomAttribute\RequiredScopeAttributeExtention.cs" />
+    <Compile Include="Factory\SpiaLaboratoryFactory.cs" />
     <Compile Include="Factory\SpiaPathologyReportFactory.cs" />
     <Compile Include="Factory\SpiaPatientFactory.cs" />
     <Compile Include="Factory\SpiaProviderFactory.cs" />
     <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\PathologyModelBase.cs" />
+    <Compile Include="Model\ResultStatusType.cs" />
+    <Compile Include="Model\GenderType.cs" />
+    <Compile Include="Model\DiagnosticServiceSectionId.cs" />
     <Compile Include="Model\Laboratory.cs" />
     <Compile Include="Model\Organisation.cs" />
     <Compile Include="Model\Panel.cs" />
@@ -91,6 +102,10 @@
     <Compile Include="Model\Request.cs" />
     <Compile Include="Model\Result.cs" />
     <Compile Include="Model\ResultType.cs" />
+    <Compile Include="Support\CodeEnumSupport.cs" />
+    <Compile Include="Support\ResultStatusTypeSupport.cs" />
+    <Compile Include="Support\GenderTypeSupport.cs" />
+    <Compile Include="Support\DiagnosticServiceSectionIdSupport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

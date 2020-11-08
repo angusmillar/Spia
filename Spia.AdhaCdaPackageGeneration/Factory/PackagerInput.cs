@@ -9,10 +9,12 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
 {
   public class PackagerInput
   {
-    public string CdaDocumentFilePath { get; set; }
+    public string CdaPackageOutputFilePath { get; set; }
+    public string CdaDocumentInputFilePath { get; set; }
     public string PdfReportAttachment { get; set; }
     public byte[] CdaDocumentLogoBytes { get; set; }
     public ApproverPerson Approver { get; set; }
+    public string NashCertificateSerial { get; set; }
 
 
   }

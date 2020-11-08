@@ -1081,7 +1081,12 @@ namespace Spia.AdhaFhirGeneration.Factory
               OBXIdDone.Add(OBX.Field(1).Convert.Integer.Int32, OBX);
               TotalObservationList.Add(ParentObservation);
 
-              var NextList = OBXList.Where(x => x.Field(4).AsString == $"{OBX.Field(4).AsString}.1");
+              var NextList = OBXList.Where(x => x.Field(4).AsString.StartsWith($"{OBX.Field(4).AsString}."));
+
+              //this Sort compare thing does not work correctly, it does nothing
+              //Comparison<ISegment> comparison = new Comparison<ISegment>(CompareSubIds);
+              //NextList.ToList().Sort(comparison);
+              
               List<Observation> ChildrenObservationList = new List<Observation>();
               foreach(var SameSubIdObs in NextList)
               {
@@ -1119,8 +1124,32 @@ namespace Spia.AdhaFhirGeneration.Factory
       return ObservationList;
     }
 
+    private int CompareSubIds(ISegment ObxA, ISegment ObxB)
+    {
+      //This dos not seam to work don't under stand why we retrun an integer?
+      string SubIdA = ObxA.Field(4).AsString;
+      string SubIdB = ObxB.Field(4).AsString;
 
+      var SpitA = SubIdA.Split('.')[1];
+      var SpitB = SubIdB.Split('.')[1];
 
-    
+      int A;
+      if (Int32.TryParse(SpitA, out A))
+      {
+        int B;
+        if (Int32.TryParse(SpitB, out B))
+        {
+          return B.CompareTo(A);           
+        }
+        else
+        {
+          throw new ApplicationException($"An OBX-4 SubId was not able to be converted to an integer. SubIds must be formed as integers and dots (e.g 1.2 or 2.4). Value found was {SpitB}");
+        }
+      }          
+      else
+      {
+        throw new ApplicationException($"An OBX-4 SubId was not able to be converted to an integer. SubIds must be formed as integers and dots (e.g 1.2 or 2.4). Value found was {SubIdA}");
+      }
+    }
   }
 }

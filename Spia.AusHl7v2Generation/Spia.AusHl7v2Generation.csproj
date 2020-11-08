@@ -44,39 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\HL7\v2\Hl7v2FileGenerator.cs" />
-    <Compile Include="Factory\HL7\v2\HL7v2MessageFactory.cs" />
-    <Compile Include="Factory\HL7\v2\MSHFactory.cs" />
-    <Compile Include="Factory\HL7\v2\OBRFactory.cs" />
-    <Compile Include="Factory\HL7\v2\OBXFactory.cs" />
-    <Compile Include="Factory\HL7\v2\PIDFactory.cs" />
-    <Compile Include="Factory\HL7\v2\PV1Factory.cs" />
-    <Compile Include="Factory\LogicalModel\AusStandardHL7v2.cs" />
-    <Compile Include="Factory\LogicalModel\LabInfo.cs" />
-    <Compile Include="Factory\LogicalModel\MessageMetaFactory.cs" />
-    <Compile Include="Factory\LogicalModel\PathologyDocumentFactory.cs" />
-    <Compile Include="Factory\LogicalModel\PatientFactory.cs" />
-    <Compile Include="Factory\LogicalModel\ReportFactory.cs" />
-    <Compile Include="Factory\LogicalModel\RequestFactory.cs" />
-    <Compile Include="Factory\LogicalModel\ResultFactory.cs" />
-    <Compile Include="Model\Logical\Address.cs" />
-    <Compile Include="Model\Logical\Coded.cs" />
-    <Compile Include="Model\Logical\CodedElement.cs" />
-    <Compile Include="Model\Logical\EntityIdentifier.cs" />
-    <Compile Include="Model\Logical\HierarchicDesignator.cs" />
-    <Compile Include="Model\Logical\Identifier.cs" />
-    <Compile Include="Model\Logical\MessageMetadata.cs" />
-    <Compile Include="Model\Logical\Name.cs" />
-    <Compile Include="Model\Logical\PathologyDocument.cs" />
-    <Compile Include="Model\Logical\Patient.cs" />
-    <Compile Include="Model\Logical\Provider.cs" />
-    <Compile Include="Model\Logical\Report.cs" />
-    <Compile Include="Model\Logical\Request.cs" />
-    <Compile Include="Model\Logical\Result.cs" />
+    <Compile Include="Factory\MessageFactory.cs" />
+    <Compile Include="Factory\MSHFactory.cs" />
+    <Compile Include="Factory\OBRFactory.cs" />
+    <Compile Include="Factory\OBXFactory.cs" />
+    <Compile Include="Factory\PIDFactory.cs" />
+    <Compile Include="Factory\PV1Factory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\Hl7v2CodeMappingSupport.cs" />
+    <Compile Include="Support\HL7v2IdentifierSupport.cs" />
+    <Compile Include="Validation\PathologyModelValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spia.PathologyReportModel\Spia.PathologyReportModel.csproj">
+      <Project>{bc26ce23-ff88-47a8-be28-9bfe2ce107e4}</Project>
+      <Name>Spia.PathologyReportModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="SpiaFileGeneratorOptions.cs" />
     <Compile Include="SupportExtensions\DirectoryExtension.cs" />
     <Compile Include="SpiaFileGenerator.cs" />
     <Compile Include="Program.cs" />

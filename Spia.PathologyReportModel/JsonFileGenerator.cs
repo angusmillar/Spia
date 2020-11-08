@@ -12,7 +12,12 @@ namespace Spia.PathologyReportModel
   {
     public void Write(PathologyReportContainer PathologyReports, string OutputFilePath)
     {      
-      string jsonString = JsonConvert.SerializeObject(PathologyReports, Formatting.Indented);
+      string jsonString = JsonConvert.SerializeObject(PathologyReports, Formatting.Indented, new JsonSerializerSettings
+      {
+       NullValueHandling = NullValueHandling.Include,         
+      });
+
+      
       File.WriteAllText(OutputFilePath, jsonString);
     }
   }

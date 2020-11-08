@@ -69,7 +69,12 @@
     <Compile Include="Model\PathologyLab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Spia.PathologyReportModel\Spia.PathologyReportModel.csproj">
+      <Project>{bc26ce23-ff88-47a8-be28-9bfe2ce107e4}</Project>
+      <Name>Spia.PathologyReportModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
