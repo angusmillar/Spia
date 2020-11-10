@@ -166,8 +166,7 @@ namespace Spia.Runner
         else
         {
           WriteLine("----------------------------------------------------------------------");
-          WriteLine($"Temporarily generate CDA Documents for CDA Packaging");
-          //WriteLine($"Output Directory: {CurrentCDADocuementDirectoryInfo.FullName}");
+          WriteLine($"Temporarily generate CDA Documents for CDA Packaging");         
         }
         //Validation for CDA
         foreach (PathologyReportContainer PathologyReportContainer in PathologyReportContainerList)
