@@ -69,7 +69,7 @@ namespace Spia.AusHl7v2Generation.Factory
       {
         OBX.Field(4).AsString = SubId;
       }
-      OBX.Element(5).AsStringRaw = result.Value;
+      OBX.Element(5).AsStringRaw = result.Value ?? "";
       OBX.Field(6).AsString = result.Units ?? ""; ;
       OBX.Field(7).AsString = result.ReferenceRange ?? "";
 

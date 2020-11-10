@@ -19,7 +19,10 @@ namespace Spia.Runner
         pathologyReportDataDirectory: @"C:\temp\SPIAMessages\PathologyReportData")
       {
         GeneratePathologyReportModels = false,
-        GenerateCdaDocuments = true,
+        GenerateHL7Version2Messages = true,        
+        GenerateCdaDocuments = false,
+        GenerateCdaPackages = true,
+        GenerateFhirBundles = false,        
         NashCertificateSerial = "06fba6"
       };
       

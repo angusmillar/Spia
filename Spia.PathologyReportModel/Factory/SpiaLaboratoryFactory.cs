@@ -18,7 +18,16 @@ namespace Spia.PathologyReportModel.Factory
         NataSiteNumber = "9999",
         Hpio = "8003 6299 0001 9338",
         BusinessPhoneNumber = "+61 2 8356 5858",
-        LaboratoryInformationSystemApplicationCode = "SuperLIS"
+        LaboratoryInformationSystemApplicationCode = "SuperLIS",
+        Address = new Address()
+        {
+          LineOne = "Durham Hall",
+          LineTwo = "207 Albion Street",
+          PostCode = "2010",
+          Suburb = "Surry Hills",
+          State = StateType.NSW,
+          Country = "AUS"
+        }        
       };
     }
   }

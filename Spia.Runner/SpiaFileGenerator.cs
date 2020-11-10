@@ -19,7 +19,7 @@ namespace Spia.Runner
     private readonly SpiaFileGeneratorOptions Options;
     public SpiaFileGenerator(SpiaFileGeneratorOptions Options)
     {
-      this.Options = Options;      
+      this.Options = Options;
     }
 
     public void Process()
@@ -33,19 +33,19 @@ namespace Spia.Runner
       DirectoryInfo RootCdaPackagesOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "CDA Packages"));
       DirectoryInfo RootCdaDocumentOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "CDA Documents"));
       DirectoryInfo TempWorkingCDADocumentDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CdaGeneratorWorkingDirectory\\CDADocuments"));
-      
-      List<PathologyReportContainer> PathologyReportContainerList = new List<PathologyReportContainer>(); 
 
-      //If below is true we generate the Pathology Data json files from the hard coded source to the HL7 v3 output folder.
+      List<PathologyReportContainer> PathologyReportContainerList = new List<PathologyReportContainer>();
+
+      //If below is true we generate the Pathology Data json files from the hard coded source.
       if (this.Options.GeneratePathologyReportModels)
-      {        
+      {
         WriteLine("----------------------------------------------------------------------");
         WriteLine($"The option {nameof(this.Options.GeneratePathologyReportModels)} is set to True.");
         WriteLine("Generate Pathology Report Data files");
         RootReportDataDirectory.CreateDirectoryIfNoExist();
         RootReportDataDirectory = new DirectoryInfo(Options.PathologyReportDataDirectory);
         if (RootReportDataDirectory.GetFiles("*.json", SearchOption.TopDirectoryOnly).Count() > 0)
-        {          
+        {
           throw new ApplicationException($"The ReportData directory must empty when generating Pathology Report Data files.");
         }
 
@@ -53,7 +53,7 @@ namespace Spia.Runner
         PathologyReportContainerList = SpiaPathologyReportFactory.GetAll();
         foreach (var PathologyReportContainer in PathologyReportContainerList)
         {
-          
+
           FileInfo JsonFilePath = new FileInfo($@"{RootReportDataDirectory.FullName}\{PathologyReportContainer.PathologyReport.PdfFileName.Replace(".pdf", ".json")}");
           WriteLine(JsonFilePath.Name);
           var Writer = new Spia.PathologyReportModel.JsonFileGenerator();
@@ -69,6 +69,7 @@ namespace Spia.Runner
       //Read in all Pathology Data json files found in the directory      
       WriteLine("----------------------------------------------------------------------");
       WriteLine("Reading in Pathology Report Data files");
+      WriteLine($"Input Directory: {RootReportDataDirectory.FullName}");
       if (!RootReportDataDirectory.Exists)
       {
         throw new ApplicationException($"The Pathology Report Data directory does not exist at :{RootReportDataDirectory.FullName}");
@@ -80,39 +81,41 @@ namespace Spia.Runner
         throw new ApplicationException($"The Pathology Report Data directory contains no Pathology Report Data .json files.");
       }
       foreach (FileInfo ReportDataFileInfo in RootReportDataDirectory.GetFiles("*.json", SearchOption.TopDirectoryOnly))
-      {        
+      {
         var Reader = new Spia.PathologyReportModel.JsonFileReader();
         try
         {
           WriteLine(ReportDataFileInfo.Name);
           var PathologyReportsRead = Reader.ReadPathologyReports(ReportDataFileInfo.FullName);
           PathologyReportContainerList.Add(PathologyReportsRead);
-
-          var Validation = new AusHl7v2Generation.Validation.PathologyModelValidation();
-
-          var ErrorList = new List<string>();
-          if (!Validation.IsValid(PathologyReportsRead, out ErrorList))
-          {
-            StringBuilder sb = new StringBuilder("Validation errors where detected:\n");
-            ErrorList.ForEach(x => sb.Append(x + "\n"));
-            throw new ApplicationException(sb.ToString()); ;
-          }
-
         }
         catch (Exception Exec)
         {
-          WriteLine($"The Pathology Report Data in the file named {ReportDataFileInfo.Name} had the following issue:");         
+          WriteLine($"The Pathology Report Data in the file named {ReportDataFileInfo.Name} had the following issue:");
           throw Exec;
         }
       }
 
       if (Options.GenerateHL7Version2Messages)
       {
+        //Validation for HL7 v2
+        foreach (PathologyReportContainer PathologyReportContainer in PathologyReportContainerList)
+        {         
+          var ErrorMessageList = new List<string>();
+          if (!PathologyReportContainer.IsValid(PathologyReportContainer, PathologyReportModel.CustomAttribute.ScopeType.Hl7v2, ErrorMessageList))
+          {
+            StringBuilder sb = new StringBuilder("HL7 v2 validation errors where detected:\n");
+            ErrorMessageList.ForEach(x => sb.Append(x + "\n"));
+            throw new ApplicationException(sb.ToString()); ;
+          }
+        }
+
         RootHl7v2OutputDirectory.CreateDirectoryIfNoExist();
         RootHl7v2OutputDirectory.DeleteAllFileAndDirectories();
         //Generate HL7 v2 Messages for each Pathology Data json file      
         WriteLine("----------------------------------------------------------------------");
         WriteLine("Generate HL7 v2 Messages");
+        WriteLine($"Output Directory: {RootHl7v2OutputDirectory.FullName}");
         foreach (PathologyReportContainer PathologyReportContainer in PathologyReportContainerList)
         {
           string HL7Message = MessageFactory.GetMessage(PathologyReportContainer.PathologyReport, RootPdfDirectory.FullName);
@@ -125,7 +128,7 @@ namespace Spia.Runner
       //Generate FHIR bundles
       if (Options.GenerateFhirBundles)
       {
-        
+
         RootFhirOutputDirectory.CreateDirectoryIfNoExist();
         RootFhirOutputDirectory.DeleteAllFileAndDirectories();
 
@@ -139,7 +142,7 @@ namespace Spia.Runner
       byte[] Logo = (byte[])converter.ConvertTo(Resource.RCPA_PITUS_Logo, typeof(byte[]));
 
       DirectoryInfo CurrentCDADocuementDirectoryInfo = null;
-      //Generate FHIR bundles
+      //Generate CDA Documents
       if (Options.GenerateCdaDocuments || Options.GenerateCdaPackages)
       {
         if (!Options.GenerateCdaDocuments)
@@ -150,17 +153,48 @@ namespace Spia.Runner
         {
           CurrentCDADocuementDirectoryInfo = RootCdaDocumentOutputDirectory;
         }
+
         CurrentCDADocuementDirectoryInfo.CreateDirectoryIfNoExist();
         CurrentCDADocuementDirectoryInfo.DeleteAllFileAndDirectories();
-        AdhaCdaFileGenerator CdaDocument = new AdhaCdaFileGenerator();
-        CdaDocument.LogEventMessageDelegate = SpiaFileGenerator.WriteLine;
-                
-        CdaDocument.Process(RootHl7v2OutputDirectory.FullName, RootPdfDirectory.FullName, CurrentCDADocuementDirectoryInfo.FullName, Logo);
+        //Generate HL7 v2 Messages for each Pathology Data json file      
+        if (Options.GenerateCdaDocuments)
+        {
+          WriteLine("----------------------------------------------------------------------");
+          WriteLine($"Generate CDA Documents");
+          WriteLine($"Output Directory: {CurrentCDADocuementDirectoryInfo.FullName}");
+        } 
+        else
+        {
+          WriteLine("----------------------------------------------------------------------");
+          WriteLine($"Temporarily generate CDA Documents for CDA Packaging");
+          //WriteLine($"Output Directory: {CurrentCDADocuementDirectoryInfo.FullName}");
+        }
+        //Validation for CDA
+        foreach (PathologyReportContainer PathologyReportContainer in PathologyReportContainerList)
+        {
+          var ErrorMessageList = new List<string>();
+          if (!PathologyReportContainer.IsValid(PathologyReportContainer, PathologyReportModel.CustomAttribute.ScopeType.Cda, ErrorMessageList))
+          {
+            StringBuilder sb = new StringBuilder("CDA validation errors where detected:\n");
+            ErrorMessageList.ForEach(x => sb.Append(x + "\n"));
+            throw new ApplicationException(sb.ToString()); ;
+          }
+        }
+        foreach (PathologyReportContainer PathologyReportContainer in PathologyReportContainerList)
+        {
+          var FileName = PathologyReportContainer.PathologyReport.PdfFileName;
+          AdhaCdaFileGenerator CdaDocument = new AdhaCdaFileGenerator();
+          CdaDocument.LogEventMessageDelegate = SpiaFileGenerator.WriteLine;
+          CdaDocument.Process2(PathologyReportContainer, RootPdfDirectory.FullName, CurrentCDADocuementDirectoryInfo.FullName, Logo);
+        }
       }
 
-      //Generate FHIR bundles
+      //Generate CDA Package
       if (Options.GenerateCdaPackages)
       {
+        WriteLine("----------------------------------------------------------------------");
+        WriteLine($"Generate CDA Packages");
+        WriteLine($"Output Directory: {RootCdaPackagesOutputDirectory.FullName}");
         AdhaCdaPackageFileGenerator CdaPackager = new AdhaCdaPackageFileGenerator(Options.NashCertificateSerial);
         RootCdaPackagesOutputDirectory.CreateDirectoryIfNoExist();
         RootCdaPackagesOutputDirectory.DeleteAllFiles(".zip");
@@ -171,7 +205,7 @@ namespace Spia.Runner
           CurrentCDADocuementDirectoryInfo.DeleteAllFiles(".xml");
         }
       }
-      
+
     }
 
     public static void WriteLine(string Message)

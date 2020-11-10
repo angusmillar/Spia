@@ -21,5 +21,11 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
     public string Description { get; set; }
+
+    [JsonProperty(PropertyName = "oid", Required = Required.AllowNull)]
+    [RequiredScope(ScopeType.Hl7v2, RequiredType.NotRequired)]
+    [RequiredScope(ScopeType.Cda, RequiredType.Optional)]
+    [RequiredScope(ScopeType.Fhir, RequiredType.NotRequired)]
+    public string Oid { get; set; }
   }
 }

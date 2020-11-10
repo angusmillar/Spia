@@ -163,8 +163,11 @@ namespace Spia.PathologyReportModel.Factory
               ReportReleaseDateTime = new DateTimeOffset(2019, 12, 02, 07, 50, 00, TimeSpan.FromHours(10)),
               ReportType = new ReportType()
               {
-                Local = new Code() { Term = "EUC", Description = "Electrolytes Urea Creatinine" },
-                Snomed = new Code() { Term = "444164000", Description = "Urea, electrolytes and creatinine measurement" }
+                //As of meeting on the 10/11/2020 @ 2:00pm, chnaged this to just Biochemistry - General
+                Local = new Code() { Term = "BG", Description = "Biochemistry - General" },
+                //Local = new Code() { Term = "EUC", Description = "Electrolytes Urea Creatinine" },
+                Snomed = null,
+                //Snomed = new Code() { Term = "444164000", Description = "Urea, electrolytes and creatinine measurement" }
               },
               ReportStatus =  ResultStatusType.Final,
               Department = DiagnosticService.Chemistry,
@@ -2406,7 +2409,7 @@ namespace Spia.PathologyReportModel.Factory
                       }
                     },
                     DataType = "ST",
-                    Value = "",
+                    Value = null,
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
@@ -2564,8 +2567,11 @@ namespace Spia.PathologyReportModel.Factory
               ReportReleaseDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)),
               ReportType = new ReportType()
               {
-                Local = new Code() { Term = "BGASA", Description = "Blood gas arterial" },
-                Snomed = new Code() { Term = "91308007", Description = "Blood gases, arterial measurement" }
+                //As of meeting on 10/11/2020 @ 2:00PM chnaged this to only Blood gases
+                Local = new Code() { Term = "BGAS", Description = "Blood gases" },
+                Snomed = null
+                //Local = new Code() { Term = "BGASA", Description = "Blood gas arterial" },
+                //Snomed = new Code() { Term = "91308007", Description = "Blood gases, arterial measurement" }
               },
               ReportStatus =  ResultStatusType.Final,
               Department = DiagnosticService.Chemistry,
@@ -2580,8 +2586,7 @@ namespace Spia.PathologyReportModel.Factory
                     {
                       Local = new Code()
                       {
-                        Term = "OIF",
-                        //ToDo: This has no units or reference range
+                        Term = "OIF",                        
                         Description = "Oxygen inspired fraction"
                       },
                       Lonic = new Code()
@@ -2592,6 +2597,7 @@ namespace Spia.PathologyReportModel.Factory
                     },
                     DataType = "NM",
                     Value = "0.5",
+                    //Confirmed that units are not required Meeting on the 10/11/2020 @ 2:00PM
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = "N",
@@ -2653,7 +2659,7 @@ namespace Spia.PathologyReportModel.Factory
                     {
                       Local = new Code()
                       {
-                        Term = "PHVENUS",
+                        Term = "PCO2",
                         Description = "pCO2 arterial"
                       },
                       Lonic = new Code()
@@ -2677,14 +2683,13 @@ namespace Spia.PathologyReportModel.Factory
                     {
                       Local = new Code()
                       {
-                        Term = "PHVENUS",
-                        //ToDo:This one is the same as the one above yet different instances and values
-                        Description = "pCO2 arterial??"
+                        Term = "PO2A",                        
+                        Description = "pO2 arterial??"
                       },
                       Lonic = new Code()
                       {
                         Term = "2019-8",
-                        Description = "pCO2 arterial???"
+                        Description = "pO2 arterial???"
                       }
                     },
                     DataType = "NM",

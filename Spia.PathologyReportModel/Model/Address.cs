@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Spia.PathologyReportModel.Converters;
 using Spia.PathologyReportModel.CustomAttribute;
 using System;
 using System.Collections.Generic;
@@ -32,17 +33,18 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
     public string PostCode { get; set; }
 
-    [JsonProperty(PropertyName = "city", Required = Required.Always)]
-    [RequiredScope(ScopeType.Hl7v2, RequiredType.Mandatory)]
-    [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
-    [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
+    [JsonProperty(PropertyName = "city", Required = Required.AllowNull)]
+    [RequiredScope(ScopeType.Hl7v2, RequiredType.Optional)]
+    [RequiredScope(ScopeType.Cda, RequiredType.Optional)]
+    [RequiredScope(ScopeType.Fhir, RequiredType.Optional)]
     public string City { get; set; }
 
     [JsonProperty(PropertyName = "state", Required = Required.Always)]
+    [JsonConverter(typeof(StateTypeConverter))]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
-    public string State { get; set; }
+    public StateType State { get; set; }
 
     [JsonProperty(PropertyName = "country", Required = Required.Always)]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.Mandatory)]
@@ -51,9 +53,10 @@ namespace Spia.PathologyReportModel.Model
     public string Country { get; set; }
 
     [JsonProperty(PropertyName = "typeCode", Required = Required.Always)]
+    [JsonConverter(typeof(AddressTypeConverter))]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
-    public string TypeCode { get; set; }
+    public AddressType TypeCode { get; set; }
   }
 }

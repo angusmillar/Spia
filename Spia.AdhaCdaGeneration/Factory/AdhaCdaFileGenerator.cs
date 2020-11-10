@@ -14,6 +14,15 @@ namespace Spia.AdhaCdaGeneration.Factory
     public delegate void LogEventMessage(string Message);
 
     public LogEventMessage LogEventMessageDelegate;
+
+
+    public void Process2(Spia.PathologyReportModel.Model.PathologyReportContainer PathologyReportContainer, string RootPDFDirectoryPath, string CdaOutputPath, byte[] CdaDocuemntLogoImageBytes = null)
+    {    
+      CdaCreator CdaCreator = new CdaCreator();
+      CdaCreator.Process2(PathologyReportContainer.PathologyReport, CdaOutputPath, RootPDFDirectoryPath, CdaDocuemntLogoImageBytes);
+      Log($"{PathologyReportContainer.PathologyReport.PdfFileName.Replace(".pdf", ".xml")}");
+    }
+
     public void Process(string RootHl7v2DirectoryPath, string RootPDFDirectoryPath, string OutputPath, byte[] CdaDocuemntLogoImageBytes = null)
     {
       this.Log("----------------------------------------------------------------------");

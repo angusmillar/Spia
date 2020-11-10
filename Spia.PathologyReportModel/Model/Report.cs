@@ -68,6 +68,20 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
     public Panel Panel { get; set; }
 
+    protected override bool IsValidConditionalValidation(ScopeType scopeType, List<string> ErrorMessageList, string Path)
+    {
+
+      if (scopeType == ScopeType.Cda)
+      {
+        //Check we have a HPI-I for the reporting Pathologist
+        if (!this.ReportingPathologist.IdentifierList.Any(x => x.Type == IdentifierType.HPII))
+        {
+          ErrorMessageList.Add($"All {nameof(this.ReportingPathologist)}s must have an identifier of type {IdentifierType.HPII.ToString()}");
+        }
+      }
+      return ErrorMessageList.Count() == 0;
+    }
+
   }
 
   

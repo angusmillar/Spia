@@ -67,9 +67,9 @@ namespace Spia.PathologyReportModel.Factory
             City = "Brisbane",
             Country = "AUS",
             PostCode = "4571",
-            State = "QLD",
+            State = StateType.QLD,
             Suburb = "Sunrise Beach",
-            TypeCode = "H"
+            TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61492811778",
@@ -112,9 +112,9 @@ namespace Spia.PathologyReportModel.Factory
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
-            State = "QLD",
+            State = StateType.QLD,
             Country = "AUS",
-            TypeCode = "H"
+            TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61499811044",
@@ -157,9 +157,9 @@ namespace Spia.PathologyReportModel.Factory
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
-            State = "QLD",
+            State = StateType.QLD,
             Country = "AUS",
-            TypeCode = "H"
+            TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61491411377",
@@ -202,9 +202,9 @@ namespace Spia.PathologyReportModel.Factory
            Suburb = "Sunrise Beach",
            PostCode = "4571",
            City = "Brisbane",
-           State = "QLD",
+           State = StateType.QLD,
            Country = "AUS",
-           TypeCode = "H"
+           TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61499811041",
@@ -247,9 +247,9 @@ namespace Spia.PathologyReportModel.Factory
             Suburb = "Doonan",
             PostCode = "4571",
             City = "Brisbane",
-            State = "QLD",
+            State = StateType.QLD,
             Country = "AUS",
-            TypeCode = "H"
+            TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61447111384",
@@ -292,9 +292,9 @@ namespace Spia.PathologyReportModel.Factory
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
-            State = "QLD",
+            State = StateType.QLD,
             Country = "AUS",
-            TypeCode = "H"
+            TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61492811776",
@@ -337,9 +337,9 @@ namespace Spia.PathologyReportModel.Factory
             Suburb = "Sunrise Beach",
             PostCode = "4571",
             City = "Brisbane",
-            State = "QLD",
+            State = StateType.QLD,
             Country = "AUS",
-            TypeCode = "H"
+            TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61492813178",
@@ -382,9 +382,9 @@ namespace Spia.PathologyReportModel.Factory
              Suburb = "Sunrise Beach",
              PostCode = "4571",
              City = "Brisbane",
-             State = "QLD",
+             State = StateType.QLD,
              Country = "AUS",
-             TypeCode = "H"
+             TypeCode =  AddressType.Home
           },
         },
         HomePhoneNumber = "+61499811044",

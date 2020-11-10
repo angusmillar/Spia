@@ -12,7 +12,7 @@ namespace Spia.PathologyReportModel.Model
   public class Laboratory : PathologyModelBase
   {
     
-    [JsonProperty(PropertyName = "facilityName", Required = Required.Always)]
+    [JsonProperty(PropertyName = "facilityName", Required = Required.AllowNull)]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.NotRequired)]
     [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Fhir, RequiredType.NotRequired)]
@@ -26,19 +26,19 @@ namespace Spia.PathologyReportModel.Model
 
     [JsonProperty(PropertyName = "nataSiteNumber", Required = Required.Always)]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.Mandatory)]
-    [RequiredScope(ScopeType.Cda, RequiredType.NotRequired)]
+    [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Fhir, RequiredType.NotRequired)]
     public string NataSiteNumber { get; set; }
 
     [JsonProperty(PropertyName = "hpi-o", Required = Required.AllowNull)]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.NotRequired)]
-    [RequiredScope(ScopeType.Cda, RequiredType.NotRequired)]
+    [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Fhir, RequiredType.NotRequired)]
     public string Hpio { get; set; }
 
     [JsonProperty(PropertyName = "businessPhoneNumber", Required = Required.AllowNull)]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.NotRequired)]
-    [RequiredScope(ScopeType.Cda, RequiredType.NotRequired)]
+    [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
     [RequiredScope(ScopeType.Fhir, RequiredType.NotRequired)]
     public string BusinessPhoneNumber { get; set; }
 
@@ -48,9 +48,14 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Fhir, RequiredType.NotRequired)]
     public string LaboratoryInformationSystemApplicationCode { get; set; }
 
+    [JsonProperty(PropertyName = "address", Required = Required.AllowNull)]
+    [RequiredScope(ScopeType.Hl7v2, RequiredType.NotRequired)]
+    [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
+    [RequiredScope(ScopeType.Fhir, RequiredType.NotRequired)]
+    public Address Address { get; set; }
 
-    
 
-    
+
+
   }
 }

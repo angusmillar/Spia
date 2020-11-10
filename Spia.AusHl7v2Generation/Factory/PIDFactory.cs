@@ -49,18 +49,36 @@ namespace Spia.AusHl7v2Generation.Factory
       else
       {
         throw new ApplicationException($"Unable to convert the {nameof(Patient.Gender)} of {Patient.Gender.ToString()} to a code for the HL7 PID-8 field.");
-      }     
+      }
+      StateTypeSupport StateTypeSupport = new StateTypeSupport();
 
+      AddressTypeSupport AddressTypeSupport = new AddressTypeSupport();
       foreach (var Add in Patient.AddressList)
       {
+        
         IField AddressField = Creator.Field();
         AddressField.Component(1).AsString = Add.LineOne ?? "";
         AddressField.Component(2).AsString = Add.LineTwo ?? "";
         AddressField.Component(3).AsString = Add.City ?? "";
-        AddressField.Component(4).AsString = Add.State ?? "";
+        if (StateTypeSupport.TryLookupByEnum(Add.State, out string StateCode))
+        {
+          AddressField.Component(4).AsString = StateCode;
+        }
+        else
+        {
+          throw new ApplicationException($"Unable to lookup the {nameof(StateType)} of {Add.State.ToString()}");
+        }        
         AddressField.Component(5).AsString = Add.PostCode ?? "";
         AddressField.Component(6).AsString = Add.Country ?? "";
-        AddressField.Component(7).AsString = Add.TypeCode ?? "";
+        if (AddressTypeSupport.TryLookupByEnum(Add.TypeCode, out string AddressTypeCode))
+        {
+          AddressField.Component(7).AsString = AddressTypeCode;
+        }
+        else
+        {
+          throw new ApplicationException($"Unable to locate the code required for the {nameof(AddressType)} enum of {Add.TypeCode.ToString()}");
+        }
+        
         PID.Element(11).Add(AddressField);
       }
 

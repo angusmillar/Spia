@@ -31,7 +31,8 @@ The .NET Framework solution found in this GitHub repository seeks to produce a s
 > Please note that the SPIA Exemplar Pathology Reports use completely fictitious patient details and results
 
 ## Solution Information ##
-The solution's projects are .NET Framework 4.7.2. While I would have liked to use .NET Core, unfortunately, the ADHA CDA library dependencies are currently not compatible with .NET Core or .NET Standard. 
+The solution's projects are .NET Framework 4.7.2. *While I would have liked to use .NET Core, unfortunately, the ADHA CDA library dependencies are currently not compatible with .NET Core or .NET Standard.* 
+
 The solution contains five projects as follows:
 
 * **Spia.AdhaCdaGeneration:** The generation of the CDA Pathology Document as per the ADHA specifications for the My Health Record

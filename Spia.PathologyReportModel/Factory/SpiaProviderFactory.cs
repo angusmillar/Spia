@@ -192,6 +192,32 @@ namespace Spia.PathologyReportModel.Factory
         }
       };
     }
+    public Provider GetStanleyVirologist()
+    {
+      return new Provider()
+      {
+        Name = new Name()
+        {
+          Family = "Virologist",
+          Given = "Stanley",
+          Middle = null,
+          Title = "Dr"
+        },
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Value = "8003 6100 3427 0591",
+            Type = IdentifierType.HPII
+          },
+          new Identifier()
+          {
+            Value = "SVIRO",
+            Type = IdentifierType.LocalToLab
+          }
+        }
+      };
+    }
 
     //Requesting Providers
     public Provider GetTrishFamilyDr(string MedicareProviderNumber)
@@ -430,28 +456,7 @@ namespace Spia.PathologyReportModel.Factory
           }
         }
       };
-    }
-    public Provider GetStanleyVirologist()
-    {
-      return new Provider()
-      {
-        Name = new Name()
-        {
-          Family = "Virologist",
-          Given = "Stanley",
-          Middle = null,
-          Title = "Dr"
-        },
-        IdentifierList = new List<Identifier>()
-        {
-          new Identifier()
-          {
-            Value = "SVIRO",
-            Type = IdentifierType.LocalToLab
-          }
-        }
-      };
-    }
+    }    
     public Provider GetAllergyClinic()
     {
       return new Provider()

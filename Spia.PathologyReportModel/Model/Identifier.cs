@@ -31,10 +31,9 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Fhir, RequiredType.Conditional)]
     public string AssigningAuthority { get; set; }
 
-    public override bool ConditionalValidationIsValid(out List<string> ErrorMessageList, string Path)
-    {
-      ErrorMessageList = new List<string>();
-      if (this.Type == IdentifierType.MRN)
+    protected override bool IsValidConditionalValidation(ScopeType scopeType, List<string> ErrorMessageList, string Path)
+    {      
+      if (this.Type == IdentifierType.MRN && scopeType == ScopeType.Hl7v2)
       {
         if (string.IsNullOrWhiteSpace(this.AssigningAuthority))
         {

@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\AddressTypeConverter.cs" />
+    <Compile Include="Converters\StateTypeConverter.cs" />
     <Compile Include="CustomAttribute\RequiredScopeAttribute.cs" />
     <Compile Include="Converters\ResultStatusTypeConverter.cs" />
     <Compile Include="Converters\GenderTypeConverter.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="Factory\SpiaPatientFactory.cs" />
     <Compile Include="Factory\SpiaProviderFactory.cs" />
     <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\AddressType.cs" />
+    <Compile Include="Model\StateType.cs" />
     <Compile Include="Model\PathologyModelBase.cs" />
     <Compile Include="Model\ResultStatusType.cs" />
     <Compile Include="Model\GenderType.cs" />
@@ -103,6 +107,8 @@
     <Compile Include="Model\Result.cs" />
     <Compile Include="Model\ResultType.cs" />
     <Compile Include="Support\CodeEnumSupport.cs" />
+    <Compile Include="Support\AddressTypeSupport.cs" />
+    <Compile Include="Support\StateTypeSupport.cs" />
     <Compile Include="Support\ResultStatusTypeSupport.cs" />
     <Compile Include="Support\GenderTypeSupport.cs" />
     <Compile Include="Support\DiagnosticServiceSectionIdSupport.cs" />

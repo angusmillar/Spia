@@ -22,11 +22,9 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
 
     public void Process(string RootHl7v2DirectoryPath, string RootPDFDirectoryPath, string CdaDocumentInputDirectoryPath, string CdaPackageOutputDirectory, byte[] CdaDocuemntLogoImageBytes = null)
     {
-      this.Log("----------------------------------------------------------------------");
-      this.Log("SPIA CDA Package");
-
       Package CdaPackage = new Package();
-      string[] FilePathArray = Directory.GetFiles($@"{RootHl7v2DirectoryPath}", "*.hl7");
+      string[] SourceCdaDocumentsList = Directory.GetFiles(CdaDocumentInputDirectoryPath, "*.xml");
+      //string[] FilePathArray = Directory.GetFiles($@"{RootHl7v2DirectoryPath}", "*.hl7");
 
       //Approver for CDA Package
       ApproverPerson Approver = new ApproverPerson()
@@ -37,16 +35,16 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
         Hpii = "8003 6188 2910 5369"
       };
 
-      foreach (string FilePath in FilePathArray.OrderBy(x => x.Substring(0, 2)))
+      foreach (string CdaDocuemntFilePath in SourceCdaDocumentsList)
       {
 
         //Create CDA Document
-        FileInfo fi = new FileInfo(FilePath);
+        FileInfo CdaDocumentFileInfo = new FileInfo(CdaDocuemntFilePath);
         //CdaGeneratorInput.Message = Creator.Message(File.ReadAllText(FilePath));
-        string FileNameForCdaAndPdf = fi.Name.Substring(fi.Name.IndexOf("SPIA Exemplar Report"), fi.Name.Length - fi.Name.IndexOf("SPIA Exemplar Report"));
-        string CdaPackageoutputFilePath = $@"{CdaPackageOutputDirectory}\{FileNameForCdaAndPdf.Replace(fi.Extension, ".zip")}";
-        string CdaDocumentInputFilePath = $@"{CdaDocumentInputDirectoryPath}\{FileNameForCdaAndPdf.Replace(fi.Extension, ".xml")}";
-        string PdfFilePath = $@"{RootPDFDirectoryPath}\{FileNameForCdaAndPdf.Replace(fi.Extension, ".pdf")}";
+        //string FileNameForCdaAndPdf = CdaDocumentFileInfo.Name.Replace(".xml", "");
+        FileInfo CdaPackageoutputFilePath = new FileInfo($@"{CdaPackageOutputDirectory}\{CdaDocumentFileInfo.Name.Replace(CdaDocumentFileInfo.Extension, ".zip")}");
+        string CdaDocumentInputFilePath = $@"{CdaDocumentInputDirectoryPath}\{CdaDocumentFileInfo.Name}";
+        string PdfFilePath = $@"{RootPDFDirectoryPath}\{CdaDocumentFileInfo.Name.Replace(CdaDocumentFileInfo.Extension, ".pdf")}";
 
         //CDA Package
         PackagerInput PackagerInput = new PackagerInput()
@@ -54,12 +52,12 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
           NashCertificateSerial = this.NashCertificateSerial,
           Approver = Approver,
           CdaDocumentInputFilePath = CdaDocumentInputFilePath,
-          CdaPackageOutputFilePath = CdaPackageoutputFilePath,
+          CdaPackageOutputFilePath = CdaPackageoutputFilePath.FullName,
           CdaDocumentLogoBytes = CdaDocuemntLogoImageBytes,          
           PdfReportAttachment = PdfFilePath,
         };
         CdaPackage.Process(PackagerInput);
-        this.Log($"Generate: {fi.Name}");        
+        this.Log($"{CdaPackageoutputFilePath.Name}");        
       }     
     }
 

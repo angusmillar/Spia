@@ -23,10 +23,10 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
     public string DataType { get; set; }
 
-    [JsonProperty(PropertyName = "value", Required = Required.Always)]
-    [RequiredScope(ScopeType.Hl7v2, RequiredType.Mandatory)]
-    [RequiredScope(ScopeType.Cda, RequiredType.Mandatory)]
-    [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
+    [JsonProperty(PropertyName = "value", Required = Required.AllowNull)]
+    [RequiredScope(ScopeType.Hl7v2, RequiredType.Optional)]
+    [RequiredScope(ScopeType.Cda, RequiredType.Optional)]
+    [RequiredScope(ScopeType.Fhir, RequiredType.Optional)]
     public string Value { get; set; }
 
     [JsonProperty(PropertyName = "units", Required = Required.AllowNull)]
@@ -65,6 +65,18 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Cda, RequiredType.Optional)]
     [RequiredScope(ScopeType.Fhir, RequiredType.Optional)]
     public IList<Result> ChildResultList { get; set; }
+
+    protected override bool IsValidConditionalValidation(ScopeType scopeType, List<string> ErrorMessageList, string Path)
+    {
+      if (string.IsNullOrWhiteSpace(this.Value))
+      {
+        if (this.ChildResultList is null)
+        {
+          ErrorMessageList.Add($"The result value found at {Path} can not be null or empty unless the result has children results set in the {nameof(this.ChildResultList)}.");
+        }
+      }
+      return ErrorMessageList.Count() == 0;
+    }
 
   }
 }
