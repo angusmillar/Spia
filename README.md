@@ -41,6 +41,7 @@ The solution contains five projects as follows:
 * **Spia.AdhaCdaPackageGeneration:** The generation of the CDA Package as per the ADHA specifications for the My Health Record
 * **Spia.AdhaFhirGeneration:** The generation of a pathology FHIR bundle as per the ADHA profiles which are still in development
 * **Spia.AusHl7v2Generation:** The generation of HL7 v2 ORU messages as per the HL7 Australia profile: HL7AUSD-STD-OO-ADRM-2018.1
+* **Spia.PathologyReportModel:** The logical Pathology report Model expressed in .json. 
 * **Spia.Runner:** A console application that outputs all files to a given folder location
 
 **Solution Nuget parent dependencies**

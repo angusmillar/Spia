@@ -19,32 +19,39 @@ namespace Spia.Runner
         pathologyReportDataDirectory: @"C:\temp\SPIAMessages\PathologyReportData")
       {
         GeneratePathologyReportModels = false,
-        GenerateHL7Version2Messages = true,        
+        GenerateHL7Version2Messages = true,
         GenerateCdaDocuments = false,
         GenerateCdaPackages = true,
-        GenerateFhirBundles = false,        
-        NashCertificateSerial = "06fba6"
+        GenerateFhirBundles = false,
+        NashCertificateSerial = "06fba6",
+        CdaPackagerApproverPerson = new AdhaCdaPackageGeneration.Model.ApproverPerson()
+        {
+          FamilyName = "Millar",
+          GivenName = "Angus",
+          Title = "Dr",
+          Hpii = "8003 6188 2910 5369"
+        }
       };
-      
+
       SpiaFileGenerator SpiaFileGenerator = new SpiaFileGenerator(Options);
       try
       {
         SpiaFileGenerator.Process();
         Console.WriteLine("");
         Console.WriteLine("Finished");
-        Console.WriteLine("Hit any key to end.");        
+        Console.WriteLine("Hit any key to end.");
         Console.ReadKey();
       }
-      catch(Exception Exec)
+      catch (Exception Exec)
       {
         Console.WriteLine(Exec.Message);
         Console.WriteLine("");
         Console.WriteLine("Hit any key to end.");
         Console.ReadKey();
       }
-      
+
     }
-    
+
   }
 }
 

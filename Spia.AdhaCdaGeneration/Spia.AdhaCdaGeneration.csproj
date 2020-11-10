@@ -46,9 +46,6 @@
     <Reference Include="Nehta.VendorLibrary.Common, Version=4.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nehta.VendorLibrary.Common.4.2.1\lib\net40\Nehta.VendorLibrary.Common.dll</HintPath>
     </Reference>
-    <Reference Include="PeterPiper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PeterPiper.1.0.1\lib\net46\PeterPiper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,12 +58,6 @@
   <ItemGroup>
     <Compile Include="Factory\AdhaCdaFileGenerator.cs" />
     <Compile Include="Factory\CdaCreator.cs" />
-    <Compile Include="Factory\CdaCreatorInput.cs" />
-    <Compile Include="Model\Address.cs" />
-    <Compile Include="Model\Organisation.cs" />
-    <Compile Include="Model\Pathologist.cs" />
-    <Compile Include="Model\PathologyCdaMetadata.cs" />
-    <Compile Include="Model\PathologyLab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +67,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

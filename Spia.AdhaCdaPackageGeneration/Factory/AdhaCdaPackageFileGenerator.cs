@@ -20,28 +20,15 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
       this.NashCertificateSerial = nashCertificateSerial;
     }
 
-    public void Process(string RootHl7v2DirectoryPath, string RootPDFDirectoryPath, string CdaDocumentInputDirectoryPath, string CdaPackageOutputDirectory, byte[] CdaDocuemntLogoImageBytes = null)
+    public void Process(ApproverPerson ApproverPerson, string RootPDFDirectoryPath, string CdaDocumentInputDirectoryPath, string CdaPackageOutputDirectory, byte[] CdaDocuemntLogoImageBytes = null)
     {
       Package CdaPackage = new Package();
-      string[] SourceCdaDocumentsList = Directory.GetFiles(CdaDocumentInputDirectoryPath, "*.xml");
-      //string[] FilePathArray = Directory.GetFiles($@"{RootHl7v2DirectoryPath}", "*.hl7");
-
-      //Approver for CDA Package
-      ApproverPerson Approver = new ApproverPerson()
-      {
-        FamilyName = "Millar",
-        GivenName = "Angus",
-        Title = "Dr",
-        Hpii = "8003 6188 2910 5369"
-      };
+      string[] SourceCdaDocumentsList = Directory.GetFiles(CdaDocumentInputDirectoryPath, "*.xml");     
 
       foreach (string CdaDocuemntFilePath in SourceCdaDocumentsList)
       {
-
         //Create CDA Document
-        FileInfo CdaDocumentFileInfo = new FileInfo(CdaDocuemntFilePath);
-        //CdaGeneratorInput.Message = Creator.Message(File.ReadAllText(FilePath));
-        //string FileNameForCdaAndPdf = CdaDocumentFileInfo.Name.Replace(".xml", "");
+        FileInfo CdaDocumentFileInfo = new FileInfo(CdaDocuemntFilePath);       
         FileInfo CdaPackageoutputFilePath = new FileInfo($@"{CdaPackageOutputDirectory}\{CdaDocumentFileInfo.Name.Replace(CdaDocumentFileInfo.Extension, ".zip")}");
         string CdaDocumentInputFilePath = $@"{CdaDocumentInputDirectoryPath}\{CdaDocumentFileInfo.Name}";
         string PdfFilePath = $@"{RootPDFDirectoryPath}\{CdaDocumentFileInfo.Name.Replace(CdaDocumentFileInfo.Extension, ".pdf")}";
@@ -50,7 +37,7 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
         PackagerInput PackagerInput = new PackagerInput()
         {
           NashCertificateSerial = this.NashCertificateSerial,
-          Approver = Approver,
+          Approver = ApproverPerson,
           CdaDocumentInputFilePath = CdaDocumentInputFilePath,
           CdaPackageOutputFilePath = CdaPackageoutputFilePath.FullName,
           CdaDocumentLogoBytes = CdaDocuemntLogoImageBytes,          

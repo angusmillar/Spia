@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spia.AdhaCdaPackageGeneration.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,11 @@ namespace Spia.Runner
         throw new ApplicationException($"When {nameof(this.GenerateCdaPackages)} is True a {nameof(this.NashCertificateSerial)} must be provided.");
       }
 
+      if (this.GenerateCdaPackages && this.CdaPackagerApproverPerson is null)
+      {
+        throw new ApplicationException($"When {nameof(this.GenerateCdaPackages)} is True the {nameof(this.CdaPackagerApproverPerson)} must be provided.");
+      }
+
       if (string.IsNullOrWhiteSpace(this.PrimarySpiaDirectory))
       {
         throw new ApplicationException($"The {nameof(this.PrimarySpiaDirectory)} path must not be an empty string.");
@@ -42,6 +48,7 @@ namespace Spia.Runner
       {
         throw new ApplicationException($"The {nameof(this.PdfPathologyReportAttachmentDirectory)} path must not be an empty string.");
       }
+      
     }
     /// <summary>
     /// Defaults to False
@@ -76,6 +83,11 @@ namespace Spia.Runner
     /// </summary>
     public string NashCertificateSerial { get; set; }
 
+    /// <summary>
+    /// The Person that approves the CDA Package being uploaded to the My Health Record
+    /// </summary>
+    public ApproverPerson CdaPackagerApproverPerson { get; set; }
+    
     /// <summary>
     /// The root directory where all the working directories will be created
     /// </summary>

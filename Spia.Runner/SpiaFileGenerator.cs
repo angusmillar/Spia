@@ -184,7 +184,7 @@ namespace Spia.Runner
           var FileName = PathologyReportContainer.PathologyReport.PdfFileName;
           AdhaCdaFileGenerator CdaDocument = new AdhaCdaFileGenerator();
           CdaDocument.LogEventMessageDelegate = SpiaFileGenerator.WriteLine;
-          CdaDocument.Process2(PathologyReportContainer, RootPdfDirectory.FullName, CurrentCDADocuementDirectoryInfo.FullName, Logo);
+          CdaDocument.Process(PathologyReportContainer, RootPdfDirectory.FullName, CurrentCDADocuementDirectoryInfo.FullName, Logo);
         }
       }
 
@@ -198,7 +198,7 @@ namespace Spia.Runner
         RootCdaPackagesOutputDirectory.CreateDirectoryIfNoExist();
         RootCdaPackagesOutputDirectory.DeleteAllFiles(".zip");
         CdaPackager.LogEventMessageDelegate = SpiaFileGenerator.WriteLine;
-        CdaPackager.Process(RootHl7v2OutputDirectory.FullName, RootPdfDirectory.FullName, CurrentCDADocuementDirectoryInfo.FullName, RootCdaPackagesOutputDirectory.FullName, Logo);
+        CdaPackager.Process(Options.CdaPackagerApproverPerson, RootPdfDirectory.FullName, CurrentCDADocuementDirectoryInfo.FullName, RootCdaPackagesOutputDirectory.FullName, Logo);
         if (!Options.GenerateCdaDocuments)
         {
           CurrentCDADocuementDirectoryInfo.DeleteAllFiles(".xml");
