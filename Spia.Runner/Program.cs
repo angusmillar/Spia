@@ -20,7 +20,7 @@ namespace Spia.Runner
       {
         GeneratePathologyReportModels = false,
         GenerateHL7Version2Messages = true,
-        GenerateCdaDocuments = false,
+        GenerateCdaDocuments = true,
         GenerateCdaPackages = true,
         GenerateFhirBundles = false,
         NashCertificateSerial = "06fba6",

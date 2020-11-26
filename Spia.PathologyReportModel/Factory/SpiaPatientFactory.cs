@@ -10,13 +10,14 @@ namespace Spia.PathologyReportModel.Factory
   public enum PatientType
   {
     TessaCITIZEN,
-    GeorginaROSSLAND,    
+    GraceROSSLAND,    
     GlennFERNIE,
     GloriaNELSON,
     LarissaFERNIE,
     GregoryBLACKCOMB,
     GeorgeWHITEWATER,
-    HaydenNORQUAY
+    HaydenNORQUAY,
+    IrisREVELSTOKE
   };
 
   public class SpiaPatientFactory
@@ -25,13 +26,14 @@ namespace Spia.PathologyReportModel.Factory
     public SpiaPatientFactory()
     {
       PatientDictionary.Add(PatientType.TessaCITIZEN, GetTessaCITIZEN());
-      PatientDictionary.Add(PatientType.GeorginaROSSLAND, GetROSSLANDGeorgina());
+      PatientDictionary.Add(PatientType.GraceROSSLAND, GetGraceROSSLAND());
       PatientDictionary.Add(PatientType.GlennFERNIE, GetGlennFERNIE());      
       PatientDictionary.Add(PatientType.GloriaNELSON, GetGloriaNELSON());
       PatientDictionary.Add(PatientType.LarissaFERNIE, GetLarissaFERNIE());
       PatientDictionary.Add(PatientType.GregoryBLACKCOMB, GetGregoryBLACKCOMB());
       PatientDictionary.Add(PatientType.GeorgeWHITEWATER, GetGeorgeWHITEWATER());
-      PatientDictionary.Add(PatientType.HaydenNORQUAY, GetHaydenNORQUAY());      
+      PatientDictionary.Add(PatientType.HaydenNORQUAY, GetHaydenNORQUAY());
+      PatientDictionary.Add(PatientType.IrisREVELSTOKE, GetIrisREVELSTOKE());
     }
 
     public Patient GetPatient(PatientType patientType)
@@ -45,16 +47,16 @@ namespace Spia.PathologyReportModel.Factory
         throw new ApplicationException($"Patient Type of {patientType.ToString()} not found in patient dictionary.");
       }
     }
-    public Patient GetROSSLANDGeorgina()
+    public Patient GetGraceROSSLAND()
     {
       var Patient = new Patient()
       {
         Name = new Name()
         {
           Family = "ROSSLAND",
-          Given = "Georgina",
-          Middle = "Noele",
-          Title = null
+          Given = "Grace",
+          Middle = "Mia",
+          Title = "Ms"
         },
         DateOfBirth = new DateTime(1989, 07, 01),
         Gender =  GenderType.Female,
@@ -63,16 +65,16 @@ namespace Spia.PathologyReportModel.Factory
           new Address()
           {
             LineOne = "123 Heston Court",
-            LineTwo = null,
-            City = "Brisbane",
-            Country = "AUS",
+            LineTwo = null,                                                
+            Suburb = "Sunrise Beach",
             PostCode = "4571",
             State = StateType.QLD,
-            Suburb = "Sunrise Beach",
+            City = null,
+            Country = "AUS",
             TypeCode =  AddressType.Home
           },
         },
-        HomePhoneNumber = "+61492811778",
+        HomePhoneNumber = null,
         IdentifierList = new List<Identifier>()
         {
           new Identifier()
@@ -83,8 +85,8 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.MRN,
-            Value = "95429417",
-            AssigningAuthority = "ACSH"
+            Value = "954629417",
+            AssigningAuthority = "SunshineHospital"
           }
         }
       };
@@ -99,7 +101,7 @@ namespace Spia.PathologyReportModel.Factory
           Family = "CITIZEN",
           Given = "Tessa",
           Middle = "Paige",
-          Title = null
+          Title = "Mrs"
         },
         DateOfBirth = new DateTime(1987, 06, 30),
         Gender = GenderType.Female,
@@ -107,11 +109,11 @@ namespace Spia.PathologyReportModel.Factory
         {
           new Address()
           {
-            LineOne = "123 Somewhere Place",
+            LineOne = "123 Shames Avenue",
             LineTwo = null,
-            Suburb = "Sunrise Beach",
-            PostCode = "4571",
-            City = "Brisbane",
+            Suburb = "Sunrise Bay",
+            PostCode = "4573",
+            City = null,
             State = StateType.QLD,
             Country = "AUS",
             TypeCode =  AddressType.Home
@@ -144,7 +146,7 @@ namespace Spia.PathologyReportModel.Factory
           Family = "NELSON",
           Given = "Gloria",
           Middle = "Nannette",
-          Title = null
+          Title = "Mrs"
         },
         DateOfBirth = new DateTime(1949, 04, 17),
         Gender = GenderType.Female,
@@ -180,7 +182,7 @@ namespace Spia.PathologyReportModel.Factory
       };
       return Patient;
     }
-    private Patient GetLarissaFERNIE()
+    public Patient GetLarissaFERNIE()
     {
       var Patient = new Patient()
       {
@@ -189,7 +191,7 @@ namespace Spia.PathologyReportModel.Factory
           Family = "FERNIE",
           Given = "Larissa",
           Middle = "Ellen",
-          Title = null
+          Title = "Mrs"
         },
         DateOfBirth = new DateTime(1988, 05, 28),
         Gender = GenderType.Female,
@@ -201,13 +203,13 @@ namespace Spia.PathologyReportModel.Factory
            LineTwo = null,
            Suburb = "Sunrise Beach",
            PostCode = "4571",
-           City = "Brisbane",
+           City = null,
            State = StateType.QLD,
            Country = "AUS",
            TypeCode =  AddressType.Home
           },
         },
-        HomePhoneNumber = "+61499811041",
+        HomePhoneNumber = null,
         IdentifierList = new List<Identifier>()
         {
           new Identifier()
@@ -219,13 +221,13 @@ namespace Spia.PathologyReportModel.Factory
           {
             Type = IdentifierType.MRN,
             Value = "719909917",
-            AssigningAuthority = "InfertilityClinic"
+            AssigningAuthority = "SunshineHospital"
           }
         }
       };
       return Patient;
     }
-    private Patient GetGregoryBLACKCOMB()
+    public Patient GetGregoryBLACKCOMB()
     {
       var Patient = new Patient()
       {
@@ -234,7 +236,7 @@ namespace Spia.PathologyReportModel.Factory
           Family = "BLACKCOMB",
           Given = "Gregory",
           Middle = null,
-          Title = null
+          Title = "Mr"
         },
         DateOfBirth = new DateTime(1956, 01, 05),
         Gender = GenderType.Male,
@@ -270,7 +272,7 @@ namespace Spia.PathologyReportModel.Factory
       };
       return Patient;
     }
-    private Patient GetHaydenNORQUAY()
+    public Patient GetHaydenNORQUAY()
     {
       var Patient = new Patient()
       {
@@ -279,7 +281,7 @@ namespace Spia.PathologyReportModel.Factory
           Family = "NORQUAY",
           Given = "Hayden",
           Middle = "Rhys",
-          Title = null
+          Title = "Mr"
         },
         DateOfBirth = new DateTime(1993, 11, 02),
         Gender = GenderType.Male,
@@ -315,7 +317,7 @@ namespace Spia.PathologyReportModel.Factory
       };
       return Patient;
     }
-    private Patient GetGeorgeWHITEWATER()
+    public Patient GetGeorgeWHITEWATER()
     {
       var Patient = new Patient()
       {
@@ -324,7 +326,7 @@ namespace Spia.PathologyReportModel.Factory
           Family = "WHITEWATER",
           Given = "George",
           Middle = "Neil",
-          Title = null
+          Title = "Mr"
         },
         DateOfBirth = new DateTime(1950, 08, 01),
         Gender = GenderType.Male,
@@ -360,7 +362,7 @@ namespace Spia.PathologyReportModel.Factory
       };
       return Patient;
     }
-    private Patient GetGlennFERNIE()
+    public Patient GetGlennFERNIE()
     {
       var Patient = new Patient()
       {
@@ -369,7 +371,7 @@ namespace Spia.PathologyReportModel.Factory
           Family = "FERNIE",
           Given = "Glenn",
           Middle = "Neville",
-          Title = null
+          Title = "Mr"
         },
         DateOfBirth = new DateTime(1968, 05, 28),
         Gender = GenderType.Male,
@@ -400,6 +402,186 @@ namespace Spia.PathologyReportModel.Factory
             Type = IdentifierType.MRN,
             Value = "719909917",
             AssigningAuthority = "DermatologyClinic"
+          }
+        }
+      };
+      return Patient;
+    }
+    public Patient GetIrisREVELSTOKE()
+    {
+      var Patient = new Patient()
+      {
+        Name = new Name()
+        {
+          Family = "REVELSTOKE",
+          Given = "Iris",
+          Middle = "Mabel",
+          Title = "Mrs"
+        },
+        DateOfBirth = new DateTime(1958, 07, 26),
+        Gender = GenderType.Female,
+        AddressList = new List<Address>()
+        {
+          new Address()
+          {
+             LineOne = "76 Panorama Place",
+             LineTwo = null,
+             Suburb = "Sunrise Bay",
+             PostCode = "4573",
+             City = null,
+             State = StateType.QLD,
+             Country = "AUS",
+             TypeCode =  AddressType.Home
+          },
+        },
+        HomePhoneNumber = null,
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Type = IdentifierType.IHI,
+            Value = "8003600490464671"
+          },
+          new Identifier()
+          {
+            Type = IdentifierType.MRN,
+            Value = "724409912",
+            AssigningAuthority = "SunriseHospital"
+          }
+        }
+      };
+      return Patient;
+    }
+    public Patient GetEricaPURCELL()
+    {
+      var Patient = new Patient()
+      {
+        Name = new Name()
+        {
+          Family = "PURCELL",
+          Given = "Erica",
+          Middle = "Lynne",
+          Title = "Mrs"
+        },
+        DateOfBirth = new DateTime(1956, 05, 08),
+        Gender = GenderType.Female,
+        AddressList = new List<Address>()
+        {
+          new Address()
+          {
+             LineOne = "58 Golden Circuit",
+             LineTwo = null,
+             Suburb = "Sunrise Bay",
+             PostCode = "4573",
+             City = null,
+             State = StateType.QLD,
+             Country = "AUS",
+             TypeCode =  AddressType.Home
+          },
+        },
+        HomePhoneNumber = null,
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Type = IdentifierType.IHI,
+            Value = "8003600490464671"
+          },
+          new Identifier()
+          {
+            Type = IdentifierType.MRN,
+            Value = "719909800",
+            AssigningAuthority = "SunriseHospital"
+          }
+        }
+      };
+      return Patient;
+    }
+    public Patient GetGordonSEYMOUR()
+    {
+      var Patient = new Patient()
+      {
+        Name = new Name()
+        {
+          Family = "SEYMOUR",
+          Given = "Gordon",
+          Middle = "Peter",
+          Title = "Mr"
+        },
+        DateOfBirth = new DateTime(1956, 05, 08),
+        Gender = GenderType.Male,
+        AddressList = new List<Address>()
+        {
+          new Address()
+          {
+             LineOne = "456 Stellar Street",
+             LineTwo = null,
+             Suburb = "Sunrise Bay",
+             PostCode = "4573",
+             City = null,
+             State = StateType.QLD,
+             Country = "AUS",
+             TypeCode =  AddressType.Home
+          },
+        },
+        HomePhoneNumber = null,
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Type = IdentifierType.IHI,
+            Value = "8003 6026 6124 5921"
+          },
+          new Identifier()
+          {
+            Type = IdentifierType.MRN,
+            Value = "719909914",
+            AssigningAuthority = "SunriseHospital"
+          }
+        }
+      };
+      return Patient;
+    }
+    public Patient GetNormanMANNING()
+    {
+      var Patient = new Patient()
+      {
+        Name = new Name()
+        {
+          Family = "MANNING",
+          Given = "Norman",
+          Middle = "Lyle",
+          Title = "Mr"
+        },
+        DateOfBirth = new DateTime(1968, 05, 23),
+        Gender = GenderType.Male,
+        AddressList = new List<Address>()
+        {
+          new Address()
+          {
+             LineOne = "84 Nakiska Court",
+             LineTwo = null,
+             Suburb = "Sunrise Bay",
+             PostCode = "4573",
+             City = null,
+             State = StateType.QLD,
+             Country = "AUS",
+             TypeCode =  AddressType.Home
+          },
+        },
+        HomePhoneNumber = null,
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Type = IdentifierType.IHI,
+            Value = "8003 6028 4716 0044"
+          },
+          new Identifier()
+          {
+            Type = IdentifierType.MRN,
+            Value = "719909938",
+            AssigningAuthority = "SunriseHospital"
           }
         }
       };

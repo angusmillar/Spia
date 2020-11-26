@@ -77,10 +77,26 @@
     <Compile Include="Converters\EnumJsonConverterBase.cs" />
     <Compile Include="Converters\DiagnosticServiceSectionIdConverter.cs" />
     <Compile Include="CustomAttribute\RequiredScopeAttributeExtention.cs" />
+    <Compile Include="Factory\SpiaReports\IronStudies.cs" />
+    <Compile Include="Factory\SpiaReports\SARSCoV2Serology.cs" />
+    <Compile Include="Factory\SpiaReports\SARSCoV2NAT.cs" />
+    <Compile Include="Factory\SpiaReports\ProteinStudies.cs" />
+    <Compile Include="Factory\SpiaReports\MSU.cs" />
+    <Compile Include="Factory\SpiaReports\Lipids.cs" />
+    <Compile Include="Factory\SpiaReports\ChromosomeStudies.cs" />
+    <Compile Include="Factory\SpiaReports\INR.cs" />
+    <Compile Include="Factory\SpiaReports\ImmunoglobulinE.cs" />
+    <Compile Include="Factory\SpiaReports\HaemochromatosisGeneScreening.cs" />
+    <Compile Include="Factory\SpiaReports\HepBsAb.cs" />
+    <Compile Include="Factory\SpiaReports\FBC.cs" />
+    <Compile Include="Factory\SpiaReports\EUC.cs" />
+    <Compile Include="Factory\SpiaReports\Chlamydia.cs" />
+    <Compile Include="Factory\SpiaReports\BloodGasArterial.cs" />
     <Compile Include="Factory\SpiaLaboratoryFactory.cs" />
     <Compile Include="Factory\SpiaPathologyReportFactory.cs" />
     <Compile Include="Factory\SpiaPatientFactory.cs" />
     <Compile Include="Factory\SpiaProviderFactory.cs" />
+    <Compile Include="Factory\SpiaReports\IReportFactory.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\AddressType.cs" />
     <Compile Include="Model\StateType.cs" />
@@ -112,6 +128,7 @@
     <Compile Include="Support\ResultStatusTypeSupport.cs" />
     <Compile Include="Support\GenderTypeSupport.cs" />
     <Compile Include="Support\DiagnosticServiceSectionIdSupport.cs" />
+    <Compile Include="Support\TypeLoaderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

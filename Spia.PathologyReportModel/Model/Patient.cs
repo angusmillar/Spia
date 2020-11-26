@@ -43,7 +43,7 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
     public List<Identifier> IdentifierList { get; set; }
 
-    [JsonProperty(PropertyName = "homePhoneNumber", Required = Required.Always)]
+    [JsonProperty(PropertyName = "homePhoneNumber", Required = Required.AllowNull)]
     [RequiredScope(ScopeType.Hl7v2, RequiredType.Optional)]
     [RequiredScope(ScopeType.Cda, RequiredType.Optional)]
     [RequiredScope(ScopeType.Fhir, RequiredType.Optional)]

@@ -40,6 +40,12 @@ namespace Spia.PathologyReportModel.Model
     [RequiredScope(ScopeType.Fhir, RequiredType.Mandatory)]
     public IList<Report> ReportList { get; set; }
 
+    public DateTimeOffset GetOldestCollectionDateTime()
+    {
+      IEnumerable<DateTimeOffset> CollectionDateTimeList = this.ReportList.Select(x => x.CollectionDateTime);
+      return GetOldesDateTime(CollectionDateTimeList);
+    }
+
     public DateTimeOffset GetOldestReportReleaseDateTime()
     {
       IEnumerable<DateTimeOffset> ReportReleaseDateTimeList = this.ReportList.Select(x => x.ReportReleaseDateTime);

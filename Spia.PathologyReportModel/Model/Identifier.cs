@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Spia.PathologyReportModel.Model
 {
-  public enum IdentifierType { MedicareNumber, IHI, HPII, HPIO, MedicareProviderNumber, GUID, LocalToLab, MRN};
+  public enum IdentifierType { MedicareNumber, IHI, HPII, HPIO, MedicareProviderNumber, GUID, LocalToLab, MRN, DVA};
   public class Identifier : PathologyModelBase
   {
     [JsonProperty(PropertyName = "value", Required = Required.Always)]

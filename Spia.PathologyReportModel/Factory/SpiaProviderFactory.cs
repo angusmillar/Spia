@@ -363,6 +363,32 @@ namespace Spia.PathologyReportModel.Factory
         }
       };
     }
+    public Provider GetBillHaematologist()
+    {
+      return new Provider()
+      {
+        Name = new Name()
+        {
+          Family = "Haematologist",
+          Given = "Bill",
+          Middle = null,
+          Title = "Dr"
+        },
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Value = "BHAEMA",
+            Type = IdentifierType.LocalToLab
+          },
+          new Identifier()
+          {
+            Value = "847489RK",
+            Type = IdentifierType.MedicareProviderNumber
+          }
+        }
+      };
+    }
     public Provider GetGeneticsClinic()
     {
       return new Provider()
@@ -405,7 +431,7 @@ namespace Spia.PathologyReportModel.Factory
         }
       };
     }
-    public Provider GetGeneticCounsellor()
+    public Provider GetBjornGeneticCounsellor()
     {
       return new Provider()
       {
@@ -619,6 +645,27 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Value = "IMMC",
+            Type = IdentifierType.LocalToLab
+          }
+        }
+      };
+    }
+    public Provider GetInfusionClinic()
+    {
+      return new Provider()
+      {
+        Name = new Name()
+        {
+          Family = "Infusion Clinic, Sunshine Hospital",
+          Given = null,
+          Middle = null,
+          Title = null
+        },
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Value = "INFCSH",
             Type = IdentifierType.LocalToLab
           }
         }

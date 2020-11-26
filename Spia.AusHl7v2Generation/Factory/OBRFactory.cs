@@ -123,30 +123,32 @@ namespace Spia.AusHl7v2Generation.Factory
       OBR.Element(27).Add(QuantityTiming);
 
       //Copy Doctors
-      foreach (var CopyDr in request.CopyToList)
+      if (request.CopyToList is object)
       {
-        var IdenitferToUserForCopyToDoctor = CopyDr.IdentifierList.SingleOrDefault(x => x.Type == PathologyReportModel.Model.IdentifierType.MedicareProviderNumber);
-        if (IdenitferToUserForCopyToDoctor == null)
+        foreach (var CopyDr in request.CopyToList)
         {
-          IdenitferToUserForCopyToDoctor = CopyDr.IdentifierList.SingleOrDefault(x => x.Type == PathologyReportModel.Model.IdentifierType.LocalToLab);
-        }        
-        if (IdenitferToUserForCopyToDoctor == null)
-        {
-          throw new ApplicationException($"All CopyTo doctors must have a Medicare Provider Number (preferred) or a Local Lab ID. The CopyTo entry of {CopyDr.Name.Title ?? ""} {CopyDr.Name.Family} {CopyDr.Name.Given ?? ""} did not have a either.");
+          var IdenitferToUserForCopyToDoctor = CopyDr.IdentifierList.SingleOrDefault(x => x.Type == PathologyReportModel.Model.IdentifierType.MedicareProviderNumber);
+          if (IdenitferToUserForCopyToDoctor == null)
+          {
+            IdenitferToUserForCopyToDoctor = CopyDr.IdentifierList.SingleOrDefault(x => x.Type == PathologyReportModel.Model.IdentifierType.LocalToLab);
+          }
+          if (IdenitferToUserForCopyToDoctor == null)
+          {
+            throw new ApplicationException($"All CopyTo doctors must have a Medicare Provider Number (preferred) or a Local Lab ID. The CopyTo entry of {CopyDr.Name.Title ?? ""} {CopyDr.Name.Family} {CopyDr.Name.Given ?? ""} did not have a either.");
+          }
+
+          var IdentiferTypeInfo = HL7v2IdentifierSupport.GetIdentiferCode(IdenitferToUserForCopyToDoctor, $"NATA{performingLab.NataSiteNumber}");
+          IField Field = Creator.Field();
+          Field.Component(1).AsString = IdentiferTypeInfo.Value;
+          Field.Component(2).AsString = CopyDr.Name.Family;
+          Field.Component(3).AsString = CopyDr.Name.Given ?? "";
+          Field.Component(6).AsString = CopyDr.Name.Title ?? "";
+          Field.Component(9).AsString = IdentiferTypeInfo.AssigingAuthority;
+          Field.Component(10).AsString = "L";
+          Field.Component(13).AsString = IdentiferTypeInfo.TypeCode;
+          OBR.Element(28).Add(Field);
         }
-
-        var IdentiferTypeInfo = HL7v2IdentifierSupport.GetIdentiferCode(IdenitferToUserForCopyToDoctor, $"NATA{performingLab.NataSiteNumber}");
-        IField Field = Creator.Field();
-        Field.Component(1).AsString = IdentiferTypeInfo.Value;
-        Field.Component(2).AsString = CopyDr.Name.Family;
-        Field.Component(3).AsString = CopyDr.Name.Given ?? "";
-        Field.Component(6).AsString = CopyDr.Name.Title ?? "";
-        Field.Component(9).AsString = IdentiferTypeInfo.AssigingAuthority;
-        Field.Component(10).AsString = "L";
-        Field.Component(13).AsString = IdentiferTypeInfo.TypeCode;
-        OBR.Element(28).Add(Field);
       }
-
       //Principle Result Interpretor
       //DRPRIM&PathologistThompson&Harry&&&DR&&&SUPER-LIS
       var PrincipleResultInterpretorLocalLabCode = report.ReportingPathologist.IdentifierList.SingleOrDefault(x => x.Type == PathologyReportModel.Model.IdentifierType.LocalToLab);

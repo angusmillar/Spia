@@ -125,26 +125,34 @@ namespace Spia.Runner
         }
       }
 
-      //Generate FHIR bundles
       if (Options.GenerateFhirBundles)
       {
-
+        //Generate FHIR Bundles      
+        WriteLine("----------------------------------------------------------------------");
+        WriteLine("Generate FHIR Bundles");
+        WriteLine($"Output Directory: {RootFhirOutputDirectory.FullName}");
         RootFhirOutputDirectory.CreateDirectoryIfNoExist();
         RootFhirOutputDirectory.DeleteAllFileAndDirectories();
-
-        AdhaFhirFileGenerator Fhir = new AdhaFhirFileGenerator();
-        Fhir.LogEventMessageDelegate = SpiaFileGenerator.WriteLine;
-        Fhir.Process(RootHl7v2OutputDirectory.FullName, RootFhirOutputDirectory.FullName);
+        FhirPathologyFactory PathologyFactory = new FhirPathologyFactory();
+        foreach (PathologyReportContainer PathologyReportContainer in PathologyReportContainerList)
+        {
+          string PdfFileName = PathologyReportContainer.PathologyReport.PdfFileName;
+          FileInfo FhirBundleFilkeInfo = new FileInfo(Path.Combine(RootFhirOutputDirectory.FullName, PdfFileName.Replace(".pdf", ".json")));
+          string Resource = PathologyFactory.CreateJson(PathologyReportContainer, RootPdfDirectory.FullName);
+          File.WriteAllText(FhirBundleFilkeInfo.FullName, Resource);
+          WriteLine($"{FhirBundleFilkeInfo.Name}");
+        }
       }
 
-      //Get the Logo and convert to Byte array
-      ImageConverter converter = new ImageConverter();
-      byte[] Logo = (byte[])converter.ConvertTo(Resource.RCPA_PITUS_Logo, typeof(byte[]));
-
       DirectoryInfo CurrentCDADocuementDirectoryInfo = null;
+      byte[] Logo = null;
       //Generate CDA Documents
       if (Options.GenerateCdaDocuments || Options.GenerateCdaPackages)
       {
+        //Get the Logo and convert to Byte array
+        ImageConverter converter = new ImageConverter();
+        Logo = (byte[])converter.ConvertTo(Resource.RCPA_PITUS_Logo, typeof(byte[]));
+
         if (!Options.GenerateCdaDocuments)
         {
           CurrentCDADocuementDirectoryInfo = TempWorkingCDADocumentDirectoryInfo;
