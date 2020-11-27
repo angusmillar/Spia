@@ -62,7 +62,7 @@ Once run, the process will read in any *.json files found in the LogicalModelInp
 
 # The Pathology Logical Model (.json) file structure #
 Below is an full example of pathology report logical model JSON file for a 'SARS-CoV-2 Serology report' which has been annotated with comments above each property.
-Please note that to use this file all the comments lines (e.g. ** This is a comment line) must be removed as JSON does not allow comments. 
+Please note that to use this file all the comments lines (e.g. //"This is a comment line") must be removed as JSON does not allow comments. 
 > Remember you can set the **GenerateLogicalModels** option to true to have the solution generate a set of example Logical Model files like the one seen below.   
 ```json
 {
