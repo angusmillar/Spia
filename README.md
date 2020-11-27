@@ -67,9 +67,9 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
 ```json
 {
   "pathologyReport": {
-    \\ The lab that is generating the report
+    //"The lab that is generating the report"
     "performingLaboratory": {
-      // A human readable name for the Laboratory
+      "A human readable name for the Laboratory"
       "facilityName": "PITUS Pathology",
       -- A computer readable code for the Laboratory
       "facilityCode": "PITUSPathology",
