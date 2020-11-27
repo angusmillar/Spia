@@ -434,6 +434,10 @@ namespace Spia.AdhaCdaGeneration.Factory
       //We have to move the PDF attachment file to a new place and then rename it to 'attachment.pdf' and then after 
       //generating the CDA document we will delete at copy of the PDF.  
       System.IO.FileInfo TempAttachmentFilePath = new System.IO.FileInfo(System.IO.Path.Combine(TempWorkingDirectoryPath.FullName, "attachment.pdf"));
+      if (TempAttachmentFilePath.Exists)
+      {
+        TempAttachmentFilePath.Delete();
+      }
       PdfFileInfo.CopyTo(TempAttachmentFilePath.FullName);
       AttachmentPdf.Path = TempAttachmentFilePath.FullName;
       pathologyResultReport.SCSContent.RelatedDocument.ExaminationResultRepresentation = AttachmentPdf;

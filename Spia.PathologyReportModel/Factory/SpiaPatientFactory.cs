@@ -22,31 +22,6 @@ namespace Spia.PathologyReportModel.Factory
 
   public class SpiaPatientFactory
   {
-    private Dictionary<PatientType, Patient> PatientDictionary = new Dictionary<PatientType, Patient>();
-    public SpiaPatientFactory()
-    {
-      PatientDictionary.Add(PatientType.TessaCITIZEN, GetTessaCITIZEN());
-      PatientDictionary.Add(PatientType.GraceROSSLAND, GetGraceROSSLAND());
-      PatientDictionary.Add(PatientType.GlennFERNIE, GetGlennFERNIE());      
-      PatientDictionary.Add(PatientType.GloriaNELSON, GetGloriaNELSON());
-      PatientDictionary.Add(PatientType.LarissaFERNIE, GetLarissaFERNIE());
-      PatientDictionary.Add(PatientType.GregoryBLACKCOMB, GetGregoryBLACKCOMB());
-      PatientDictionary.Add(PatientType.GeorgeWHITEWATER, GetGeorgeWHITEWATER());
-      PatientDictionary.Add(PatientType.HaydenNORQUAY, GetHaydenNORQUAY());
-      PatientDictionary.Add(PatientType.IrisREVELSTOKE, GetIrisREVELSTOKE());
-    }
-
-    public Patient GetPatient(PatientType patientType)
-    {
-      if (PatientDictionary.ContainsKey(patientType))
-      {
-        return PatientDictionary[patientType];
-      }
-      else
-      {
-        throw new ApplicationException($"Patient Type of {patientType.ToString()} not found in patient dictionary.");
-      }
-    }
     public Patient GetGraceROSSLAND()
     {
       var Patient = new Patient()
@@ -80,7 +55,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003603236836806"
+            Value = "8003 6032 3683 6806"
           },
           new Identifier()
           {
@@ -125,7 +100,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003606547651855"
+            Value = "8003 6065 4765 1855"
           },
           new Identifier()
           {
@@ -158,7 +133,7 @@ namespace Spia.PathologyReportModel.Factory
             LineTwo = null,
             Suburb = "Sunrise Beach",
             PostCode = "4571",
-            City = "Brisbane",
+            City = null,
             State = StateType.QLD,
             Country = "AUS",
             TypeCode =  AddressType.Home
@@ -170,7 +145,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003600463320066"
+            Value = "8003 6004 6332 0066"
           },
           new Identifier()
           {
@@ -215,7 +190,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003606361737731"
+            Value = "8003 6063 6173 7731"
           },
           new Identifier()
           {
@@ -226,52 +201,7 @@ namespace Spia.PathologyReportModel.Factory
         }
       };
       return Patient;
-    }
-    public Patient GetGregoryBLACKCOMB()
-    {
-      var Patient = new Patient()
-      {
-        Name = new Name()
-        {
-          Family = "BLACKCOMB",
-          Given = "Gregory",
-          Middle = null,
-          Title = "Mr"
-        },
-        DateOfBirth = new DateTime(1956, 01, 05),
-        Gender = GenderType.Male,
-        AddressList = new List<Address>()
-        {
-          new Address()
-          {
-            LineOne = "86 Ryan Square",
-            LineTwo = null,
-            Suburb = "Doonan",
-            PostCode = "4571",
-            City = "Brisbane",
-            State = StateType.QLD,
-            Country = "AUS",
-            TypeCode =  AddressType.Home
-          },
-        },
-        HomePhoneNumber = "+61447111384",
-        IdentifierList = new List<Identifier>()
-        {
-          new Identifier()
-          {
-            Type = IdentifierType.IHI,
-            Value = "8003601149087061"
-          },
-          new Identifier()
-          {
-            Type = IdentifierType.MRN,
-            Value = "749909954",
-            AssigningAuthority = "CardiologyClinic"
-          }
-        }
-      };
-      return Patient;
-    }
+    }    
     public Patient GetHaydenNORQUAY()
     {
       var Patient = new Patient()
@@ -305,7 +235,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003602711331333"
+            Value = "8003 6027 1133 1333"
           },
           new Identifier()
           {
@@ -350,7 +280,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003602145850890"
+            Value = "8003 6021 4585 0890"
           },
           new Identifier()
           {
@@ -379,23 +309,23 @@ namespace Spia.PathologyReportModel.Factory
         {
           new Address()
           {
-             LineOne = "456 James Terrace",
+             LineOne = "456 Golden Terrace",
              LineTwo = null,
              Suburb = "Sunrise Beach",
-             PostCode = "4571",
-             City = "Brisbane",
+             PostCode = "4573",
+             City = null,
              State = StateType.QLD,
              Country = "AUS",
              TypeCode =  AddressType.Home
           },
         },
-        HomePhoneNumber = "+61499811044",
+        HomePhoneNumber = null,
         IdentifierList = new List<Identifier>()
         {
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003609414426781"
+            Value = "8003 6094 1442 6781"
           },
           new Identifier()
           {
@@ -440,7 +370,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003600490464671"
+            Value = "8003 6004 9046 4671"
           },
           new Identifier()
           {
@@ -485,7 +415,7 @@ namespace Spia.PathologyReportModel.Factory
           new Identifier()
           {
             Type = IdentifierType.IHI,
-            Value = "8003600490464671"
+            Value = "8003 6004 9046 4671"
           },
           new Identifier()
           {
@@ -581,6 +511,141 @@ namespace Spia.PathologyReportModel.Factory
           {
             Type = IdentifierType.MRN,
             Value = "719909938",
+            AssigningAuthority = "SunriseHospital"
+          }
+        }
+      };
+      return Patient;
+    }
+    public Patient GetChristinaSELKIRK()
+    {
+      var Patient = new Patient()
+      {
+        Name = new Name()
+        {
+          Family = "SELKIRK",
+          Given = "Christina",
+          Middle = "Noelle",
+          Title = "Ms"
+        },
+        DateOfBirth = new DateTime(1950, 08, 01),
+        Gender = GenderType.Female,
+        AddressList = new List<Address>()
+        {
+          new Address()
+          {
+             LineOne = "1677 Nigella Court",
+             LineTwo = null,
+             Suburb = "Sunrise Bay",
+             PostCode = "4573",
+             City = null,
+             State = StateType.QLD,
+             Country = "AUS",
+             TypeCode =  AddressType.Home
+          },
+        },
+        HomePhoneNumber = null,
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Type = IdentifierType.IHI,
+            Value = "8003 6017 7933 8115"
+          },
+          new Identifier()
+          {
+            Type = IdentifierType.MRN,
+            Value = "95479417",
+            AssigningAuthority = "SunriseHospital"
+          }
+        }
+      };
+      return Patient;
+    }
+    public Patient GetReaganPHOENIX()
+    {
+      var Patient = new Patient()
+      {
+        Name = new Name()
+        {
+          Family = "PHOENIX",
+          Given = "Reagan",
+          Middle = "Marie",
+          Title = "Ms"
+        },
+        DateOfBirth = new DateTime(1949, 01, 05),
+        Gender = GenderType.Female,
+        AddressList = new List<Address>()
+        {
+          new Address()
+          {
+             LineOne = "86 Ryan Square",
+             LineTwo = null,
+             Suburb = "Sunrise Bay",
+             PostCode = "4573",
+             City = null,
+             State = StateType.QLD,
+             Country = "AUS",
+             TypeCode =  AddressType.Home
+          },
+        },
+        HomePhoneNumber = null,
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Type = IdentifierType.IHI,
+            Value = "8003 6016 1658 7973"
+          },
+          new Identifier()
+          {
+            Type = IdentifierType.MRN,
+            Value = "749909959",
+            AssigningAuthority = "SunriseHospital"
+          }
+        }
+      };
+      return Patient;
+    }
+    public Patient GetGrantWHISTLER()
+    {
+      var Patient = new Patient()
+      {
+        Name = new Name()
+        {
+          Family = "WHISTLER",
+          Given = "Grant",
+          Middle = "Newman",
+          Title = "Mr"
+        },
+        DateOfBirth = new DateTime(1948, 10, 18),
+        Gender = GenderType.Male,
+        AddressList = new List<Address>()
+        {
+          new Address()
+          {
+             LineOne = "56 Javier Circuit",
+             LineTwo = null,
+             Suburb = "Sunrise Bay",
+             PostCode = "4573",
+             City = null,
+             State = StateType.QLD,
+             Country = "AUS",
+             TypeCode =  AddressType.Home
+          },
+        },
+        HomePhoneNumber = null,
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Type = IdentifierType.IHI,
+            Value = "8003 6010 7215 3856"
+          },
+          new Identifier()
+          {
+            Type = IdentifierType.MRN,
+            Value = "714909987",
             AssigningAuthority = "SunriseHospital"
           }
         }

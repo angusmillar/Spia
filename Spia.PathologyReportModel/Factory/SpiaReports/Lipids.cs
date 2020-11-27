@@ -18,19 +18,25 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2019, 11, 09, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2019, 11, 09, 07, 40, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2019, 11, 09, 08, 17, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2019, 11, 09, 10, 25, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
+
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.GregoryBLACKCOMB),
+          Patient = PatientFactory.GetReaganPHOENIX(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2019, 11, 09, 00, 00, 00, TimeSpan.FromHours(10)),
+            RequestedDate = RequestedDate,
             OrderNumber = "00000011",
             RequestingFacility = new Organisation()
             {
-              Name = "Cardiology Clinic",
+              Name = "Sunrise Hospital Cardiology Clinic",
               Identifier = new Identifier()
               {
                 Value = "55023B97-61F8-4445-8590-4F18AD68E9AD",
@@ -39,7 +45,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             },
             RequestingApplication = "Best Practice 1.8.5.743",
             RequestingProvider = ProviderFactory.GetTrishFamilyDr(MedicareProviderNumber: "3243890Y"),
-            ClinicalNotes = "Knee surgery 12-Sept-19. Weight gain becoming problematic.",
+            ClinicalNotes = "Knee surgery 12-Sep-19; Increasing weight gain",
             CallBackPhoneNumber = null,
             CopyToList = new List<Provider>()
             {
@@ -47,18 +53,18 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetGBastien()
             }
           },
-          PdfFileName = "SPIA Exemplar Report Lipids v1.6.pdf",
+          PdfFileName = "SPIA Exemplar Report Lipids v1.4.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
               ReportId = "1978881822",
-              CollectionDateTime = new DateTimeOffset(2019, 12, 04, 07, 36, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2019, 12, 04, 10, 14, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime = new DateTimeOffset(2019, 12, 04, 14, 32, 00, TimeSpan.FromHours(10)),
+              CollectionDateTime = CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime = ReportReleaseDateTime,
               ReportType = new ReportType()
               {
-                Local = new Code() { Term = "LIPIDS", Description = "Lipids" },
+                Local = new Code() { Term = "LIPIDS", Description = "Lipid profile" },
                 Snomed = new Code() { Term = "252150008", Description = "Fasting lipid profile" }
               },
               ReportStatus =  ResultStatusType.Final,
@@ -88,31 +94,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mmol/L",
                     ReferenceRange = "< 5.5",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 04, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
-                    Status = ResultStatusType.Final,
-                    ChildResultList = null
-                  },
-                  new Result()
-                  {
-                    Type = new ResultType()
-                    {
-                      Local = new Code()
-                      {
-                        Term = "TRIGF",
-                        Description = "Triglycerides fasting"
-                      },
-                      Lonic = new Code()
-                      {
-                        Term = "30524-3",
-                        Description = "Triglycerides fasting"
-                      }
-                    },
-                    DataType = "NM",
-                    Value = "2.0",
-                    Units = "mmol/L",
-                    ReferenceRange = "< 1.7",
-                    AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 04, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -134,12 +116,38 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     DataType = "NM",
                     Value = "3.2",
                     Units = "mmol/L",
-                    ReferenceRange = "> 1.0",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 04, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ReferenceRange = "> 1.2",
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
+                  new Result()
+                  {
+                    Type = new ResultType()
+                    {
+                      Local = new Code()
+                      {
+                        Term = "TRIGR",
+                        Description = "Triglycerides random"
+                      },
+                      //Do we need a LONIC for Triglycerides random in Lipids
+                      Lonic = null,
+                      //Lonic = new Code()
+                      //{
+                      //  Term = "30524-3",
+                      //  Description = "Triglycerides fasting"
+                      //}
+                    },
+                    DataType = "NM",
+                    Value = "2.3",
+                    Units = "mmol/L",
+                    ReferenceRange = "< 2.0",
+                    AbnormalFlag = "H",
+                    ObservationDateTime = ObservationDateTime,
+                    Status = ResultStatusType.Final,
+                    ChildResultList = null
+                  },                  
                   new Result()
                   {
                     Type = new ResultType()
@@ -159,8 +167,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "2.1",
                     Units = "mmol/L",
                     ReferenceRange = "< 3.0",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 04, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -180,11 +188,37 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       }
                     },
                     DataType = "NM",
-                    Value = "3.0",
-                    Units = "mmol/L",
+                    Value = "1.9",
+                    Units = null,
                     ReferenceRange = "< 3.5",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 04, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
+                    Status = ResultStatusType.Final,
+                    ChildResultList = null
+                  },
+                  new Result()
+                  {
+                    Type = new ResultType()
+                    {
+                      Local = new Code()
+                      {
+                        Term = "NHDLC",
+                        Description = "Non HDL Cholesterol"
+                      },
+                      //Do we need a lonic for Non HDL Cholesterol in Lipids
+                      Lonic = null,
+                      //Lonic = new Code()
+                      //{
+                      //  Term = "32309-7",
+                      //  Description = "Chol/HDL Ratio"
+                      //}
+                    },
+                    DataType = "NM",
+                    Value = "2.1",
+                    Units = "mmol/L",
+                    ReferenceRange = "< 4.0",
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -210,7 +244,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 04, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   }

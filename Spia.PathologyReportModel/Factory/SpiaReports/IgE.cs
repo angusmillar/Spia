@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace Spia.PathologyReportModel.Factory.SpiaReports
 {
-  public class ImmunoglobulinE : IReportFactory
+  public class IgE : IReportFactory
   {
     private readonly SpiaPatientFactory PatientFactory;
     private readonly SpiaProviderFactory ProviderFactory;
     private readonly SpiaLaboratoryFactory LaboratoryFactory;
-    public ImmunoglobulinE(SpiaPatientFactory SpiaPatientFactory, SpiaProviderFactory SpiaProviderFactory, SpiaLaboratoryFactory SpiaLaboratoryFactory)
+    public IgE(SpiaPatientFactory SpiaPatientFactory, SpiaProviderFactory SpiaProviderFactory, SpiaLaboratoryFactory SpiaLaboratoryFactory)
     {
       this.PatientFactory = SpiaPatientFactory;
       this.ProviderFactory = SpiaProviderFactory;
@@ -18,44 +18,49 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2020, 01, 22, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2020, 01, 22, 16, 32, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2020, 01, 22, 17, 08, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2020, 01, 23, 08, 45, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.GloriaNELSON),
+          Patient = PatientFactory.GetGloriaNELSON(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2019, 11, 23, 00, 00, 00, TimeSpan.FromHours(10)),
+            RequestedDate = RequestedDate,
             OrderNumber = "00000007",
             RequestingFacility = new Organisation()
             {
-              Name = "Sunrise Hospital Medical Records",
+              Name = "Sunrise Hospital Allergy Clinic",
               Identifier = new Identifier()
               {
-                Value = "0FECFC6C-C98F-4625-B58B-ECB27063DAF1",
+                Value = "B515183F-04DC-4D4B-9417-DD1A6A6A8093",
                 Type = IdentifierType.GUID
               }
             },
             RequestingApplication = "Best Practice 1.8.5.743",
             RequestingProvider = ProviderFactory.GetTrishFamilyDr(MedicareProviderNumber: "1783879L"),
-            ClinicalNotes = "Mild reaction to bee sting. Asthma.",
-            CallBackPhoneNumber = "07302308594",
+            ClinicalNotes = "Moderate reaction to bee sting; asthmatic",
+            CallBackPhoneNumber = null,
             CopyToList = new List<Provider>()
             {
               ProviderFactory.GetAllergyClinic(),
               ProviderFactory.GetBeulaImmunologist()
             }
           },
-          PdfFileName = "SPIA Exemplar Report Immunoglobulin E v1.5.pdf",
+          PdfFileName = "Exemplar Report IgE v1.4.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
-              ReportId = "1978881822",
-              CollectionDateTime = new DateTimeOffset(2019, 12, 02, 07, 20, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2019, 12, 02, 11, 04, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime = new DateTimeOffset(2019, 12, 02, 07, 50, 00, TimeSpan.FromHours(10)),
+              ReportId = "2078881822",
+              CollectionDateTime = CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime = ReportReleaseDateTime,
               ReportType = new ReportType()
               {
                 Local = new Code() { Term = "ImmunoIgG", Description = "Immunoglobulin E" },
@@ -84,11 +89,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       }
                     },
                     DataType = "NM",
-                    Value = "320",
+                    Value = "620",
                     Units = "kIU/L",
-                    ReferenceRange = "2.0-300",
+                    ReferenceRange = "2-300",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 02, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -104,13 +109,12 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       Lonic = null,
                     },
                     DataType = "FT",
-                    Value = "\\H\\Interpretation\\N\\\\.br\\" +
-                    "Immunoprotein parameters indicate an increasing level of sensitization. Specific IgE testing\\.br\\" +
-                    "recommended for honey bee and common wasp venoms, also tryptase levels.",
+                    Value = "Immunoprotein parameters indicate recent allergic reaction. Specific IgE testing recommended for honey bee and\\.br\\" +
+                            "common wasp venoms, also tryptase levels to identify individual allergen(s).",
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2019, 12, 02, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   }

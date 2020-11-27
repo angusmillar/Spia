@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Spia.PathologyReportModel.Model;
-using Spia.Runner.SupportExtensions;
+
 
 namespace Spia.Runner
 {
@@ -14,15 +8,15 @@ namespace Spia.Runner
     static void Main(string[] args)
     {
       var Options = new SpiaFileGeneratorOptions(
-        primarySpiaDirectory: @"C:\temp\SPIAMessages\GeneratedFiles",
-        pdfPathologyReportAttachmentDirectory: @"C:\temp\SPIAMessages\PDF",
-        pathologyReportDataDirectory: @"C:\temp\SPIAMessages\PathologyReportData")
+        outputDirectory: @"C:\temp\SPIAMessages\Output",
+        pdfAttachmentInputDirectory: @"C:\temp\SPIAMessages\PDF",
+        logicalModelInputDirectory: @"C:\temp\SPIAMessages\LogicalModels")
       {
-        GeneratePathologyReportModels = false,
+        GenerateLogicalModels = false,
         GenerateHL7Version2Messages = true,
+        GenerateFhirBundles = true,
         GenerateCdaDocuments = true,
-        GenerateCdaPackages = true,
-        GenerateFhirBundles = false,
+        GenerateCdaPackages = true,        
         NashCertificateSerial = "06fba6",
         CdaPackagerApproverPerson = new AdhaCdaPackageGeneration.Model.ApproverPerson()
         {

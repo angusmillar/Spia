@@ -18,19 +18,25 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2019, 07, 25, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2019, 07, 25, 16, 32, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2019, 07, 25, 17, 48, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2019, 07, 25, 20, 32, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
+
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.TessaCITIZEN),
+          Patient = PatientFactory.GetChristinaSELKIRK(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2019, 07, 29, 00, 00, 00, TimeSpan.FromHours(10)),
+            RequestedDate = RequestedDate,
             OrderNumber = "00000009",
             RequestingFacility = new Organisation()
             {
-              Name = "Coagulation & Thrombosis Clinic",
+              Name = "Sunrise Hospital Coagulation & Thrombosis Clinic",
               Identifier = new Identifier()
               {
                 Value = "ACA30A38-811E-4E0D-B55C-774D38B8E171",
@@ -39,27 +45,28 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             },
             RequestingApplication = "Best Practice 1.8.5.743",
             RequestingProvider = ProviderFactory.GetTrishFamilyDr(MedicareProviderNumber: "283530KX"),
-            ClinicalNotes = "Warfarin 6mg per day, Family Hx Diabetes.",
-            CallBackPhoneNumber = "07302308594",
+            ClinicalNotes = "Warfarin 6mg per day; monitoring new dose",
+            CallBackPhoneNumber = null,
             CopyToList = new List<Provider>()
             {
               ProviderFactory.GetCoagulationAndThrombosisClinic(),
               ProviderFactory.GetBillCardiologist()
             }
           },
-          PdfFileName = "SPIA Exemplar Report INR v1.7.pdf",
+          PdfFileName = "Exemplar Report INR v1.6.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
               ReportId = "1878881888",
-              CollectionDateTime = new DateTimeOffset(2019, 08, 02, 11, 30, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2019, 08, 02, 12, 00, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime = new DateTimeOffset(2019, 08, 02, 14, 32, 00, TimeSpan.FromHours(10)),
+              CollectionDateTime = CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime = ReportReleaseDateTime,
               ReportType = new ReportType()
               {
-                Local = new Code() { Term = "INR", Description = "INR" },
-                Snomed = new Code() { Term = "440685005", Description = "Calculation of international normalised ratio" }
+                Local = new Code() { Term = "COAG", Description = "Coagulation" },
+                //Snomed = new Code() { Term = "440685005", Description = "Calculation of international normalised ratio" }
+                Snomed = null
               },
               ReportStatus =  ResultStatusType.Final,
               Department = DiagnosticService.Hematology,
@@ -88,7 +95,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mg",
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2019, 08, 02, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -112,7 +119,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = null,
                     ReferenceRange = "2.0-3.0",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 08, 02, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -128,13 +135,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       Lonic = null
                     },
                     DataType = "FT",
-                    Value = "\\H\\Interpretation\\N\\\\.br\\" +
-                    "INR is higher than therapeutic range. Recommend Warfarin dose be reduced to 5 mg per day and test repeated in\\.br\\" +
-                    "7 days.",
+                    Value = "INR is higher than therapeutic range. Recommend Warfarin dose be reduced to 5 mg per day, repeat test in 7 days.\\.br\\",
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2019, 08, 02, 14, 32, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   }

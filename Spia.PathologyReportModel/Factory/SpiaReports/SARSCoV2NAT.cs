@@ -18,19 +18,25 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2020, 11, 09, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2020, 11, 09, 10, 25, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2020, 11, 09, 12, 03, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2020, 11, 10, 08, 27, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
+
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.HaydenNORQUAY),
+          Patient = PatientFactory.GetHaydenNORQUAY(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2020, 08, 20, 00, 00, 00, TimeSpan.FromHours(10)),
+            RequestedDate = RequestedDate,
             OrderNumber = "00000015",
             RequestingFacility = new Organisation()
             {
-              Name = "Fever Clinic Sunrise Hospital",
+              Name = "Sunrise Hospital Fever Clinic ",
               Identifier = new Identifier()
               {
                 Value = "3659F40F-8BDF-4CD6-BF46-38257CA6BB97",
@@ -39,22 +45,22 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             },
             RequestingApplication = "Best Practice 1.8.5.743",
             RequestingProvider = ProviderFactory.GetTrishFamilyDr(MedicareProviderNumber: "603107KW"),
-            ClinicalNotes = "Sore throat & cough, works in hospitality industry",
+            ClinicalNotes = "Sore throat & cough, works in hospitality",
             CallBackPhoneNumber = null,
             CopyToList = new List<Provider>()
             {
               ProviderFactory.GetMySpecialist()
             }
           },
-          PdfFileName = "SPIA Exemplar Report SARS-CoV-2 NAT v0.4.pdf",
+          PdfFileName = "Exemplar Report SARS-CoV-2NAT v0.3.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
               ReportId = "2078881879",
-              CollectionDateTime = new DateTimeOffset(2020, 08, 20, 11, 20, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2020, 08, 20, 13, 24, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime = new DateTimeOffset(2020, 08, 20, 20, 28, 00, TimeSpan.FromHours(10)),
+              CollectionDateTime = CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime = ReportReleaseDateTime,
               ReportType = new ReportType()
               {
                 Local = new Code() { Term = "COVID2", Description = "SARS-CoV-2 nucleic acid" },
@@ -86,8 +92,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "Not Detected",
                     Units = null,
                     ReferenceRange = null,
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 08, 20, 20, 28, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -113,7 +119,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2020, 08, 20, 20, 28, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   }

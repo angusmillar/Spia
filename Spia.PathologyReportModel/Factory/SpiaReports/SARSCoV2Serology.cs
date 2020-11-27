@@ -18,19 +18,25 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2020, 07, 25, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2020, 07, 25, 18, 20, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2020, 07, 25, 19, 32, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2020, 07, 26, 10, 36, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
+
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.GregoryBLACKCOMB),
+          Patient = PatientFactory.GetGeorgeWHITEWATER(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2020, 7, 24, 00, 00, 00, TimeSpan.FromHours(10)),
+            RequestedDate = RequestedDate,
             OrderNumber = "00000016",
             RequestingFacility = new Organisation()
             {
-              Name = "Respiratory Clinic Sunrise Hospital",
+              Name = "Sunrise Hospital Respiratory Clinic",
               Identifier = new Identifier()
               {
                 Value = "13A8DC14-A1E9-475C-9B4C-DA19866E020A",
@@ -39,22 +45,22 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             },
             RequestingApplication = "Best Practice 1.8.5.743",
             RequestingProvider = ProviderFactory.GetTrishFamilyDr(MedicareProviderNumber: "067709AH"),
-            ClinicalNotes = "Shortness of breath, sore throat",
+            ClinicalNotes = "Sore throat & cough, works in hospitality",
             CallBackPhoneNumber = null,
             CopyToList = new List<Provider>()
             {
               ProviderFactory.GetMyPhysio()
             }
           },
-          PdfFileName = "SPIA Exemplar Report SARS-CoV-2 serology v0.3.pdf",
+          PdfFileName = "Exemplar Report SARS-CoV-2 Serology v0.3.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
-              ReportId = "1978881814",
-              CollectionDateTime = new DateTimeOffset(2020, 7, 25, 08, 20, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2020, 7, 25, 10, 02, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime = new DateTimeOffset(2020, 07, 25, 19, 20, 00, TimeSpan.FromHours(10)),
+              ReportId = "1978881860",
+              CollectionDateTime = CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime = ReportReleaseDateTime,
               ReportType = new ReportType()
               {
                 Local = new Code() { Term = "COVID2SER", Description = "SARS-CoV-2 Serology" },
@@ -84,10 +90,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "20",
-                    Units = "titre",
+                    Units = null,
                     ReferenceRange = null,
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 07, 25, 19, 20, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -108,10 +114,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "10",
-                    Units = "titre",
+                    Units = null,
                     ReferenceRange = null,
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 07, 25, 19, 20, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -132,10 +138,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "320",
-                    Units = "titre",
+                    Units = null,
                     ReferenceRange = null,
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 07, 25, 19, 20, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -161,7 +167,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2020, 07, 25, 19, 20, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status =  ResultStatusType.Final,
                     ChildResultList = null
                   }

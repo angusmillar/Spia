@@ -35,7 +35,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             OrderNumber = "00000004",
             RequestingFacility = new Organisation()
             {
-              Name = "Coagulation & Thrombosis Clinic",
+              Name = "Sunrise Hospital Coagulation & Thrombosis Clinic",
               Identifier = new Identifier()
               {
                 Value = "264C8EF6-868F-49B0-A532-B47D03F1A8D7",

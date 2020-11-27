@@ -936,7 +936,7 @@ namespace Spia.AdhaFhirGeneration.Factory
         } 
         else if (Result.DataType.ToUpper() == "ST")
         {
-          Obs.Value = new FhirString(Result.Value);
+          Obs.Value = new FhirString(ResultField.AsString);
         }
         else if (Result.DataType.ToUpper() == "NR")
         {
@@ -957,6 +957,10 @@ namespace Spia.AdhaFhirGeneration.Factory
           }
 
           Obs.Value = Range;
+        } 
+        else if (Result.DataType.ToUpper() == "FT")
+        {         
+          Obs.Value = new FhirString(ResultField.AsString);
         }
         else
         {
@@ -1011,11 +1015,49 @@ namespace Spia.AdhaFhirGeneration.Factory
       }
       else if (Obs.Value is Hl7.Fhir.Model.Range FhirRange)
       {
-
+        if (FhirRange.Low.Unit.ToUpper() != FhirRange.High.Unit.ToUpper())
+        {
+          throw new ApplicationException($"We have a range result where to the Low value units do not equal the High value units. Low unit was {FhirRange.Low.Unit} and High unit was {FhirRange.High.Unit}");
+        }
+        sb.Append($"  {Name}: {FhirRange.Low.Value.ToString()} - {FhirRange.High.Value.ToString()} {FhirRange.High.Unit} \n");
       }
       else if (Obs.Value is FhirString FhirString)
       {
-        sb.Append($"  {Name}: {FhirString.Value}\n");
+        if (Result.DataType.ToUpper() == "FT")
+        {
+          var ResultField = Creator.Field(Result.Value);
+          for (int i = 0; i < ResultField.ContentCount; i++)
+          {
+            IContent Content = ResultField.Content(i);
+            if (Content.ContentType == PeterPiper.Hl7.V2.Support.Content.ContentType.Escape)
+            {
+              if (Content.EscapeMetaData.EscapeType == PeterPiper.Hl7.V2.Support.Standard.EscapeType.NewLine)
+              {
+                sb.Append("<br />");
+              }
+              else if (Content.EscapeMetaData.EscapeType == PeterPiper.Hl7.V2.Support.Standard.EscapeType.HighlightOn)
+              {
+                sb.Append("<b>");
+              }
+              else if (Content.EscapeMetaData.EscapeType == PeterPiper.Hl7.V2.Support.Standard.EscapeType.HighlightOff)
+              {
+                sb.Append("</b>");
+              }
+              else
+              {
+                sb.Append(Content.AsString);
+              }
+            }
+            else
+            {
+              sb.Append(Content.AsString);
+            }
+          }
+        }
+        else
+        {
+          sb.Append($"  {Name}: {FhirString.Value}\n");
+        }        
       }
 
       sb.Append($"  </pre>\n");

@@ -18,15 +18,21 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2019, 11, 09, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2019, 11, 09, 07, 40, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2019, 11, 09, 07, 41, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2019, 11, 10, 07, 45, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
+
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.GlennFERNIE),
+          Patient = PatientFactory.GetGlennFERNIE(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2019, 11, 09, 00, 00, 00, TimeSpan.FromHours(10)),
+            RequestedDate = RequestedDate,
             OrderNumber = "00000014",
             RequestingFacility = new Organisation()
             {
@@ -43,19 +49,18 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             CallBackPhoneNumber = null,
             CopyToList = new List<Provider>()
             {
-              ProviderFactory.GetDiabetesClinicSunshineHospital(),
-              ProviderFactory.GetTrishFamilyDr("930481AT")
+              ProviderFactory.GetDiabetesClinicSunshineHospital(),             
             }
           },
-          PdfFileName = "SPIA Exemplar Report Blood Gas Arterial & Venous v0.8.pdf",
+          PdfFileName = "SPIA Exemplar Report Blood Gases v1.2.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
-              ReportId = "1978881828",
-              CollectionDateTime = new DateTimeOffset(2019, 11, 09, 07, 40, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2019, 12, 09, 11, 00, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)),
+              ReportId = "2078881880",
+              CollectionDateTime = CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime = ReportReleaseDateTime,
               ReportType = new ReportType()
               {
                 //As of meeting on 10/11/2020 @ 2:00PM changed this to only Blood gases
@@ -91,8 +96,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     //Confirmed that units are not required Meeting on the 10/11/2020 @ 2:00PM
                     Units = null,
                     ReferenceRange = null,
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -116,7 +121,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "Cel",
                     ReferenceRange = "36.5-37.5",
                     AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -126,8 +131,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     {
                       Local = new Code()
                       {
-                        Term = "PHART",
-                        Description = "pH arterial"
+                        Term = "PHBLOOD",
+                        Description = "pH blood"
                       },
                       Lonic = new Code()
                       {
@@ -138,9 +143,9 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     DataType = "NM",
                     Value = "7.50",
                     Units = "pH",
-                    ReferenceRange = "7.35-7.45",
+                    ReferenceRange = "7.30-7.40",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -164,7 +169,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mmHg",
                     ReferenceRange = "32-45",
                     AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -175,12 +180,12 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       Local = new Code()
                       {
                         Term = "PO2A",
-                        Description = "pO2 arterial??"
+                        Description = "pO2 arterial"
                       },
                       Lonic = new Code()
                       {
                         Term = "2019-8",
-                        Description = "pO2 arterial???"
+                        Description = "pO2 arterial"
                       }
                     },
                     DataType = "NM",
@@ -188,7 +193,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mmHg",
                     ReferenceRange = "83-108",
                     AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -212,7 +217,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mol/L",
                     ReferenceRange = "94-98",
                     AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -223,7 +228,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       Local = new Code()
                       {
                         Term = "BICART",
-                        Description = "Bicarbonate arterial"
+                        Description = "Bicarbonate blood"
                       },
                       Lonic = new Code()
                       {
@@ -234,9 +239,9 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     DataType = "NM",
                     Value = "27",
                     Units = "mmol/L",
-                    ReferenceRange = "22-31",
-                    AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ReferenceRange = "22-30",
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -247,7 +252,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       Local = new Code()
                       {
                         Term = "BEART",
-                        Description = "Base excess arterial"
+                        Description = "Base excess blood"
                       },
                       Lonic = new Code()
                       {
@@ -260,7 +265,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mmol/L",
                     ReferenceRange = "-3.0-3.0",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -284,7 +289,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "%",
                     ReferenceRange = "94-98",
                     AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -308,7 +313,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mmol/L",
                     ReferenceRange = "135-145",
                     AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -331,8 +336,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "3.5",
                     Units = "mmol/L",
                     ReferenceRange = "3.5-5.2",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -355,8 +360,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "103",
                     Units = "mmol/L",
                     ReferenceRange = "95-110",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -379,8 +384,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "4.9",
                     Units = "mmol/L",
                     ReferenceRange = "3.8-8.5",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -403,8 +408,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "61",
                     Units = "umol/L",
                     ReferenceRange = "60-110",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -427,8 +432,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "7",
                     Units = "mmol/L",
                     ReferenceRange = "4-13",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -452,7 +457,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mmol/L",
                     ReferenceRange = "3.0-7.8",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -475,8 +480,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "0.8",
                     Units = "mmol/L",
                     ReferenceRange = "< 1.0",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -499,8 +504,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "1.15",
                     Units = "mmol/L",
                     ReferenceRange = "1.15-1.32",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -523,8 +528,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "148",
                     Units = "g/L",
                     ReferenceRange = "135-180",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -547,8 +552,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "98",
                     Units = "%",
                     ReferenceRange = "94-98",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -571,8 +576,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "<^0.2",
                     Units = "%",
                     ReferenceRange = "< 1.5",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -595,8 +600,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "0.2",
                     Units = "%",
                     ReferenceRange = "< 1.1",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -616,7 +621,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 07, 50, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   }

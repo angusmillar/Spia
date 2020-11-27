@@ -18,19 +18,25 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2019, 11, 09, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2019, 11, 09, 08, 45, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2019, 11, 09, 09, 12, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2019, 11, 09, 10, 25, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
+
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.GloriaNELSON),
+          Patient = PatientFactory.GetGloriaNELSON(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2020, 01, 22, 00, 00, 00, TimeSpan.FromHours(10)),
+            RequestedDate = RequestedDate,
             OrderNumber = "00000012",
             RequestingFacility = new Organisation()
             {
-              Name = "Doctor In The House Surgery",
+              Name = "Sunrise Hospital Emergency Dept",
               Identifier = new Identifier()
               {
                 Value = "191394B8-6AB0-4EF5-BC7D-19A5B37FA60F",
@@ -38,24 +44,23 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               }
             },
             RequestingApplication = "Best Practice 1.8.5.743",
-            RequestingProvider = ProviderFactory.GetTrishFamilyDr(MedicareProviderNumber: "8264815W"),
-            ClinicalNotes = "Diabetic with recurring UTI. Last course Trimethoprim (100 mg bd) completed 27 Nov 2019.",
-            CallBackPhoneNumber = "07302308594",
+            RequestingProvider = ProviderFactory.GetTrishFamilyDr(MedicareProviderNumber: "873721DH"),
+            ClinicalNotes = "Diabetic with recurring UTI. Significant vaginal burning on micturition. Last course Trimethoprim (100 mg bd) completed 27- Dec-19.",
+            CallBackPhoneNumber = null,
             CopyToList = new List<Provider>()
-            {
-              ProviderFactory.GetRheumatologyClinic(),
-              ProviderFactory.GetRebeccaRheumatologist()
+            {             
+              ProviderFactory.GetRebeccaGP()
             }
           },
-          PdfFileName = "SPIA Exemplar Report MCS Urine v1.6.pdf",
+          PdfFileName = "SPIA Exemplar Report Urine MCS v1.5.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
               ReportId = "2001277757",
-              CollectionDateTime = new DateTimeOffset(2020, 01, 22, 07, 40, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2020, 01, 22, 10, 10, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)),
+              CollectionDateTime = CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime = ReportReleaseDateTime,
               ReportType = new ReportType()
               {
                 Local = new Code() { Term = "UMCS", Description = "MCS urine" },
@@ -74,6 +79,48 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     {
                       Local = new Code()
                       {
+                        Term = "COLOR",
+                        Description = "Colour"
+                      },
+                      //Do we need a LONIC for Color in MSU
+                      Lonic = null,
+                    },
+                    DataType = "ST",
+                    Value = "Pink stained",
+                    Units = null,
+                    ReferenceRange = null,
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
+                    Status = ResultStatusType.Final,
+                    ChildResultList = null
+                  },
+                  new Result()
+                  {
+                    Type = new ResultType()
+                    {
+                      Local = new Code()
+                      {
+                        Term = "CLARITY",
+                        Description = "Clarity"
+                      },
+                      //Do we need a LONIC for Color in MSU
+                      Lonic = null,
+                    },
+                    DataType = "ST",
+                    Value = "Turbid",
+                    Units = null,
+                    ReferenceRange = null,
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
+                    Status = ResultStatusType.Final,
+                    ChildResultList = null
+                  },
+                  new Result()
+                  {
+                    Type = new ResultType()
+                    {
+                      Local = new Code()
+                      {
                         Term = "GLUC",
                         Description = "Glucose"
                       },
@@ -85,10 +132,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "3+",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "Negative",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -109,10 +156,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "1+",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "Negative",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -133,10 +180,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "1+",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "Negative",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -157,10 +204,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "1.034",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "1.003-1.035",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -181,10 +228,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "8.3",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "5.0-8.0",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -205,10 +252,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "2+",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "Negative",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -232,7 +279,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "mg/dL",
                     ReferenceRange = "0.1-1.0",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -253,10 +300,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "Positive",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "Negative",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -277,10 +324,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "2+",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "Negative",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -301,10 +348,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "Positive",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = "Negative",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -328,7 +375,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "Erythrocytes/hpf",
                     ReferenceRange = "None seen",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -352,7 +399,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "Leucocytes/hpf",
                     ReferenceRange = "None seen",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -373,10 +420,10 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "crenated",
-                    Units = null,
+                    Units = "No units",
                     ReferenceRange = null,
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -400,7 +447,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "Epithelial cells/hpf",
                     ReferenceRange = "None seen",
                     AbnormalFlag = "A",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -423,8 +470,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "None seen",
                     Units = "Casts/hpf",
                     ReferenceRange = "None seen",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -447,8 +494,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "None seen",
                     Units = "Crystals/hpf",
                     ReferenceRange = "None seen",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -471,8 +518,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Value = "Escherichia coli 20,000 cfu/mL",
                     Units = null,
                     ReferenceRange = "No growth",
-                    AbnormalFlag = "N",
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    AbnormalFlag = null,
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = new List<Result>()
                     {
@@ -496,7 +543,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Units = null,
                         ReferenceRange = null,
                         AbnormalFlag = "I",
-                        ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                        ObservationDateTime = ObservationDateTime,
                         Status = ResultStatusType.Final,
                         ChildResultList = null
                       },
@@ -520,7 +567,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Units = null,
                         ReferenceRange = null,
                         AbnormalFlag = "I",
-                        ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                        ObservationDateTime = ObservationDateTime,
                         Status = ResultStatusType.Final,
                         ChildResultList = null
                       },
@@ -544,7 +591,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Units = null,
                         ReferenceRange = null,
                         AbnormalFlag = "R",
-                        ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                        ObservationDateTime = ObservationDateTime,
                         Status = ResultStatusType.Final,
                         ChildResultList = null
                       },
@@ -568,7 +615,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Units = null,
                         ReferenceRange = null,
                         AbnormalFlag = "S",
-                        ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                        ObservationDateTime = ObservationDateTime,
                         Status = ResultStatusType.Final,
                         ChildResultList = null
                       },
@@ -592,7 +639,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Units = null,
                         ReferenceRange = null,
                         AbnormalFlag = "R",
-                        ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                        ObservationDateTime = ObservationDateTime,
                         Status = ResultStatusType.Final,
                         ChildResultList = null
                       },
@@ -616,7 +663,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Units = null,
                         ReferenceRange = null,
                         AbnormalFlag = "I",
-                        ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                        ObservationDateTime = ObservationDateTime,
                         Status = ResultStatusType.Final,
                         ChildResultList = null
                       }
@@ -634,11 +681,12 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       Lonic = null
                     },
                     DataType = "ST",
-                    Value = "Interpretation – Previous treatment with trimethoprim ineffective for recurring UTI.",
+                    Value = "Previous treatment with trimethoprim ineffective for recurring E. coli infection. Suggest\\.br\\" +
+                            "intramuscular injection 160 mg gentamicin QD 14 days.",
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2020, 01, 24, 14, 40, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },

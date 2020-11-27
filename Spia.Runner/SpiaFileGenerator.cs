@@ -25,10 +25,10 @@ namespace Spia.Runner
     public void Process()
     {
       this.Options.Validate();
-      DirectoryInfo RootOutputDirectoryInfo = new DirectoryInfo(this.Options.PrimarySpiaDirectory);
+      DirectoryInfo RootOutputDirectoryInfo = new DirectoryInfo(this.Options.OutputDirectory);
       DirectoryInfo RootHl7v2OutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "HL7v2 Messages"));
-      DirectoryInfo RootPdfDirectory = new DirectoryInfo(Options.PdfPathologyReportAttachmentDirectory);
-      DirectoryInfo RootReportDataDirectory = new DirectoryInfo(Options.PathologyReportDataDirectory);
+      DirectoryInfo RootPdfDirectory = new DirectoryInfo(Options.PdfAttachmentInputDirectory);
+      DirectoryInfo RootReportDataDirectory = new DirectoryInfo(Options.LogicalModelInputDirectory);
       DirectoryInfo RootFhirOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "FHIR Bundles"));
       DirectoryInfo RootCdaPackagesOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "CDA Packages"));
       DirectoryInfo RootCdaDocumentOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "CDA Documents"));
@@ -37,16 +37,16 @@ namespace Spia.Runner
       List<PathologyReportContainer> PathologyReportContainerList = new List<PathologyReportContainer>();
 
       //If below is true we generate the Pathology Data json files from the hard coded source.
-      if (this.Options.GeneratePathologyReportModels)
+      if (this.Options.GenerateLogicalModels)
       {
         WriteLine("----------------------------------------------------------------------");
-        WriteLine($"The option {nameof(this.Options.GeneratePathologyReportModels)} is set to True.");
+        WriteLine($"The option {nameof(this.Options.GenerateLogicalModels)} is set to True.");
         WriteLine("Generate Pathology Report Data files");
         RootReportDataDirectory.CreateDirectoryIfNoExist();
-        RootReportDataDirectory = new DirectoryInfo(Options.PathologyReportDataDirectory);
+        RootReportDataDirectory = new DirectoryInfo(Options.LogicalModelInputDirectory);
         if (RootReportDataDirectory.GetFiles("*.json", SearchOption.TopDirectoryOnly).Count() > 0)
         {
-          throw new ApplicationException($"The ReportData directory must empty when generating Pathology Report Data files.");
+          throw new ApplicationException($"The {Options.LogicalModelInputDirectory} directory must empty when {nameof(this.Options.GenerateLogicalModels)} is set to true.");
         }
 
         var SpiaPathologyReportFactory = new Spia.PathologyReportModel.Factory.SpiaPathologyReportFactory();
@@ -68,17 +68,17 @@ namespace Spia.Runner
 
       //Read in all Pathology Data json files found in the directory      
       WriteLine("----------------------------------------------------------------------");
-      WriteLine("Reading in Pathology Report Data files");
+      WriteLine("Reading in Pathology Report Logical Model files");
       WriteLine($"Input Directory: {RootReportDataDirectory.FullName}");
       if (!RootReportDataDirectory.Exists)
       {
-        throw new ApplicationException($"The Pathology Report Data directory does not exist at :{RootReportDataDirectory.FullName}");
+        throw new ApplicationException($"The Pathology Report Logical Model folder does not exist at :{RootReportDataDirectory.FullName}");
       }
 
       FileInfo[] ReportDataFileInfoArray = RootReportDataDirectory.GetFiles("*.json", SearchOption.TopDirectoryOnly);
       if (ReportDataFileInfoArray.Count() == 0)
       {
-        throw new ApplicationException($"The Pathology Report Data directory contains no Pathology Report Data .json files.");
+        throw new ApplicationException($"The Pathology Report Logical Model folder contains no Logical Model .json files.");
       }
       foreach (FileInfo ReportDataFileInfo in RootReportDataDirectory.GetFiles("*.json", SearchOption.TopDirectoryOnly))
       {
@@ -91,7 +91,7 @@ namespace Spia.Runner
         }
         catch (Exception Exec)
         {
-          WriteLine($"The Pathology Report Data in the file named {ReportDataFileInfo.Name} had the following issue:");
+          WriteLine($"The Pathology Report Logical Model for file name {ReportDataFileInfo.Name} had the following issue:");
           throw Exec;
         }
       }

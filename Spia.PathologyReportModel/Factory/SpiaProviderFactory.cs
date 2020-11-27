@@ -218,6 +218,32 @@ namespace Spia.PathologyReportModel.Factory
         }
       };
     }
+    public Provider GetArturoPathologist()
+    {
+      return new Provider()
+      {
+        Name = new Name()
+        {
+          Family = "Pathologist",
+          Given = "Arturo",
+          Middle = null,
+          Title = "Dr"
+        },
+        IdentifierList = new List<Identifier>()
+        {
+          new Identifier()
+          {
+            Value = "8003 6168 0685 7986",
+            Type = IdentifierType.HPII
+          },
+          new Identifier()
+          {
+            Value = "ARTPATH",
+            Type = IdentifierType.LocalToLab
+          }
+        }
+      };
+    }
 
     //Requesting Providers
     public Provider GetTrishFamilyDr(string MedicareProviderNumber)
@@ -530,13 +556,13 @@ namespace Spia.PathologyReportModel.Factory
         }
       };
     }
-    public Provider GetRebeccaRheumatologist()
+    public Provider GetRebeccaGP()
     {
       return new Provider()
       {
         Name = new Name()
         {
-          Family = "Rheumatologist",
+          Family = "GP",
           Given = "Rebecca",
           Middle = null,
           Title = "Dr"
@@ -545,7 +571,7 @@ namespace Spia.PathologyReportModel.Factory
         {
           new Identifier()
           {
-            Value = "RHEUREB",
+            Value = "REBGP",
             Type = IdentifierType.LocalToLab
           },
           new Identifier()

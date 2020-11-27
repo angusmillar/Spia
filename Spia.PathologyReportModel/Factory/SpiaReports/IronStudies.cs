@@ -18,16 +18,22 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
 
     public PathologyReportContainer GetReport()
     {
+      var RequestedDate =            new DateTimeOffset(2019, 11, 09, 00, 00, 00, TimeSpan.FromHours(10));
+      var CollectionDateTime =       new DateTimeOffset(2019, 11, 09, 08, 45, 00, TimeSpan.FromHours(10));
+      var SpecimenReceivedDateTime = new DateTimeOffset(2019, 11, 09, 09, 12, 00, TimeSpan.FromHours(10));
+      var ReportReleaseDateTime =    new DateTimeOffset(2019, 11, 09, 10, 25, 00, TimeSpan.FromHours(10));
+      var ObservationDateTime = ReportReleaseDateTime.Subtract(TimeSpan.FromMinutes(5));
+
       return new PathologyReportContainer()
       {
         PathologyReport = new PathologyReport()
         {
           PerformingLaboratory = LaboratoryFactory.GetPITUSLaboratory(),
-          Patient = PatientFactory.GetPatient(PatientType.IrisREVELSTOKE),
+          Patient = PatientFactory.GetIrisREVELSTOKE(),
           Request = new Request()
           {
-            RequestedDate = new DateTimeOffset(2019, 11, 09, 00, 00, 00, TimeSpan.FromHours(10)),
-            OrderNumber = "00000017",
+            RequestedDate = RequestedDate,
+            OrderNumber = "00000018",
             RequestingFacility = new Organisation()
             {
               Name = "Sunrise Hospital Infusion Clinic",
@@ -46,15 +52,15 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetInfusionClinic()
             }
           },
-          PdfFileName = "SPIA Exemplar Report Iron studies v0.1.pdf",
+          PdfFileName = "SPIA Exemplar Report Iron studies v0.2.pdf",
           ReportList = new List<Report>()
           {
             new Report()
             {
               ReportId = "1978881829",
-              CollectionDateTime =       new DateTimeOffset(2019, 11, 09, 08, 45, 00, TimeSpan.FromHours(10)),
-              SpecimenReceivedDateTime = new DateTimeOffset(2019, 11, 09, 09, 30, 00, 00, TimeSpan.FromHours(10)),
-              ReportReleaseDateTime =    new DateTimeOffset(2019, 11, 09, 10, 25, 00, 00, TimeSpan.FromHours(10)),
+              CollectionDateTime =       CollectionDateTime,
+              SpecimenReceivedDateTime = SpecimenReceivedDateTime,
+              ReportReleaseDateTime =    ReportReleaseDateTime,
               ReportType = new ReportType()
               {
                 Local = new Code() { Term = "IS", Description = "Iron studies" },
@@ -87,7 +93,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "ug/L",
                     ReferenceRange = "30-120",
                     AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 10, 25, 00, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -111,7 +117,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "umol/L",
                     ReferenceRange = "10.0-30.0",
                     AbnormalFlag = "L",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 10, 25, 00, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -135,7 +141,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "g/L",
                     ReferenceRange = "2.10-3.80",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 10, 25, 00, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -159,7 +165,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     Units = "%",
                     ReferenceRange = "15-45",
                     AbnormalFlag = "H",
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 10, 25, 00, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
                   },
@@ -179,11 +185,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       }
                     },
                     DataType = "FT",
-                    Value = "Chemistry parameters are indicative of iron deficiency ",
+                    Value = "Chemistry parameters are indicative of iron deficiency.",
                     Units = null,
                     ReferenceRange = null,
                     AbnormalFlag = null,
-                    ObservationDateTime = new DateTimeOffset(2019, 11, 09, 10, 25, 00, 00, TimeSpan.FromHours(10)).Subtract(TimeSpan.FromMinutes(5)),
+                    ObservationDateTime = ObservationDateTime,
                     Status =  ResultStatusType.Final,
                     ChildResultList = null
                   }

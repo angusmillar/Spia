@@ -34,7 +34,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             OrderNumber = "00000005",
             RequestingFacility = new Organisation()
             {
-              Name = "Metabolic Clinic",
+              Name = "Sunrise Hospital Metabolic Clinic",
               Identifier = new Identifier()
               {
                 Value = "75C38DF6-BE0B-4287-8D46-6395CACAAD7A",

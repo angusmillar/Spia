@@ -77,6 +77,7 @@
     <Compile Include="Converters\EnumJsonConverterBase.cs" />
     <Compile Include="Converters\DiagnosticServiceSectionIdConverter.cs" />
     <Compile Include="CustomAttribute\RequiredScopeAttributeExtention.cs" />
+    <Compile Include="Factory\SpiaReports\HistoColorectal.cs" />
     <Compile Include="Factory\SpiaReports\IronStudies.cs" />
     <Compile Include="Factory\SpiaReports\SARSCoV2Serology.cs" />
     <Compile Include="Factory\SpiaReports\SARSCoV2NAT.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="Factory\SpiaReports\Lipids.cs" />
     <Compile Include="Factory\SpiaReports\ChromosomeStudies.cs" />
     <Compile Include="Factory\SpiaReports\INR.cs" />
-    <Compile Include="Factory\SpiaReports\ImmunoglobulinE.cs" />
+    <Compile Include="Factory\SpiaReports\IgE.cs" />
     <Compile Include="Factory\SpiaReports\HaemochromatosisGeneScreening.cs" />
     <Compile Include="Factory\SpiaReports\HepBsAb.cs" />
     <Compile Include="Factory\SpiaReports\FBC.cs" />

@@ -9,17 +9,17 @@ namespace Spia.Runner
 {
   public class SpiaFileGeneratorOptions
   {
-    public SpiaFileGeneratorOptions(string primarySpiaDirectory, string pathologyReportDataDirectory, string pdfPathologyReportAttachmentDirectory)
+    public SpiaFileGeneratorOptions(string outputDirectory, string logicalModelInputDirectory, string pdfAttachmentInputDirectory)
     {
-      PrimarySpiaDirectory = primarySpiaDirectory;
-      GeneratePathologyReportModels = false;
+      OutputDirectory = outputDirectory;
+      GenerateLogicalModels = false;
       GenerateHL7Version2Messages = true;
       GenerateFhirBundles = true;
       GenerateCdaDocuments = true;
       GenerateCdaPackages = true;
       NashCertificateSerial = string.Empty;
-      PdfPathologyReportAttachmentDirectory = pdfPathologyReportAttachmentDirectory;
-      PathologyReportDataDirectory = pathologyReportDataDirectory;
+      PdfAttachmentInputDirectory = pdfAttachmentInputDirectory;
+      LogicalModelInputDirectory = logicalModelInputDirectory;
     }
 
     public void Validate()
@@ -34,26 +34,26 @@ namespace Spia.Runner
         throw new ApplicationException($"When {nameof(this.GenerateCdaPackages)} is True the {nameof(this.CdaPackagerApproverPerson)} must be provided.");
       }
 
-      if (string.IsNullOrWhiteSpace(this.PrimarySpiaDirectory))
+      if (string.IsNullOrWhiteSpace(this.OutputDirectory))
       {
-        throw new ApplicationException($"The {nameof(this.PrimarySpiaDirectory)} path must not be an empty string.");
+        throw new ApplicationException($"The {nameof(this.OutputDirectory)} path must not be an empty string.");
       }
 
-      if (string.IsNullOrWhiteSpace(this.PathologyReportDataDirectory))
+      if (string.IsNullOrWhiteSpace(this.LogicalModelInputDirectory))
       {
-        throw new ApplicationException($"The {nameof(this.PathologyReportDataDirectory)} path must not be an empty string.");
+        throw new ApplicationException($"The {nameof(this.LogicalModelInputDirectory)} path must not be an empty string.");
       }
 
-      if (string.IsNullOrWhiteSpace(this.PdfPathologyReportAttachmentDirectory))
+      if (string.IsNullOrWhiteSpace(this.PdfAttachmentInputDirectory))
       {
-        throw new ApplicationException($"The {nameof(this.PdfPathologyReportAttachmentDirectory)} path must not be an empty string.");
+        throw new ApplicationException($"The {nameof(this.PdfAttachmentInputDirectory)} path must not be an empty string.");
       }
       
     }
     /// <summary>
     /// Defaults to False
     /// </summary>
-    public bool GeneratePathologyReportModels { get; set; }
+    public bool GenerateLogicalModels { get; set; }
     
     /// <summary>
     /// Generate the HL7 v2 Messages
@@ -89,18 +89,18 @@ namespace Spia.Runner
     public ApproverPerson CdaPackagerApproverPerson { get; set; }
     
     /// <summary>
-    /// The root directory where all the working directories will be created
+    /// The output directory where all generated files will be written 
     /// </summary>
-    public string PrimarySpiaDirectory{ get; set; }
+    public string OutputDirectory{ get; set; }
 
     /// <summary>
     /// The directory where the PDF Pathology Report Attachments are located
     /// </summary>
-    public string PdfPathologyReportAttachmentDirectory { get; set; }
+    public string PdfAttachmentInputDirectory { get; set; }
 
     /// <summary>
-    /// The directory where the .json Pathology Report Data files are located
+    /// The directory where the .json Pathology Report Logical Model files are located and will be read from.
     /// </summary>
-    public string PathologyReportDataDirectory { get; set; }
+    public string LogicalModelInputDirectory { get; set; }
   }
 }
