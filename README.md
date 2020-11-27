@@ -67,13 +67,13 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
 ```json
 {
   "pathologyReport": {
-    ** The lab that is generating the report
+    \\ The lab that is generating the report
     "performingLaboratory": {
-      ** A human readable name for the Laboratory
+      // A human readable name for the Laboratory
       "facilityName": "PITUS Pathology",
-      ** A computer readable code for the Laboratory
+      -- A computer readable code for the Laboratory
       "facilityCode": "PITUSPathology",
-      ** The Laboratory's NATA Site NUmber, The National Association of Testing Authorities (NATA) accredits Laboratories for operations in Australia and issues a NATA Site number
+      ## The Laboratory's NATA Site NUmber, The National Association of Testing Authorities (NATA) accredits Laboratories for operations in Australia and issues a NATA Site number
       "nataSiteNumber": "9999",
       ** The Laboratory's National Organisation identifier - Healthcare Provider Identifier for Organisations (HPI-O) 
       "hpi-o": "8003 6299 0001 9338",
