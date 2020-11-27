@@ -71,17 +71,17 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
     "performingLaboratory": {
       //"A human readable name for the Laboratory"
       "facilityName": "PITUS Pathology",
-      //"A computer readable code for the Laboratory
+      //"A computer readable code for the Laboratory"
       "facilityCode": "PITUSPathology",
-      //"The Laboratory's NATA Site NUmber, The National Association of Testing Authorities (NATA) accredits Laboratories for operations in Australia and issues a NATA Site number
+      //"The Laboratory's NATA Site NUmber, The National Association of Testing Authorities (NATA) accredits Laboratories for operations in Australia and issues a NATA Site number"
       "nataSiteNumber": "9999",
-      //"The Laboratory's National Organisation identifier - Healthcare Provider Identifier for Organisations (HPI-O) 
+      //"The Laboratory's National Organisation identifier - Healthcare Provider Identifier for Organisations (HPI-O) "
       "hpi-o": "8003 6299 0001 9338",
-      //"The Laboratory's business phone number
+      //"The Laboratory's business phone number"
       "businessPhoneNumber": "+61 2 8356 5858",
-      //"A computer readable code that represents the Laboratory Information System (LIS) producing the report
+      //"A computer readable code that represents the Laboratory Information System (LIS) producing the report"
       "laboratoryInformationSystemApplicationCode": "SuperLIS",
-      //"The Laboratory's business address
+      //"The Laboratory's business address"
       "address": {
         "lineOne": "Durham Hall",
         "lineTwo": "207 Albion Street",
@@ -93,20 +93,20 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
         "typeCode": "B"
       }
     },
-    //"The pathology report's patient details
+    //"The pathology report's patient details"
     "Patient": {
-      //"The patient's name details
+      //"The patient's name details"
       "name": {
         "family": "WHITEWATER",
         "given": "George",
         "middle": "Neil",
         "title": "Mr"
       },
-      //"The patient's Date of Birth
+      //"The patient's Date of Birth"
       "dateOfBirth": "1950-08-01T00:00:00",
-      //"The patient's sex (A - Ambiguous, O - Other, U: Unknown, F - Female, M - Male)
+      //"The patient's sex (A - Ambiguous, O - Other, U: Unknown, F - Female, M - Male)"
       "gender": "M",
-      //"The patient's addresses, many of
+      //"The patient's addresses, many of"
       "addressList": [
         {
           "lineOne": "197 Ramsay Court",
@@ -119,14 +119,14 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
           "typeCode": "H"
         }
       ],
-      //"The patient's identifiers, many of
+      //"The patient's identifiers, many of"
       "identifierList": [
         {
-          //"The identifiers' value
+          //"The identifiers' value"
           "value": "8003 6021 4585 0890",
-          //"The type of identifier, can be one of (MedicareNumber, IHI, HPII, HPIO, MedicareProviderNumber, GUID, LocalToLab, MRN, DVA)
+          //"The type of identifier, can be one of (MedicareNumber, IHI, HPII, HPIO, MedicareProviderNumber, GUID, LocalToLab, MRN, DVA)"
           "type": "IHI",
-          //"The Assigning Authority code for the identifier, not required except for identifier of type MRN where it must be provided, as seen in  the next example.
+          //"The Assigning Authority code for the identifier, not required except for identifier of type MRN where it must be provided, as seen in  the next example."
           "assigningAuthority": null
         },
         {
@@ -135,48 +135,48 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
           "assigningAuthority": "RespiratoryClinicSunriseHospital"
         }
       ],
-      //"The patient's home phone number (Optional)
+      //"The patient's home phone number (Optional)"
       "homePhoneNumber": "+61492813178"
     },
-    //"The pathology reports request details (Mandatory)
+    //"The pathology reports request details (Mandatory)"
     "Request": {
-      //"The details of the facility that requested the pathology report (Mandatory)
+      //"The details of the facility that requested the pathology report (Mandatory)"
       "requestingFacility": {
-         //"The the facility's human readable name (Mandatory)
+         //"The the facility's human readable name (Mandatory)"
         "name": "Sunrise Hospital Respiratory Clinic",
-        //"The the facility's identifier
+        //"The the facility's identifier"
         "identifier": {
           "value": "13A8DC14-A1E9-475C-9B4C-DA19866E020A",
           "type": "GUID",
           "assigningAuthority": null
         }
       },
-      //"A code to represent the application that requested the pathology report, and to which it will return to (Mandatory)
+      //"A code to represent the application that requested the pathology report, and to which it will return to (Mandatory)"
       "requestingApplication": "Best Practice 1.8.5.743",
-      //"The requesting doctor's details (Mandatory)
+      //"The requesting doctor's details (Mandatory)"
       "requestingProvider": {
-        //"The requesting doctor's name details (Family name is Mandatory)
+        //"The requesting doctor's name details (Family name is Mandatory)"
         "name": {
           "family": "Familydr",
           "given": "Trish",
           "middle": "",
           "title": "Dr"
         },
-        //"The requesting doctor's identifier list (Mandatory)
+        //"The requesting doctor's identifier list (Mandatory)"
         "identifierList": [
-          //"(A HPI-I is Mandatory for CDA documents generation)
+          //"(A HPI-I is Mandatory for CDA documents generation)"
           {
             "value": "8003614242061461",
             "type": "HPII",
             "assigningAuthority": null
           },
-          //"(A code local to the performing laboratory (Mandatory)
+          //"(A code local to the performing laboratory (Mandatory)"
           {
             "value": "FAMTRI",
             "type": "LocalToLab",
             "assigningAuthority": null
           },
-          //"(A Medicare Provider number (optional)
+          //"(A Medicare Provider number (optional)"
           {
             "value": "067709AH",
             "type": "MedicareProviderNumber",
@@ -184,13 +184,13 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
           }
         ]
       },
-      //"An order number from the system requesting the pathology report (Optional)
+      //"An order number from the system requesting the pathology report (Optional)"
       "orderNumber": "00000016",
-      //"Date & Time when the request was made by the requesting doctor (Mandatory)
+      //"Date & Time when the request was made by the requesting doctor (Mandatory)"
       "requestedDateTime": "2020-07-25T00:00:00+10:00",
-      //"Any Clinical notes provided by the requester, relevant to the Pathology request (Optional)
+      //"Any Clinical notes provided by the requester, relevant to the Pathology request (Optional)"
       "clinicalNotes": "Sore throat & cough, works in hospitality",
-      //"Any individuals or organisations that a copy of the report has been sent to, aka 'Copy To' (Optional)
+      //"Any individuals or organisations that a copy of the report has been sent to, aka 'Copy To' (Optional)"
       "copyToList": [
         {
           "name": {
@@ -208,63 +208,63 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
           ]
         }
       ],
-      //"A phone number to contact the requesting part on (Optional)
+      //"A phone number to contact the requesting part on (Optional)"
       "callBackPhoneNumber": null
     },
-    //"The file name and extension of PDF attachment that is the pathology report to be read by the receiver (Mandatory), note this file must be found in the PdfAttachmentInputDirectory 
+    //"The file name and extension of PDF attachment that is the pathology report to be read by the receiver (Mandatory), note this file must be found in the PdfAttachmentInputDirectory "
     "pdfFileName": "Exemplar Report SARS-CoV-2 Serology v0.3.pdf",
-    //"The list of reports as found in the PDF attachment that are associated to a set of result values (Mandatory)
-    //"There are unresolved issues with HL7 v2 messages which wish  to express many reports and yet only have a single PDF attachment.
-    //"Do we duplicate the PDF in the message, we are not sure, at present this solution only support a single report when generating HL7 v2 messages.   
+    //"The list of reports as found in the PDF attachment that are associated to a set of result values (Mandatory)"
+    //"There are unresolved issues with HL7 v2 messages which wish  to express many reports and yet only have a single PDF attachment."
+    //"Do we duplicate the PDF in the message, we are not sure, at present this solution only support a single report when generating HL7 v2 messages. "  
     "ReportList": [
       {
-        //"The reports primary laboratory assigned identifier (Mandatory)
+        //"The reports primary laboratory assigned identifier (Mandatory)"
         "reportId": "1978881860",
-        //"The reports specimen collection date & time (Mandatory)
+        //"The reports specimen collection date & time (Mandatory)"
         "collectionDateTime": "2020-07-25T18:20:00+10:00",
-        //"The date & time that the specimens where Received into the laboratory (Mandatory)
+        //"The date & time that the specimens where Received into the laboratory (Mandatory)"
         "specimenReceivedDateTime": "2020-07-25T19:32:00+10:00",
-        //"The date & time that report was Released/Authorised/Finalised from the laboratory (Mandatory)
+        //"The date & time that report was Released/Authorised/Finalised from the laboratory (Mandatory)"
         "reportReleaseDateTime": "2020-07-26T10:36:00+10:00",
-        //"The status of the report can be (F - Final, C- Correction, P - Preliminary, X - NoResultsAvailableOrderCanceled) (Mandatory)
+        //"The status of the report can be (F - Final, C- Correction, P - Preliminary, X - NoResultsAvailableOrderCanceled) (Mandatory)"
         "reportStatus": "F",
-        //"The report type details, what sort of report is it (Mandatory)
+        //"The report type details, what sort of report is it (Mandatory)"
         "reportType": {
-          //"The SNOMED term for the report type, preferably taken from the RCPA's SPIA Requesting Pathology terminology valueSet (Optional)
+          //"The SNOMED term for the report type, preferably taken from the RCPA's SPIA Requesting Pathology terminology valueSet (Optional)"
           "snomed": {
             "term": "1454651000168108",
             "description": "SARS-CoV-2 serology",            
-            //"An OID for the system that the provided term comes from (Mandatory for CDA and only required on Local term types, so not required here for a SNOMED term) 
+            //"An OID for the system that the provided term comes from (Mandatory for CDA and only required on Local term types, so not required here for a SNOMED term)" 
             "oid": null
           },
-          //"The term that is local to the laboratory for the report type (Mandatory)
+          //"The term that is local to the laboratory for the report type (Mandatory)"
           "local": {
             "term": "COVID2SER",
             "description": "SARS-CoV-2 Serology",
-            //"An OID for the system that the provided term comes from (Mandatory for CDA and only required on Local term types) 
+            //"An OID for the system that the provided term comes from (Mandatory for CDA and only required on Local term types) "
             "oid": null
           }
         },
-        //"A code for the department that the report is generated from in the laboratory as taken from 
-        //"the HL7AUSD-STD-OO-ADRM-2018.1 standard HL7 Table 0074 - Diagnostic service section ID code system (Mandatory)
+        //"A code for the department that the report is generated from in the laboratory as taken from "
+        //"the HL7AUSD-STD-OO-ADRM-2018.1 standard HL7 Table 0074 - Diagnostic service section ID code system (Mandatory)"
         "department": "SR",
-        //"A reporting Pathologist's details, he who is responsible for the report from the  laboratory (Mandatory)
+        //"A reporting Pathologist's details, he who is responsible for the report from the  laboratory (Mandatory)"
         "reportingPathologist": {
-          //"A reporting Pathologist name details (Family name is Mandatory)
+          //"A reporting Pathologist name details (Family name is Mandatory)"
           "name": {
             "family": "Pathologist",
             "given": "Bella",
             "middle": "",
             "title": "Dr"
           },
-          //"A reporting Pathologist HPI-I identifier (Mandatory for CDA Documents)
+          //"A reporting Pathologist HPI-I identifier (Mandatory for CDA Documents)"
           "identifierList": [
             {
               "value": "8003 6111 0391 4531",
               "type": "HPII",
               "assigningAuthority": null
             },
-            //"A reporting Pathologist laboratory local identifier (Mandatory)
+            //"A reporting Pathologist laboratory local identifier (Mandatory)"
             {
               "value": "BPATH",
               "type": "LocalToLab",
@@ -272,56 +272,56 @@ Please note that to use this file all the comments lines (e.g. ** This is a comm
             }
           ]
         },
-        //"The Panel/Battery of result values associated with the report, it is a list or result values (Mandatory to have at least one). 
+        //"The Panel/Battery of result values associated with the report, it is a list or result values (Mandatory to have at least one). "
         "panel": {
-          //"The list of results for the Panel/Battery
+          //"The list of results for the Panel/Battery"
           "resultList": [
             {
-              //"The result type details, what sort of result is it (Mandatory)
+              //"The result type details, what sort of result is it (Mandatory)"
               "resultType": {
-                //"The report type's LONIC term, preferably taken from the RCPA's SPIA terminology value sets (Optional)
+                //"The report type's LONIC term, preferably taken from the RCPA's SPIA terminology value sets (Optional)"
                 "lonic": {
                   "term": "95427-1",
                   "description": "SARS-CoV-2 (COVID-19) IgA IF [Titer]",
                   "oid": null
                 },
-                //"The report type's term which is local to the laboratory (Mandatory)
+                //"The report type's term which is local to the laboratory (Mandatory)"
                 "local": {
                   "term": "COVID2IGA",
                   "description": "SARS-CoV-2 IgA IF",
                   "oid": null
                 }
               },
-              //"A data type for this result value. the data types have been taken from the HL7 v2 specification and the supported 
-              //"types are (NM - Numeric, SN - Structured Numeric, NR - Numeric Range, ST - String, FT - Formatted Text) (Mandatory)
+              //"A data type for this result value. the data types have been taken from the HL7 v2 specification and the supported "
+              //"types are (NM - Numeric, SN - Structured Numeric, NR - Numeric Range, ST - String, FT - Formatted Text) (Mandatory)"
               "dataType": "NM",
-              //"The result value which must align with the stated data type above (Optional). 
-              //"This string must use HL7 v2 escaping which means you must replace the following values as shown
-              //"| replace with \\F\\
-              //"^ replace with \\S\\ 
-              //"& replace with \\T\\
-              //"\ replace with \\E\\
-              //"~ replace with \\R\\
-              //"You can use \\.br\\ to create a line break
-              //"You can use \\H\\ to begin highlighting (turn bold on)
-              //"You can use \\N\\ to end highlighting (turn bold off)
+              //"The result value which must align with the stated data type above (Optional). "
+              //"This string must use HL7 v2 escaping which means you must replace the following values as shown"
+              //"| replace with \\F\\"
+              //"^ replace with \\S\\"
+              //"& replace with \\T\\"
+              //"\ replace with \\E\\"
+              //"~ replace with \\R\\"
+              //"You can use \\.br\\ to create a line break"
+              //"You can use \\H\\ to begin highlighting (turn bold on)"
+              //"You can use \\N\\ to end highlighting (turn bold off)"
               "value": "20",
-               //"The units for the result value, should be UCUM units (Optional)
+               //"The units for the result value, should be UCUM units (Optional)"
               "units": null,
-              //"The reference range for the result value, e.g '100 - 200' (Optional)
+              //"The reference range for the result value, e.g '100 - 200' (Optional)"
               "referenceRange": null,
-              //"An abnormality flag for the result value, can be one of (L - Low, H - high, N - Normal, S - Susceptible, R - Resistant, I - Intermediate, A - Abnormal) (Optional)
+              //"An abnormality flag for the result value, can be one of (L - Low, H - high, N - Normal, S - Susceptible, R - Resistant, I - Intermediate, A - Abnormal) (Optional)"
               "abnormalFlag": null,
-              //"The status for the result value, can be one of (F - Final, C- Correction, P - Preliminary, X - NoResultsAvailableOrderCanceled) (Mandatory)
+              //"The status for the result value, can be one of (F - Final, C- Correction, P - Preliminary, X - NoResultsAvailableOrderCanceled) (Mandatory)"
               "status": "F",
-              //"The date & time that the result value was generated by the laboratory's equipment (Optional)
+              //"The date & time that the result value was generated by the laboratory's equipment (Optional)"
               "observationDateTime": "2020-07-26T10:31:00+10:00",
-              //"Some result values can contain children result values and even those children result values can contin there own children result values.
-              //"This occurs in structured Microbiology reports such as a Urine MC&S where an identified organism will have that organism's sensitivity 
-              //"results as children of the organism result. Here you can add a list of new results just like the one we have described (optional) 
+              //"Some result values can contain children result values and even those children result values can contin there own children result values."
+              //"This occurs in structured Microbiology reports such as a Urine MC&S where an identified organism will have that organism's sensitivity "
+              //"results as children of the organism result. Here you can add a list of new results just like the one we have described (optional) "
               "childResultList": null
             },
-            //"The next results in the Panel/Battery list, and on and on as described above.
+            //"The next results in the Panel/Battery list, and on and on as described above."
             {
               "resultType": {
                 "lonic": {
