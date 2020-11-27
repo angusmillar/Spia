@@ -39,7 +39,7 @@ The solution reads in a set of JSON formatted files where each contains all the 
 
 To run the solution you can set the solution project named **Spia.Runner:** as the start-up project and configure how you would like it to operate by changing the properties found in the Program.cs file of that project. Here you will find a **SpiaFileGeneratorOptions** object which provides the following options:  
 
-**SpiaFileGeneratorOptions property descriptions**
+## SpiaFileGeneratorOptions documentation ##
 Option | Description
 ------------ | -------------
 OutputDirectory | The parent folder path where the solution will outputted the generated content e.g. @"C:\temp\SPIAMessages\Output"
