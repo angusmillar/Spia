@@ -52,7 +52,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetMySpecialist()
             }
           },
-          PdfFileName = "Exemplar Report SARS-CoV-2NAT v0.3.pdf",
+          PdfFileName = "Exemplar Report SARS-CoV-2NAT v0.4.pdf",
           ReportList = new List<Report>()
           {
             new Report()

@@ -50,7 +50,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetBiancaMidwife()
             }
           },
-          PdfFileName = "Exemplar Report HbsAb v1.4.pdf",
+          PdfFileName = "Exemplar Report HbsAb v1.5.pdf",
           ReportList = new List<Report>()
           {
             new Report()

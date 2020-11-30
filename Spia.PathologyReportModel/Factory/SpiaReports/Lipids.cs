@@ -53,7 +53,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetGBastien()
             }
           },
-          PdfFileName = "SPIA Exemplar Report Lipids v1.4.pdf",
+          PdfFileName = "SPIA Exemplar Report Lipids v1.5.pdf",
           ReportList = new List<Report>()
           {
             new Report()
@@ -130,14 +130,12 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       {
                         Term = "TRIGR",
                         Description = "Triglycerides random"
-                      },
-                      //Do we need a LONIC for Triglycerides random in Lipids
-                      Lonic = null,
-                      //Lonic = new Code()
-                      //{
-                      //  Term = "30524-3",
-                      //  Description = "Triglycerides fasting"
-                      //}
+                      },                      
+                      Lonic = new Code()
+                      {
+                        Term = "14927-8",
+                        Description = "Triglycerides random"
+                      }
                     },
                     DataType = "NM",
                     Value = "2.3",
@@ -204,14 +202,12 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       {
                         Term = "NHDLC",
                         Description = "Non HDL Cholesterol"
-                      },
-                      //Do we need a lonic for Non HDL Cholesterol in Lipids
-                      Lonic = null,
-                      //Lonic = new Code()
-                      //{
-                      //  Term = "32309-7",
-                      //  Description = "Chol/HDL Ratio"
-                      //}
+                      },                    
+                      Lonic = new Code()
+                      {
+                        Term = "70204-3",
+                        Description = "Non HDL Cholesterol "
+                      }
                     },
                     DataType = "NM",
                     Value = "2.1",

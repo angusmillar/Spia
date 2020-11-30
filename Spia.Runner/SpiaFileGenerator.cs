@@ -42,11 +42,25 @@ namespace Spia.Runner
         WriteLine("----------------------------------------------------------------------");
         WriteLine($"The option {nameof(this.Options.GenerateLogicalModels)} is set to True.");
         WriteLine("Generate Pathology Report Data files");
+        //Validate that the folder where we will output the generated LogicalModle files to is empty, as we do not want to overwrite files they may have created.
         RootReportDataDirectory.CreateDirectoryIfNoExist();
         RootReportDataDirectory = new DirectoryInfo(Options.LogicalModelInputDirectory);
         if (RootReportDataDirectory.GetFiles("*.json", SearchOption.TopDirectoryOnly).Count() > 0)
         {
-          throw new ApplicationException($"The {Options.LogicalModelInputDirectory} directory must empty when {nameof(this.Options.GenerateLogicalModels)} is set to true.");
+          throw new ApplicationException($"The {RootReportDataDirectory.FullName} directory must empty when {nameof(this.Options.GenerateLogicalModels)} is set to true.");
+        }
+        //Validate that the folder where we will output the PDF files to is empty, as we do not want to overwrite files they may have created.
+        RootPdfDirectory.CreateDirectoryIfNoExist();
+        RootPdfDirectory = new DirectoryInfo(Options.PdfAttachmentInputDirectory);
+        if (RootPdfDirectory.GetFiles("*.pdf", SearchOption.TopDirectoryOnly).Count() > 0)
+        {
+          throw new ApplicationException($"The {RootPdfDirectory.FullName} directory must empty when {nameof(this.Options.GenerateLogicalModels)} is set to true.");
+        }
+
+        DirectoryInfo StaticApplicationPdfDiectory = GetApplicationPdfDirectory();
+        foreach(FileInfo PdfFileInfo in StaticApplicationPdfDiectory.GetFiles("*.pdf", SearchOption.TopDirectoryOnly))
+        {
+          PdfFileInfo.CopyTo(Path.Combine(RootPdfDirectory.FullName, PdfFileInfo.Name));
         }
 
         var SpiaPathologyReportFactory = new Spia.PathologyReportModel.Factory.SpiaPathologyReportFactory();
@@ -63,9 +77,10 @@ namespace Spia.Runner
           var Reader = new Spia.PathologyReportModel.JsonFileReader();
           var PathologyReportsRead = Reader.ReadPathologyReports(JsonFilePath.FullName);
         }
+        PathologyReportContainerList.Clear();
       }
 
-
+      
       //Read in all Pathology Data json files found in the directory      
       WriteLine("----------------------------------------------------------------------");
       WriteLine("Reading in Pathology Report Logical Model files");
@@ -213,6 +228,15 @@ namespace Spia.Runner
         }
       }
 
+    }
+
+    private DirectoryInfo GetApplicationPdfDirectory()
+    {
+      //C:\GitRepository\Spia\Spia.Runner\bin\Debug\
+      string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+      BaseDirectory = BaseDirectory.Substring(0, BaseDirectory.IndexOf(@"Spia\Spia.Runner"));
+      BaseDirectory = Path.Combine(BaseDirectory, @"Spia\Spia.Runner\SpiaExemplarPdfReports");
+      return new DirectoryInfo(BaseDirectory);      
     }
 
     public static void WriteLine(string Message)

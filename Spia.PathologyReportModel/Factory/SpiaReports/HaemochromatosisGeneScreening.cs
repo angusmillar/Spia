@@ -51,7 +51,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetBjornGeneticCounsellor()
             }
           },
-          PdfFileName = "Exemplar Report Haemochromatosis gene screening v1.4.pdf",
+          PdfFileName = "Exemplar Report Haemochromatosis gene screening v1.5.pdf",
           ReportList = new List<Report>()
           {
             new Report()

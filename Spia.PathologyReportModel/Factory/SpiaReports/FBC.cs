@@ -51,7 +51,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetBillHaematologist()
             }
           },
-          PdfFileName = "Exemplar Report FBC v1.5.pdf",
+          PdfFileName = "Exemplar Report FBC v1.6.pdf",
           ReportList = new List<Report>()
           {
             new Report()

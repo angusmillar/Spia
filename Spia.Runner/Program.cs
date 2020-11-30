@@ -12,7 +12,7 @@ namespace Spia.Runner
         pdfAttachmentInputDirectory: @"C:\temp\SPIAMessages\PDF",
         logicalModelInputDirectory: @"C:\temp\SPIAMessages\LogicalModels")
       {
-        GenerateLogicalModels = false,
+        GenerateLogicalModels = true,
         GenerateHL7Version2Messages = true,
         GenerateFhirBundles = true,
         GenerateCdaDocuments = true,

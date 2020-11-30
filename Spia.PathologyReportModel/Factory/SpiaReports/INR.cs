@@ -53,7 +53,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetBillCardiologist()
             }
           },
-          PdfFileName = "Exemplar Report INR v1.6.pdf",
+          PdfFileName = "Exemplar Report INR v1.7.pdf",
           ReportList = new List<Report>()
           {
             new Report()

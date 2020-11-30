@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace Spia.PathologyReportModel.Factory.SpiaReports
 {
-  public class HistoColorectal : IReportFactory
+  //This HistoColorectal is not finished and by commenting out the IReportFactory interface it will not be included in the output
+  public class HistoColorectal //: IReportFactory
   {
     private readonly SpiaPatientFactory PatientFactory;
     private readonly SpiaProviderFactory ProviderFactory;
@@ -51,7 +52,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             {             
             }
           },
-          PdfFileName = "Exemplar Report Histo Colorectal SPRC v1.1.pdf",
+          PdfFileName = "Exemplar Report Histo Colorectal SPRC v1.2.pdf",
           ReportList = new List<Report>()
           {
             new Report()

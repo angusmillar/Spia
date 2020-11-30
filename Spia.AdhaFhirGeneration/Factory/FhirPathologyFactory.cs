@@ -837,6 +837,8 @@ namespace Spia.AdhaFhirGeneration.Factory
       var LowInterpretation = new CodeableConcept("http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", "L", "Low");
       var ResistantInterpretation = new CodeableConcept("http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", "R", "Resistant");
       var SusceptibleInterpretation = new CodeableConcept("http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", "S", "Susceptible");
+      var Intermediate = new CodeableConcept("http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", "I", "Intermediate");
+      var Abnormal = new CodeableConcept("http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", "A", "Abnormal");
       switch (Result.AbnormalFlag)
       {
         case "N":
@@ -853,6 +855,12 @@ namespace Spia.AdhaFhirGeneration.Factory
           break;
         case "S":
           Obs.Interpretation = new List<CodeableConcept>() { SusceptibleInterpretation };
+          break;
+        case "I":
+          Obs.Interpretation = new List<CodeableConcept>() { Intermediate };
+          break;
+        case "A":
+          Obs.Interpretation = new List<CodeableConcept>() { Abnormal };
           break;
         default:
           break;

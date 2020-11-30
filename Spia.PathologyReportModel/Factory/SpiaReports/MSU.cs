@@ -52,7 +52,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetRebeccaGP()
             }
           },
-          PdfFileName = "SPIA Exemplar Report Urine MCS v1.5.pdf",
+          PdfFileName = "SPIA Exemplar Report Urine MCS v1.6.pdf",
           ReportList = new List<Report>()
           {
             new Report()
@@ -82,8 +82,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Term = "COLOR",
                         Description = "Colour"
                       },
-                      //Do we need a LONIC for Color in MSU
-                      Lonic = null,
+                      Lonic = new Code()
+                      {
+                        Term = "5778-6",
+                        Description = "Colour"
+                      }
                     },
                     DataType = "ST",
                     Value = "Pink stained",
@@ -103,8 +106,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Term = "CLARITY",
                         Description = "Clarity"
                       },
-                      //Do we need a LONIC for Color in MSU
-                      Lonic = null,
+                      Lonic = new Code()
+                      {
+                        Term = "32167-9",
+                        Description = "Clarity"
+                      }
                     },
                     DataType = "ST",
                     Value = "Turbid",

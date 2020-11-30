@@ -52,7 +52,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetDiabetesClinicSunshineHospital(),             
             }
           },
-          PdfFileName = "SPIA Exemplar Report Blood Gases v1.2.pdf",
+          PdfFileName = "SPIA Exemplar Report Blood Gases v1.3.pdf",
           ReportList = new List<Report>()
           {
             new Report()

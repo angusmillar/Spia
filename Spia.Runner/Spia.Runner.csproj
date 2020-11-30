@@ -57,6 +57,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report Chlamydia trachomatis NAT v1.6.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report Chromosome studies v1.4.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report EPP v1.6.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report EUC v1.6.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report FBC v1.6.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report Haemochromatosis gene screening v1.5.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report HbsAb v1.5.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report IgE v1.5.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report INR v1.7.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report SARS-CoV-2 Serology v0.4.pdf" />
+    <None Include="SpiaExemplarPdfReports\Exemplar Report SARS-CoV-2NAT v0.4.pdf" />
+    <None Include="SpiaExemplarPdfReports\SPIA Exemplar Report Blood Gases v1.3.pdf" />
+    <None Include="SpiaExemplarPdfReports\SPIA Exemplar Report Iron studies v0.3.pdf" />
+    <None Include="SpiaExemplarPdfReports\SPIA Exemplar Report Lipids v1.5.pdf" />
+    <None Include="SpiaExemplarPdfReports\SPIA Exemplar Report Urine MCS v1.6.pdf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Spia.AdhaCdaGeneration\Spia.AdhaCdaGeneration.csproj">
@@ -89,5 +104,6 @@
   <ItemGroup>
     <None Include="Resources\RCPA_PITUS_Logo.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

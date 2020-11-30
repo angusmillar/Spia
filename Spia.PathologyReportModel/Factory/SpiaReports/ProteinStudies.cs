@@ -52,7 +52,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetArmandeImmunologist()
             }
           },
-          PdfFileName = "Exemplar Report EPP v1.5.pdf",
+          PdfFileName = "Exemplar Report EPP v1.6.pdf",
           ReportList = new List<Report>()
           {
             new Report()
@@ -120,32 +120,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     ObservationDateTime = ObservationDateTime,
                     Status = ResultStatusType.Final,
                     ChildResultList = null
-                  },
-                  //new Result()
-                  //{
-                  //  Type = new ResultType()
-                  //  {
-                  //    Local = new Code()
-                  //    {
-                  //      Term = "Globulin",
-                  //      Description = "Globulin"
-                  //    },
-                  //    Lonic = new Code()
-                  //    {
-                  //      //ToDo: Do we need a Lonic term for Globulin in the Protein SPEP core report
-                  //      Term = "10834-0",
-                  //      Description = "Globulin"
-                  //    }
-                  //  },
-                  //  DataType = "NM",
-                  //  Value = null,
-                  //  Units = null,
-                  //  ReferenceRange = "28-37",
-                  //  AbnormalFlag = "N",
-                  //  ObservationDateTime = ObservationDateTime,
-                  //  Status = ResultStatusType.Final,
-                  //  ChildResultList = null
-                  //},                  
+                  },                      
                   new Result()
                   {
                     Type = new ResultType()
@@ -155,8 +130,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Term = "ALPHAGLOB1",
                         Description = "Alpha-1 globulin"
                       },
-                      //ToDo: Do we need a LONIC term for Alpha-1 globulin, is it still 12728-2 which was for Alpha globulin
-                      Lonic = null
+                      Lonic = new Code()
+                      {
+                        Term = "2865-4",
+                        Description = "Alpha-1 globulin"
+                      }
                     },
                     DataType = "NM",
                     Value = "3",
@@ -176,8 +154,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Term = "ALPHAGLOB2",
                         Description = "Alpha-2 globuin"
                       },
-                      //ToDo: Do we need a LONIC term for Alpha-1 globulin, is it still 12728-2 which was for Alpha globulin
-                      Lonic = null
+                      Lonic = new Code()
+                      {
+                        Term = "2868-8",
+                        Description = "Alpha-2 globuin"
+                      }
                     },
                     DataType = "NM",
                     Value = "8",
@@ -197,8 +178,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Term = "BETA1GLOB",
                         Description = "Beta-1 globulin"
                       },
-                      //ToDo: Do we need a LONIC term for Beta-1 globulin
-                      Lonic = null
+                      Lonic = new Code()
+                      {
+                        Term = "32730-4",
+                        Description = "Beta-1 globulin"
+                      }
                     },
                     DataType = "NM",
                     Value = "5",
@@ -218,8 +202,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Term = "BETA2GLOB",
                         Description = "Beta-2 globulin"
                       },
-                      //ToDo: Do we need a LONIC term for Beta-2 globulin
-                      Lonic = null
+                      Lonic = new Code()
+                      {
+                        Term = "32731-2",
+                        Description = "Beta-2 globulin"
+                      }
                     },
                     DataType = "NM",
                     Value = "5",
@@ -264,9 +251,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                         Description = "Paraprotein"
                       },
                       Lonic = new Code()
-                      {
-                        //ToDo: Do we need a Lonic term for Paraprotein in the Protein SPEP core report
-                        Term = "??",
+                      {                       
+                        Term = "94400-9",
                         Description = "Paraprotein"
                       }
                     },
@@ -287,8 +273,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                           {
                             Term = "TYPE",
                             Description = "Type"
-                          },
-                          //ToDo: Do we need a lonic for the Paraprotein type?
+                          },                         
                           Lonic = null
                         },
                         DataType = "ST",
@@ -309,8 +294,11 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                             Term = "CONCENT",
                             Description = "Concentration"
                           },
-                          //ToDo: Do we need a lonic for the Paraprotein Concentration?
-                          Lonic = null
+                          Lonic = new Code()
+                          {
+                            Term = "51435-6",
+                            Description = "Concentration"
+                          }
                         },
                         DataType = "NM",
                         Value = "8",
@@ -353,10 +341,9 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                             Description = "Immunoglobulin G"
                           },
                           Lonic = new Code()
-                          {
-                            //ToDo: Is this still the correct Lonic for the named changed Immunoglobulin G
-                            Term = "44597-3",
-                            Description = "IgG monoclonal"
+                          {                           
+                            Term = "55922-9",
+                            Description = "Immunoglobulin G"
                           }
                         },
                         DataType = "NM",
@@ -378,10 +365,9 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                             Description = "Immunoglobulin A"
                           },
                           Lonic = new Code()
-                          {
-                            //ToDo: Is this still the correct Lonic for the named changed Immunoglobulin A
-                            Term = "44587-4",
-                            Description = "IgA monoclonal"
+                          {                            
+                            Term = "55902-1",
+                            Description = "Immunoglobulin A"
                           }
                         },
                         DataType = "NM",
@@ -403,10 +389,9 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                             Description = "Immunoglobulin M"
                           },
                           Lonic = new Code()
-                          {
-                            //ToDo: Is this still the correct Lonic for the named changed Immunoglobulin M
-                            Term = "44601-3",
-                            Description = "IgM monoclonal"
+                          {                            
+                            Term = "55925-2",
+                            Description = "Immunoglobulin M"
                           }
                         },
                         DataType = "NM",

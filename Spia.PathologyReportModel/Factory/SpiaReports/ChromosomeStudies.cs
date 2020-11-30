@@ -53,7 +53,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetSarsgaardGeneticCounsellor(),
             }
           },
-          PdfFileName = "Exemplar Report Chromosome studies v1.3.pdf",
+          PdfFileName = "Exemplar Report Chromosome studies v1.4.pdf",
           ReportList = new List<Report>()
           {
             new Report()

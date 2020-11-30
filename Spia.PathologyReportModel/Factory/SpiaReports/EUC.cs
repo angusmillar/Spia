@@ -49,7 +49,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
             CallBackPhoneNumber = null,
             CopyToList = null,
           },
-          PdfFileName = "Exemplar Report EUC v1.5.pdf",
+          PdfFileName = "Exemplar Report EUC v1.6.pdf",
           ReportList = new List<Report>()
           {
             new Report()
@@ -228,7 +228,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                       },
                       Lonic = new Code()
                       {
-                        Term = "62238-1",
+                        Term = "50210-4",
                         Description = "eGFR"
                       }
                     },

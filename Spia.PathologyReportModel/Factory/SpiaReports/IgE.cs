@@ -52,7 +52,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetBeulaImmunologist()
             }
           },
-          PdfFileName = "Exemplar Report IgE v1.4.pdf",
+          PdfFileName = "Exemplar Report IgE v1.5.pdf",
           ReportList = new List<Report>()
           {
             new Report()

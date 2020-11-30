@@ -52,7 +52,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ProviderFactory.GetInfusionClinic()
             }
           },
-          PdfFileName = "SPIA Exemplar Report Iron studies v0.2.pdf",
+          PdfFileName = "SPIA Exemplar Report Iron studies v0.3.pdf",
           ReportList = new List<Report>()
           {
             new Report()
