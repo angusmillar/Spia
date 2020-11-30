@@ -50,7 +50,7 @@ namespace Spia.AdhaFhirGeneration.Factory
       TotalObservationList.Insert(0, ParentObs);
       DiagnosticReport.Result = new List<ResourceReference>()
       {
-        new ResourceReference($"{ParentObs.ResourceType.GetLiteral()}/{ParentObs.Id}", $"{ParentObs.Code.Coding[0].Display}")
+        new ResourceReference($"{ParentObs.TypeName}/{ParentObs.Id}", $"{ParentObs.Code.Coding[0].Display}")
       };
 
       Composition Composition = GetPathologyComposition(Patient, PathologistPractitionerRole, DiagnosticReport);
@@ -97,11 +97,11 @@ namespace Spia.AdhaFhirGeneration.Factory
       //Comp.Identifier = ?
       Comp.Status = CompositionStatus.Final;
       Comp.Type = new CodeableConcept("https://healthterminologies.gov.au/fhir/CodeSystem/nctis-data-components-1", "100.32001");
-      Comp.Subject = new ResourceReference($"{subject.ResourceType.GetLiteral()}/{subject.Id}", subject.Name[0].Text);
+      Comp.Subject = new ResourceReference($"{subject.TypeName}/{subject.Id}", subject.Name[0].Text);
       Comp.DateElement = new FhirDateTime(new DateTimeOffset(2020, 06, 12, 10, 30, 00, TimeSpan.FromHours(10)));
       Comp.Author = new List<ResourceReference>()
       {
-        new ResourceReference($"{AuthorPractitionerRole.ResourceType.GetLiteral()}/{AuthorPractitionerRole.Id}")
+        new ResourceReference($"{AuthorPractitionerRole.TypeName}/{AuthorPractitionerRole.Id}")
       };
       Comp.Title = "Pathology Report";
       Comp.Attester = new List<Composition.AttesterComponent>()
@@ -110,7 +110,7 @@ namespace Spia.AdhaFhirGeneration.Factory
         {
           Mode = Composition.CompositionAttestationMode.Legal,
           TimeElement = new FhirDateTime(new DateTimeOffset(2020, 06, 12, 10, 30, 00, TimeSpan.FromHours(10))),
-          Party = new ResourceReference($"{AuthorPractitionerRole.ResourceType.GetLiteral()}/{AuthorPractitionerRole.Id}")
+          Party = new ResourceReference($"{AuthorPractitionerRole.TypeName}/{AuthorPractitionerRole.Id}")
         }
       };
       Comp.Custodian = AuthorPractitionerRole.Organization;
@@ -127,7 +127,7 @@ namespace Spia.AdhaFhirGeneration.Factory
         },
         Entry = new List<ResourceReference>()
         {
-          new ResourceReference($"{PathologyReport.ResourceType.GetLiteral()}/{PathologyReport.Id}", PathologyReport.Code.Coding[0].Display)
+          new ResourceReference($"{PathologyReport.TypeName}/{PathologyReport.Id}", PathologyReport.Code.Coding[0].Display)
         }
       });
       return Comp;
@@ -421,7 +421,7 @@ namespace Spia.AdhaFhirGeneration.Factory
 
       sr.AuthoredOnElement = new FhirDateTime(Report.Request.RequestedDate);
 
-      sr.Requester = new ResourceReference($"{OrderingPractitionerRole.ResourceType.GetLiteral()}/{OrderingPractitionerRole.Id}");
+      sr.Requester = new ResourceReference($"{OrderingPractitionerRole.TypeName}/{OrderingPractitionerRole.Id}");
 
       sr.Text = new Narrative();
       sr.Text.Status = Narrative.NarrativeStatus.Generated;
@@ -595,10 +595,10 @@ namespace Spia.AdhaFhirGeneration.Factory
         };
       }
       pracRole.Active = true;
-      pracRole.Practitioner = new ResourceReference($"{orderingPractitioner.ResourceType.GetLiteral()}/{orderingPractitioner.Id}", orderingPractitioner.Name[0].Text);
+      pracRole.Practitioner = new ResourceReference($"{orderingPractitioner.TypeName}/{orderingPractitioner.Id}", orderingPractitioner.Name[0].Text);
       if (organization != null)
       {
-        pracRole.Organization = new ResourceReference($"{organization.ResourceType.GetLiteral()}/{organization.Id}", organization.Name);
+        pracRole.Organization = new ResourceReference($"{organization.TypeName}/{organization.Id}", organization.Name);
       }
 
       if (mobileNumber != null && mobileNumber != "")
@@ -643,7 +643,7 @@ namespace Spia.AdhaFhirGeneration.Factory
       };
       Diag.BasedOn = new List<ResourceReference>()
       {
-        new ResourceReference($"{PathologyServiceRequest.ResourceType.GetLiteral()}/{PathologyServiceRequest.Id}", PathologyServiceRequest.Code.Coding[0].Display)
+        new ResourceReference($"{PathologyServiceRequest.TypeName}/{PathologyServiceRequest.Id}", PathologyServiceRequest.Code.Coding[0].Display)
       };
 
       switch (Panel.ReportStatus)
@@ -672,7 +672,7 @@ namespace Spia.AdhaFhirGeneration.Factory
 
       Diag.Code = PathologyServiceRequest.Code;
 
-      Diag.Subject = new ResourceReference($"{subject.ResourceType.GetLiteral()}/{subject.Id}", subject.Name[0].Text);
+      Diag.Subject = new ResourceReference($"{subject.TypeName}/{subject.Id}", subject.Name[0].Text);
       Diag.Effective = Specimen.Collection.Collected;
 
       Diag.Issued = Panel.ReportReleaseDateTime;
@@ -684,7 +684,7 @@ namespace Spia.AdhaFhirGeneration.Factory
       //          the results. It is the entity that takes responsibility for the clinical report.
       Diag.Performer = new List<ResourceReference>()
       {
-        new ResourceReference($"{PerformerPractitionerRole.ResourceType.GetLiteral()}/{PerformerPractitionerRole.Id}")
+        new ResourceReference($"{PerformerPractitionerRole.TypeName}/{PerformerPractitionerRole.Id}")
       };
 
       //ResultsInterpreter
@@ -739,7 +739,7 @@ namespace Spia.AdhaFhirGeneration.Factory
     {
       var Spec = new Specimen();
       Spec.Id = System.Guid.NewGuid().ToFhirId();
-      Spec.Subject = new ResourceReference($"{subject.ResourceType.GetLiteral()}/{subject.Id}", subject.Name[0].Text);
+      Spec.Subject = new ResourceReference($"{subject.TypeName}/{subject.Id}", subject.Name[0].Text);
       Spec.Collection = new Specimen.CollectionComponent()
       {
         Collected = new FhirDateTime(OldestCollectionDate)
@@ -775,13 +775,13 @@ namespace Spia.AdhaFhirGeneration.Factory
       Obs.Code = new CodeableConcept();
       Obs.Code.Coding = CodingList;
 
-      Obs.Subject = new ResourceReference($"{patient.ResourceType.GetLiteral()}/{patient.Id}", patient.Name[0].Text);
+      Obs.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}", patient.Name[0].Text);
       Obs.Effective = specimen.Collection.Collected;
       Obs.Performer = new List<ResourceReference>()
       {
-        new ResourceReference($"{PerformerPractitionerRole.ResourceType.GetLiteral()}/{PerformerPractitionerRole.Id}")
+        new ResourceReference($"{PerformerPractitionerRole.TypeName}/{PerformerPractitionerRole.Id}")
       };
-      Obs.Specimen = new ResourceReference($"{specimen.ResourceType.GetLiteral()}/{specimen.Id}");
+      Obs.Specimen = new ResourceReference($"{specimen.TypeName}/{specimen.Id}");
 
 
       //Add all member observations
@@ -790,7 +790,7 @@ namespace Spia.AdhaFhirGeneration.Factory
         Obs.HasMember = new List<ResourceReference>();
         foreach (var Observation in MemberObservationList)
         {
-          Obs.HasMember.Add(new ResourceReference($"{Observation.ResourceType.GetLiteral()}/{Observation.Id}", Observation.Code.Coding[0].Display));
+          Obs.HasMember.Add(new ResourceReference($"{Observation.TypeName}/{Observation.Id}", Observation.Code.Coding[0].Display));
         }
       }
 
@@ -806,7 +806,7 @@ namespace Spia.AdhaFhirGeneration.Factory
 
       return Obs;
     }
-    private Observation GetAtomicObservation(Result Result, Hl7.Fhir.Model.Patient patient, Specimen specimen, PractitionerRole PerformerPractitionerRole, IList<Result> ChildResultList = null)
+    private Observation GetAtomicObservation(Spia.PathologyReportModel.Model.Result Result, Hl7.Fhir.Model.Patient patient, Specimen specimen, PractitionerRole PerformerPractitionerRole, IList<Spia.PathologyReportModel.Model.Result> ChildResultList = null)
     {
       var Obs = new Observation();
       TotalObservationList.Add(Obs);
@@ -824,13 +824,13 @@ namespace Spia.AdhaFhirGeneration.Factory
         Obs.Code.Coding.Add(new Coding(LoincFhirSystemUri, Result.Type.Lonic.Term, Result.Type.Lonic.Description));
       }
       
-      Obs.Subject = new ResourceReference($"{patient.ResourceType.GetLiteral()}/{patient.Id}", patient.Name[0].Text);
+      Obs.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}", patient.Name[0].Text);
       Obs.Effective = specimen.Collection.Collected;
       Obs.Performer = new List<ResourceReference>()
       {
-        new ResourceReference($"{PerformerPractitionerRole.ResourceType.GetLiteral()}/{PerformerPractitionerRole.Id}")
+        new ResourceReference($"{PerformerPractitionerRole.TypeName}/{PerformerPractitionerRole.Id}")
       };
-      Obs.Specimen = new ResourceReference($"{specimen.ResourceType.GetLiteral()}/{specimen.Id}");
+      Obs.Specimen = new ResourceReference($"{specimen.TypeName}/{specimen.Id}");
 
       var NormalInterpretation = new CodeableConcept("http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", "N", "Normal");
       var HighInterpretation = new CodeableConcept("http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", "H", "High");
@@ -884,7 +884,7 @@ namespace Spia.AdhaFhirGeneration.Factory
         Obs.HasMember = new List<ResourceReference>();
         foreach (var ChildObservation in ChildObservationList)
         {
-          Obs.HasMember.Add(new ResourceReference($"{ChildObservation.ResourceType.GetLiteral()}/{ChildObservation.Id}", ChildObservation.Code.Coding[0].Display));
+          Obs.HasMember.Add(new ResourceReference($"{ChildObservation.TypeName}/{ChildObservation.Id}", ChildObservation.Code.Coding[0].Display));
           TotalObservationList.Add(ChildObservation);
         }
       }
@@ -950,11 +950,11 @@ namespace Spia.AdhaFhirGeneration.Factory
         {
           var Range = new Hl7.Fhir.Model.Range();
 
-          var LowSimpleQuantity = new SimpleQuantity();
+          var LowSimpleQuantity = new Quantity();
           LowSimpleQuantity.Value = Convert.ToDecimal(ResultField.Component(1).AsString);
           Range.Low = LowSimpleQuantity;
 
-          var HighSimpleQuantity = new SimpleQuantity();
+          var HighSimpleQuantity = new Quantity();
           HighSimpleQuantity.Value = Convert.ToDecimal(ResultField.Component(2).AsString);
           Range.High = HighSimpleQuantity;
 
@@ -1091,7 +1091,7 @@ namespace Spia.AdhaFhirGeneration.Factory
       }
       throw new NotImplementedException();
     }
-    private List<Observation> GetObservationList(Hl7.Fhir.Model.Patient patient, IList<Result> ResultList, Specimen specimen, PractitionerRole PerformerPractitionerRole)
+    private List<Observation> GetObservationList(Hl7.Fhir.Model.Patient patient, IList<Spia.PathologyReportModel.Model.Result> ResultList, Specimen specimen, PractitionerRole PerformerPractitionerRole)
     {
       List<Observation> LocalObservationList = new List<Observation>();
       foreach (var Result in ResultList)

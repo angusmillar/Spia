@@ -37,8 +37,8 @@
     <Reference Include="CDA.Generator.Common, Version=4.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.6.2\lib\net40\CDA.Generator.Common.dll</HintPath>
     </Reference>
-    <Reference Include="JetBrains.Annotations, Version=2018.3.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.2018.3.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=2020.3.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2020.3.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="Nehta.VendorLibrary.CDA.Generator.v3, Version=4.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.6.2\lib\net40\Nehta.VendorLibrary.CDA.Generator.v3.dll</HintPath>
