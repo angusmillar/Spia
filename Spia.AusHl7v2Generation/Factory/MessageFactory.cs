@@ -17,12 +17,11 @@ namespace Spia.AusHl7v2Generation.Factory
       var HL7 = Creator.Message(MSHFactory.GetMSH(Guid.NewGuid().ToString().ToUpper(), MessageCreatedDateTime, PathologyReport.PerformingLaboratory, PathologyReport.Request.RequestingApplication, PathologyReport.Request.RequestingFacility));
 
       HL7.Add(PIDFactory.GetPID(PathologyReport.Patient));
-      HL7.Add(PV1Factory.GetPV1(patientClassCode: "N"));
+      HL7.Add(PV1Factory.GetPV1(patientClassCode: "N", referringProvider: PathologyReport.Request.RequestingProvider, performingLabNataSiteNumber: PathologyReport.PerformingLaboratory.NataSiteNumber));
 
       OBXFactory OBXFactory = new OBXFactory();
       foreach (var Report in PathologyReport.ReportList)
-      {
-        //HL7.Add(ORCFactory.GetORC(pathologyDocument.Request, Report.ReportIdentifier));
+      {        
         HL7.Add(OBRFactory.GetOBR(PathologyReport.Request, Report, PathologyReport.PerformingLaboratory));
         foreach (var OBX in OBXFactory.GetOBXList(PathologyReport.PerformingLaboratory.NataSiteNumber, Report.Panel.ResultList))
         {

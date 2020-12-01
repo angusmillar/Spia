@@ -29,7 +29,7 @@ namespace Spia.Runner
       DirectoryInfo RootHl7v2OutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "HL7v2 Messages"));
       DirectoryInfo RootPdfDirectory = new DirectoryInfo(Options.PdfAttachmentInputDirectory);
       DirectoryInfo RootReportDataDirectory = new DirectoryInfo(Options.LogicalModelInputDirectory);
-      DirectoryInfo RootFhirOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "FHIR Bundles"));
+      DirectoryInfo RootFhirOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "FHIR Bundles (experimental)"));
       DirectoryInfo RootCdaPackagesOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "CDA Packages"));
       DirectoryInfo RootCdaDocumentOutputDirectory = new DirectoryInfo(Path.Combine(RootOutputDirectoryInfo.FullName, "CDA Documents"));
       DirectoryInfo TempWorkingCDADocumentDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CdaGeneratorWorkingDirectory\\CDADocuments"));

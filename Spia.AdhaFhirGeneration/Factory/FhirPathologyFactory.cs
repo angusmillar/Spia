@@ -19,10 +19,7 @@ namespace Spia.AdhaFhirGeneration.Factory
     private string SnomedFhirSystemUri = "http://snomed.info/sct";
     private string LoincFhirSystemUri = "http://loinc.org";
     private List<Observation> TotalObservationList;
-    public FhirPathologyFactory()
-    {
-
-    }
+    
     public string CreateJson(Spia.PathologyReportModel.Model.PathologyReportContainer PathologyReportContainer, string PdfDirectory)
     {
       TotalObservationList = new List<Observation>();
@@ -208,7 +205,7 @@ namespace Spia.AdhaFhirGeneration.Factory
       }
 
       Pat.Active = true;
-      Pat.Name = new List<HumanName>() { GetHumanName(Patient.Name) };
+      Pat.Name = new List<HumanName>() { FhirDataTypeFactory.GetHumanName(Patient.Name.Family, Patient.Name.Given, Patient.Name.Middle, Patient.Name.Title) };
 
       switch (Patient.Gender)
       {
@@ -332,47 +329,17 @@ namespace Spia.AdhaFhirGeneration.Factory
       Pat.Text.Div = sb.ToString();
 
       return Pat;
-    }
-    private void SetNameRender(HumanName name)
-    {
-      string Fullname = string.Empty;
-      if (name.Family != "")
-      {
-        Fullname = name.Family.ToUpper();
-      }
-
-      if (name.Given.Count() > 0)
-      {
-        Fullname += $", ";
-        foreach (var Given in name.Given)
-        {
-          Fullname += $"{Given} ";
-        }
-        Fullname.TrimEnd(' ');
-      }
-
-      if (name.Prefix.Count() > 0)
-      {
-        foreach (var Prefix in name.Prefix)
-        {
-          Fullname += $"{Prefix}, ";
-        }
-        Fullname.TrimEnd(',');
-      }
-      name.Text = Fullname;
-    }
+    }    
     private Organization GetSendingOrganisation(Spia.PathologyReportModel.Model.Laboratory Laboratory)
     {
       var org = new Organization();
       org.Id = System.Guid.NewGuid().ToFhirId();
 
-      var IdentiferList = new List<Hl7.Fhir.Model.Identifier>();
-      var Id = new Hl7.Fhir.Model.Identifier()
+      var IdentiferList = new List<Hl7.Fhir.Model.Identifier>()
       {
-        Type = new CodeableConcept(null, null, "NATA Accreditation Number"),
-        System = "http://hl7.org.au/id/nata-accreditation",
-        Value = Laboratory.NataSiteNumber
+        FhirDataTypeFactory.GetIdentifier("http://hl7.org.au/id/nata-accreditation", Laboratory.NataSiteNumber,  new CodeableConcept(null, null, "NATA Accreditation Number"))
       };
+ 
       org.Identifier = IdentiferList;
 
       org.ActiveElement = new FhirBoolean(true);
@@ -457,13 +424,12 @@ namespace Spia.AdhaFhirGeneration.Factory
       var LocalCodeList = Provider.IdentifierList.Where(x => x.Type == PathologyReportModel.Model.IdentifierType.LocalToLab);
       foreach (var LocalCode in LocalCodeList)
       {
-        Hl7.Fhir.Model.Identifier HpiiIdentifier = new Hl7.Fhir.Model.Identifier()
-        {
-          Type = new CodeableConcept("http://hl7.org/fhir/v2/0203", "NPI", "HPI-I"),
+        Hl7.Fhir.Model.Identifier LocalCodeIdentifier = new Hl7.Fhir.Model.Identifier()
+        {          
           System = $"http://{Report.PerformingLaboratory.FacilityCode}/id/ProviderCode/{LocalCode.AssigningAuthority}",
           Value = LocalCode.Value
         };
-        IdentifierList.Add(HpiiIdentifier);
+        IdentifierList.Add(LocalCodeIdentifier);
       }
 
       if (IdentifierList.Count > 0)
@@ -472,19 +438,7 @@ namespace Spia.AdhaFhirGeneration.Factory
       }
 
       prac.Active = true;
-      prac.Name = new List<HumanName>();
-      var Name = new HumanName();
-      prac.Name.Add(Name);
-      if (string.IsNullOrWhiteSpace(Provider.Name.Title))
-      {
-        Name.Prefix = new string[] { Provider.Name.Title };
-      }
-      if (string.IsNullOrWhiteSpace(Provider.Name.Given))
-      {
-        Name.Given = new string[] { Provider.Name.Given };
-      }
-      Name.Family = Provider.Name.Family;
-      SetNameRender(prac.Name[0]);
+      prac.Name = new List<HumanName>() { FhirDataTypeFactory.GetHumanName(Provider.Name.Family, Provider.Name.Given, Provider.Name.Middle, Provider.Name.Title) };
 
       prac.Text = new Narrative();
       prac.Text.Status = Narrative.NarrativeStatus.Generated;
@@ -533,9 +487,7 @@ namespace Spia.AdhaFhirGeneration.Factory
       }
 
       prac.Active = true;
-      prac.Name = new List<HumanName>();
-      prac.Name.Add(GetHumanName(Provider.Name));      
-      SetNameRender(prac.Name[0]);
+      prac.Name = new List<HumanName>() { FhirDataTypeFactory.GetHumanName(Provider.Name.Family, Provider.Name.Given, Provider.Name.Middle, Provider.Name.Title) };
 
       prac.Text = new Narrative();
       prac.Text.Status = Narrative.NarrativeStatus.Generated;
@@ -545,29 +497,29 @@ namespace Spia.AdhaFhirGeneration.Factory
       prac.Text.Div = sb.ToString();
       return prac;
     }
-    private HumanName GetHumanName(Name name)
-    {
-      if (name is null)
-        throw new NullReferenceException($"{nameof(name)} can not be null.");
-      var HumanName = new HumanName();
-      if (name.Family is object)
-      {
-        HumanName.Family = name.Family;
-      }
-      if (name.Title is object)
-      {
-        HumanName.Prefix = new List<string>() { name.Title };
-      }
-      if (name.Given is object)
-      {
-        HumanName.Given = new List<string>() { name.Given };
-        if (name.Middle is object)
-        {
-          HumanName.Given.ToList().Add(name.Middle);
-        }
-      }
-      return HumanName;
-    }
+    //private HumanName GetHumanName(Name name)
+    //{
+    //  if (name is null)
+    //    throw new NullReferenceException($"{nameof(name)} can not be null.");
+    //  var HumanName = new HumanName();
+    //  if (name.Family is object)
+    //  {
+    //    HumanName.Family = name.Family;
+    //  }
+    //  if (name.Title is object)
+    //  {
+    //    HumanName.Prefix = new List<string>() { name.Title };
+    //  }
+    //  if (name.Given is object)
+    //  {
+    //    HumanName.Given = new List<string>() { name.Given };
+    //    if (name.Middle is object)
+    //    {
+    //      HumanName.Given.ToList().Add(name.Middle);
+    //    }
+    //  }
+    //  return HumanName;
+    //}
     private PractitionerRole GetOrderingPractitionerRole(Organization organization, Practitioner practitioner)
     {
       Hl7.Fhir.Model.Identifier MedicareProviderNumberIdentifier = null;
