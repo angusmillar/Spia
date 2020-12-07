@@ -90,7 +90,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "620",
-                    Units = "kIU/L",
+                    Units = "kIU/L",// kIU/L, kIU/L, UCUM
                     ReferenceRange = "2-300",
                     AbnormalFlag = "H",
                     ObservationDateTime = ObservationDateTime,

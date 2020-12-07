@@ -90,7 +90,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "27",
-                    Units = "ug/L",
+                    Units = "ug/L",// ug/L, ug/L, UCUM
                     ReferenceRange = "30-120",
                     AbnormalFlag = "L",
                     ObservationDateTime = ObservationDateTime,

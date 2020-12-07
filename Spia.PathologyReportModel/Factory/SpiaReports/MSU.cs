@@ -282,7 +282,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "0.7",
-                    Units = "mg/dL",
+                    Units = "mg/dL",// mg/dL, mg/dL, UCUM
                     ReferenceRange = "0.1-1.0",
                     AbnormalFlag = "A",
                     ObservationDateTime = ObservationDateTime,
@@ -378,7 +378,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NR",
                     Value = "10^25",
-                    Units = "Erythrocytes/hpf",
+                    Units = "Erythrocytes/hpf",//??, ??, UCUM
                     ReferenceRange = "None seen",
                     AbnormalFlag = "A",
                     ObservationDateTime = ObservationDateTime,
@@ -402,7 +402,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "SN",
                     Value = ">^60",
-                    Units = "Leucocytes/hpf",
+                    Units = "Leucocytes/hpf",//??, ??, UCUM
                     ReferenceRange = "None seen",
                     AbnormalFlag = "A",
                     ObservationDateTime = ObservationDateTime,
@@ -450,7 +450,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NR",
                     Value = "1^5",
-                    Units = "Epithelial cells/hpf",
+                    Units = "Epithelial cells/hpf",//??, ??, UCUM
                     ReferenceRange = "None seen",
                     AbnormalFlag = "A",
                     ObservationDateTime = ObservationDateTime,
@@ -474,7 +474,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "None seen",
-                    Units = "Casts/hpf",
+                    Units = "Casts/hpf", //??, ??, UCUM
                     ReferenceRange = "None seen",
                     AbnormalFlag = null,
                     ObservationDateTime = ObservationDateTime,
@@ -498,7 +498,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "ST",
                     Value = "None seen",
-                    Units = "Crystals/hpf",
+                    Units = "Crystals/hpf", //??, ??, UCUM
                     ReferenceRange = "None seen",
                     AbnormalFlag = null,
                     ObservationDateTime = ObservationDateTime,

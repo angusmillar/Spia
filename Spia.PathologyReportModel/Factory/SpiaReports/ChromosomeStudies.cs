@@ -65,7 +65,8 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
               ReportType = new ReportType()
               {
                 Local = new Code() { Term = "CHROMOSTUD", Description = "Chromosome studies" },
-                Snomed = new Code() { Term = "1308381000168103", Description = "Whole blood cytogenetic analysis" }
+                Snomed = null
+                //Snomed = new Code() { Term = "1308381000168103", Description = "Whole blood cytogenetic analysis" }
               },
               ReportStatus =  ResultStatusType.Final,
               Department = DiagnosticService.Hematology,

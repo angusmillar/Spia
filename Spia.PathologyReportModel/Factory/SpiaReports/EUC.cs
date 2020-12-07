@@ -90,7 +90,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "138",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "135-142",
                     AbnormalFlag = "N",
                     ObservationDateTime = ObservationDateTime,
@@ -114,7 +114,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "4.3",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "3.8-4.8",
                     AbnormalFlag = "N",
                     ObservationDateTime = ObservationDateTime,
@@ -138,7 +138,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "107",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "100-110",
                     AbnormalFlag = "N",
                     ObservationDateTime = ObservationDateTime,
@@ -162,7 +162,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "32",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "25-35",
                     AbnormalFlag = "N",
                     ObservationDateTime = ObservationDateTime,
@@ -186,7 +186,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "104",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "83-108",
                     AbnormalFlag = "N",
                     ObservationDateTime = ObservationDateTime,
@@ -210,7 +210,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "101",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "70-100",
                     AbnormalFlag = "H",
                     ObservationDateTime = ObservationDateTime,
@@ -234,7 +234,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "113",
-                    Units = "mL/min/1.73m^2",
+                    Units = "mL/min/1.73m^2",// ???
                     ReferenceRange = "90-120",
                     AbnormalFlag = "N",
                     ObservationDateTime = ObservationDateTime,

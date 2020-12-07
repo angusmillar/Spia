@@ -92,7 +92,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "6",
-                    Units = "mg",
+                    Units = "mg",// mg, mg, UCUM
                     ReferenceRange = null,
                     AbnormalFlag = null,
                     ObservationDateTime = ObservationDateTime,

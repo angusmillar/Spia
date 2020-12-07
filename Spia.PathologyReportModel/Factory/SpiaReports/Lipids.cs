@@ -91,7 +91,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "6.2",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "< 5.5",
                     AbnormalFlag = "H",
                     ObservationDateTime = ObservationDateTime,
@@ -115,7 +115,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "3.2",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "> 1.2",
                     AbnormalFlag = null,
                     ObservationDateTime = ObservationDateTime,
@@ -139,7 +139,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "2.3",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "< 2.0",
                     AbnormalFlag = "H",
                     ObservationDateTime = ObservationDateTime,
@@ -163,7 +163,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "2.1",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "< 3.0",
                     AbnormalFlag = null,
                     ObservationDateTime = ObservationDateTime,
@@ -211,7 +211,7 @@ namespace Spia.PathologyReportModel.Factory.SpiaReports
                     },
                     DataType = "NM",
                     Value = "2.1",
-                    Units = "mmol/L",
+                    Units = "mmol/L",// mmol/L, mmol/L, UCUM
                     ReferenceRange = "< 4.0",
                     AbnormalFlag = null,
                     ObservationDateTime = ObservationDateTime,
