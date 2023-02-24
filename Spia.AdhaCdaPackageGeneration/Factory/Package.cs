@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography.X509Certificates;
 using Nehta.VendorLibrary.Common;
 using Nehta.VendorLibrary.CDAPackage;
-
-using System.Xml;
 using System.IO;
 
 namespace Spia.AdhaCdaPackageGeneration.Factory
@@ -28,7 +23,7 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
           Input.NashCertificateSerial,
           X509FindType.FindBySerialNumber,
           StoreName.My,
-          StoreLocation.CurrentUser,
+          StoreLocation.LocalMachine,
           true);
 
       // ------------------------------------------------------------------------------
@@ -65,18 +60,10 @@ namespace Spia.AdhaCdaPackageGeneration.Factory
       package.AddDocumentAttachment("logo.png", Input.CdaDocumentLogoBytes);
 
       FileInfo CdaDocumentFileinfo = new FileInfo(Input.CdaDocumentInputFilePath);
-
-      //string CdaPackageFileName = CdaDocumentFileinfo.Name.Replace(CdaDocumentFileinfo.Extension, ".zip");
-      //CdaPackageFileName = Path.Combine(CdaDocumentFileinfo.DirectoryName, CdaPackageFileName);
+      
       // Create the CDA package zip      
       CDAPackageUtility.CreateZip(package, Input.CdaPackageOutputFilePath, signingCert);
-      
-      //Delete the raw CDA xml file
-      //CdaDocumentFileinfo.Delete();
-
+     
     }
-
-
-
   }
 }

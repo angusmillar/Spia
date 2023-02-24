@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Spia.AdhaCdaGeneration</RootNamespace>
     <AssemblyName>Spia.AdhaCdaGeneration</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -31,23 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CDA.GeneratedCode, Version=4.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.6.2\lib\net40\CDA.GeneratedCode.dll</HintPath>
+    <Reference Include="CDA.GeneratedCode, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.10.0\lib\net452\CDA.GeneratedCode.dll</HintPath>
     </Reference>
-    <Reference Include="CDA.Generator.Common, Version=4.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.6.2\lib\net40\CDA.Generator.Common.dll</HintPath>
+    <Reference Include="CDA.Generator.Common, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.10.0\lib\net452\CDA.Generator.Common.dll</HintPath>
     </Reference>
-    <Reference Include="JetBrains.Annotations, Version=2020.3.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.2020.3.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2022.3.1\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
-    <Reference Include="Nehta.VendorLibrary.CDA.Generator.v3, Version=4.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.6.2\lib\net40\Nehta.VendorLibrary.CDA.Generator.v3.dll</HintPath>
+    <Reference Include="Nehta.VendorLibrary.CDA.Generator.v3, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nehta.VendorLibrary.CDA.Generator.v3.4.10.0\lib\net452\Nehta.VendorLibrary.CDA.Generator.v3.dll</HintPath>
     </Reference>
-    <Reference Include="Nehta.VendorLibrary.Common, Version=4.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nehta.VendorLibrary.Common.4.2.1\lib\net40\Nehta.VendorLibrary.Common.dll</HintPath>
+    <Reference Include="Nehta.VendorLibrary.Common, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nehta.VendorLibrary.Common.4.3.0\lib\net45\Nehta.VendorLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

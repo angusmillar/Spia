@@ -8,16 +8,16 @@ namespace Spia.Runner
     static void Main(string[] args)
     {
       var Options = new SpiaFileGeneratorOptions(
-        outputDirectory: @"C:\temp\SPIAMessages\Output",
-        pdfAttachmentInputDirectory: @"C:\temp\SPIAMessages\PDF",
-        logicalModelInputDirectory: @"C:\temp\SPIAMessages\LogicalModels")
+        outputDirectory: @"D:\Temp\spia\PI-Pilot-22-24\Output",
+        pdfAttachmentInputDirectory: @"D:\Temp\spia\PI-Pilot-22-24\PDF",
+        logicalModelInputDirectory: @"D:\Temp\spia\PI-Pilot-22-24\Input")
       {
-        GenerateLogicalModels = true,
+        GenerateLogicalModels = false,
         GenerateHL7Version2Messages = true,
         GenerateFhirBundles = true,
         GenerateCdaDocuments = true,
         GenerateCdaPackages = true,        
-        NashCertificateSerial = "06fba6",
+        NashCertificateSerial = "2AB5",
         CdaPackagerApproverPerson = new AdhaCdaPackageGeneration.Model.ApproverPerson()
         {
           FamilyName = "Millar",
