@@ -21,7 +21,7 @@ namespace Spia.AusHl7v2Generation.Factory
       {
         var IdCode = HL7v2IdentifierSupport.GetIdentiferCode(Id);
         IField PatientIdField = Creator.Field();
-        PatientIdField.Component(1).AsString = IdCode.Value;
+        PatientIdField.Component(1).AsString = IdCode.Value.Replace(" ", string.Empty);
         PatientIdField.Component(4).AsString = IdCode.AssigingAuthority;
         PatientIdField.Component(5).AsString = IdCode.TypeCode;
         PID.Element(3).Add(PatientIdField);
