@@ -96,7 +96,7 @@ namespace Spia.AusHl7v2Generation.Factory
 
     }
 
-    public ISegment GetPdfOBX(string PdfDirectoryPath, string PdfFileName, int SetId, string Status)
+    public ISegment GetPdfOBX(string PdfDirectoryPath, string PdfFileName, int SetId, ResultStatusType Status)
     {
       var OBX = Creator.Segment("OBX");
       OBX.Field(1).AsString = SetId.ToString();
@@ -111,8 +111,17 @@ namespace Spia.AusHl7v2Generation.Factory
       OBX.Field(5).Component(3).AsString = "pdf";
       OBX.Field(5).Component(4).AsString = "Base64";
       OBX.Field(5).Component(5).AsString = GetPdfBase64Content(PdfDirectoryPath, PdfFileName);
-      OBX.Field(11).AsString = Status;
-
+      
+      ResultStatusTypeSupport ResultStatusTypeSupport = new ResultStatusTypeSupport();
+      if (ResultStatusTypeSupport.TryLookupByEnum(Status, out string ResultStatus))
+      {
+        OBX.Field(11).AsString = ResultStatus;
+      }
+      else
+      {
+        throw new ApplicationException($"Unable to convert the {nameof(Status)} of {Status.ToString()} to a code for the HL7 OBR-25 field.");
+      }
+      
       OBX.Field(15).AsString = "\"\"";
 
       return OBX;

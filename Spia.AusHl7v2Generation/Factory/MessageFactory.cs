@@ -27,7 +27,7 @@ namespace Spia.AusHl7v2Generation.Factory
         {
           HL7.Add(OBX);
         }
-        HL7.Add(OBXFactory.GetPdfOBX(PDFDirectoryPath, PathologyReport.PdfFileName, HL7.SegmentCount("OBX") + 1, Report.ReportStatus.ToString()));
+        HL7.Add(OBXFactory.GetPdfOBX(PDFDirectoryPath, PathologyReport.PdfFileName, HL7.SegmentCount("OBX") + 1, Report.ReportStatus));
 
       }
       return HL7.AsStringRaw;
